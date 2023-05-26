@@ -99,6 +99,40 @@ ignore:
 ## Themes: https://hexo.io/themes/
 theme: clean-blog
 
+# https://github.com/klugjo/hexo-theme-clean-blog
+# Header
+menu:
+  Home: /
+  Archives: /archives
+  Github:
+    url: https://github.com/klugjo/hexo-theme-clean-blog
+    icon: github
+
+# Title on top left of menu. Leave empty to use main blog title
+menu_title: Configurable Title
+
+# URL of the Home page image
+index_cover: /img/home-bg.jpg
+
+# Default post title
+default_post_title: Untitled
+
+# Comments. Choose one by filling up the information
+comments:
+  # Disqus comments
+  disqus_shortname: klugjotest
+  # Facebook comments
+  facebook:
+    appid: 123456789012345
+    comment_count: 5
+    comment_colorscheme: light
+
+comment: false
+# ---
+
+# Addthis ID
+addthis:
+
 # Deployment
 ## Docs: https://hexo.io/docs/one-command-deployment
 deploy:
@@ -106,3 +140,4 @@ deploy:
   repo: https://github.com/logshark/logshark.github.io.git
   branch: master
   message:
+
