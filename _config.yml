@@ -104,6 +104,8 @@ theme: clean-blog
 menu:
   Home: /
   Archives: /archives
+  Categories: /categories
+  Tags: /tags
   Github:
     url: https://github.com/klugjo/hexo-theme-clean-blog
     icon: github
