@@ -3,17 +3,17 @@
 ## Source: https://github.com/hexojs/hexo/
 
 # Site
-title: GoodPost
-subtitle: '123'
+title: FreePost
+subtitle:
 description: '456'
 keywords:
-author: goodTed
+author: goodShark
 language: zh-tw
 timezone:
 
 # URL
 ## Set your site url here. For example, if you use GitHub Page, set url as 'https://username.github.io/project'
-url: http://example.com
+url: https://github.com/logshark/logshark.github.io.git
 permalink: :year/:month/:day/:title/
 permalink_defaults:
 pretty_urls:
@@ -110,11 +110,11 @@ menu:
   Categories: /categories
   Tags: /tags
   Github:
-    url: https://github.com/klugjo/hexo-theme-clean-blog
+    url:
     icon: github
 
 # Title on top left of menu. Leave empty to use main blog title
-menu_title: Configurable Title
+menu_title: Menu
 
 # URL of the Home page image
 index_cover: /img/home-bg.jpg
@@ -143,6 +143,10 @@ addthis:
 deploy:
   type: git
   repo: https://github.com/logshark/logshark.github.io.git
-  branch: master
+  branch:
   message:
 
+# hexo clean
+# hexo generate
+# hexo server
+# hexo deploy
