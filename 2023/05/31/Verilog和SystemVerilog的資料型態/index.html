@@ -23,7 +23,7 @@
 
     <!--Open Graph Title-->
     
-        <meta property="og:title" content="FreePost"/>
+        <meta property="og:title" content="Verilog和SystemVerilog的資料型態"/>
     
 
     <!--Open Graph Description-->
@@ -36,7 +36,7 @@
 
     <!--Type page-->
     
-        <meta property="og:type" content="website"/>
+        <meta property="og:type" content="article"/>
     
 
     <!--Page Cover-->
@@ -55,7 +55,7 @@
 
     <!-- Title -->
     
-    <title>FreePost</title>
+    <title>Verilog和SystemVerilog的資料型態 - FreePost</title>
 
     <!-- Bootstrap Core CSS -->
     <link href="//maxcdn.bootstrapcdn.com/bootstrap/3.3.6/css/bootstrap.min.css" rel="stylesheet"/>
@@ -160,96 +160,95 @@
 
     <!-- Main Content -->
     <!-- Page Header -->
-<!-- Set your background image for this header in the theme's configuration: index_cover -->
+<!-- Set your background image for this header in your post front-matter: cover -->
+
 <header class="intro-header" style="background-image: url('/img/home-bg.jpg')">
     <div class="container">
         <div class="row">
             <div class="col-lg-8 col-lg-offset-2 col-md-10 col-md-offset-1">
-                <div class="site-heading">
-                    <h1>FreePost</h1>
-                    <hr class="small">
-                    <span class="subheading"></span>
+                <div class="post-heading">
+                    <h1>Verilog和SystemVerilog的資料型態</h1>
+                    
+                    <span class="meta">
+                        <!-- Date and Author -->
+                        
+                        
+                            2023-05-31
+                        
+                    </span>
                 </div>
             </div>
         </div>
     </div>
 </header>
 
-<!-- Main Content -->
-<div class="container">
-    <div class="row">
-        <div class="col-lg-8 col-lg-offset-2 col-md-10 col-md-offset-1">
-            
-                <div class="post-preview">
-    <a href="/2023/06/01/SystemVerilog的logic和bit資料型態/">
-        <h2 class="post-title">
-            SystemVerilog的logic和bit資料型態
-        </h2>
-        
-    </a>
-    <p class="post-meta">
-        <!-- Date and Author -->
-        
-        2023-06-01
-    </p>
-</div>
-<hr>
-            
-                <div class="post-preview">
-    <a href="/2023/05/31/Verilog和SystemVerilog的資料型態/">
-        <h2 class="post-title">
-            Verilog和SystemVerilog的資料型態
-        </h2>
-        
-    </a>
-    <p class="post-meta">
-        <!-- Date and Author -->
-        
-        2023-05-31
-    </p>
-</div>
-<hr>
-            
-                <div class="post-preview">
-    <a href="/2023/05/30/hello-world/">
-        <h2 class="post-title">
-            Hello World
-        </h2>
-        
-    </a>
-    <p class="post-meta">
-        <!-- Date and Author -->
-        
-        2023-05-30
-    </p>
-</div>
-<hr>
-            
-                <div class="post-preview">
-    <a href="/2023/05/27/My-New-Post/">
-        <h2 class="post-title">
-            My New Post
-        </h2>
-        
-    </a>
-    <p class="post-meta">
-        <!-- Date and Author -->
-        
-        2023-05-27
-    </p>
-</div>
-<hr>
+<!-- Post Content -->
+<article>
+    <div class="container">
+        <div class="row">
+
+            <!-- Tags and categories -->
+           
+                <div class="col-lg-4 col-lg-offset-2 col-md-5 col-md-offset-1 post-tags">
+                    
+                        
+
+
+<a href="/tags/SystemVerilog/">#SystemVerilog</a>
+
+
+                    
+                </div>
+                <div class="col-lg-4 col-md-5 post-categories">
+                    
+                </div>
             
 
-            <ul class="pager">
-    
-    
-</ul>
+            <!-- Gallery -->
+            
+
+            <!-- Post Main Content -->
+            <div class="col-lg-8 col-lg-offset-2 col-md-10 col-md-offset-1">
+                <h1 id="Verilog-的資料型態"><a href="#Verilog-的資料型態" class="headerlink" title="Verilog 的資料型態"></a>Verilog 的資料型態</h1><!--
+| 标题1 | 标题2 | 标题3 |
+| ------ | ------ | ------ |
+| 文本好短 | 文本不短也不长 | 文本好长文本好长文本好长 |
+| 文本好长文本好长文本好长 | 文本好短 | 文本不短也不长 |
+
+end
+
+
+| Data-type | 2 or 4 state| bits |
+| :------ | :------ | :------ |
+| reg | 4 | >=1 |
+| wire | 4 | >=1 |
+| integer | 4 | 32 |
+| real |  |  |
+| time |  |  |
+| realtime |  |  | -->
+
+<p>Verilog只能用下列這些資料型態，如果使用SystemVerilog的logic&#x2F;bit…等資料型態會compile error。</p>
+<figure class="highlight sv"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br><span class="line">6</span><br></pre></td><td class="code"><pre><span class="line"><span class="keyword">reg</span></span><br><span class="line"><span class="keyword">wire</span></span><br><span class="line"><span class="keyword">integer</span></span><br><span class="line"><span class="keyword">real</span></span><br><span class="line"><span class="keyword">time</span></span><br><span class="line"><span class="keyword">realtime</span></span><br></pre></td></tr></table></figure>
+
+<h1 id="SystemVerilog-的資料型態"><a href="#SystemVerilog-的資料型態" class="headerlink" title="SystemVerilog 的資料型態"></a>SystemVerilog 的資料型態</h1><p>SystemVerilog主要是用來建置testbench來測試verilog，多了一些相似於C的資料型態讓開發者更容易做出testcase，SystemVerilog也可以使用上述Verilog的資料型態。</p>
+<figure class="highlight sv"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br><span class="line">6</span><br><span class="line">7</span><br></pre></td><td class="code"><pre><span class="line"><span class="keyword">logic</span></span><br><span class="line"><span class="keyword">bit</span></span><br><span class="line"><span class="keyword">byte</span></span><br><span class="line"><span class="keyword">shortint</span></span><br><span class="line"><span class="keyword">int</span></span><br><span class="line"><span class="keyword">longint</span></span><br><span class="line"><span class="keyword">shortreal</span></span><br></pre></td></tr></table></figure>
+
+
+
+                
+            </div>
+
+            <!-- Comments -->
+            
+                <div class="col-lg-8 col-lg-offset-2 col-md-10 col-md-offset-1">
+                    
+
+
+                </div>
+            
         </div>
     </div>
-</div>
-
-
+</article>
 
     <!-- Footer -->
     <hr />
