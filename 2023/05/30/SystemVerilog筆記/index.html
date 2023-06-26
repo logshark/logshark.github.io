@@ -214,9 +214,9 @@
 <p>練習的範例基本上跟網頁差不多，就都是參考網頁範例自己寫code做練習</p>
 <h1 id="EDA"><a href="#EDA" class="headerlink" title="EDA"></a>EDA</h1><p>EDA是在windows環境，使用ModelSim Starter Edition版本，可以自己去Intel官網下載免費版，好像只要code不要超過10000行就可以了，夠練習用了</p>
 <p>安裝完成後照著User Manual的Basic Steps for Simulation章節Collect Files and Map Libraries</p>
-<p>選定一個資料夾下用command line輸入指令來創造Logical Library<br>$vlib work<br>$vmap work work</p>
-<p>然後用vlog指令compile<br>$vlog tb_top.sv d_ff.sv</p>
-<p>接著用vsim指令跑模擬<br>$vsim -c tb -do “run -all; quit -f”<br>$vsim -c tb -do “run 10000; quit -f”</p>
+<p>選定一個資料夾下用command line輸入指令來創造Logical Library<br><code>$vlib work</code><br><code>$vmap work work</code></p>
+<p>然後用vlog指令compile<br><code>$vlog tb_top.sv d_ff.sv</code></p>
+<p>接著用vsim指令跑模擬<br><code>$vsim -c tb -do &quot;run -all; quit -f&quot;</code><br><code>$vsim -c tb -do &quot;run 10000; quit -f&quot;</code></p>
 
 
                 
