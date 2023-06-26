@@ -23,7 +23,7 @@
 
     <!--Open Graph Title-->
     
-        <meta property="og:title" content="FreePost"/>
+        <meta property="og:title" content="SystemVerilog筆記"/>
     
 
     <!--Open Graph Description-->
@@ -36,7 +36,7 @@
 
     <!--Type page-->
     
-        <meta property="og:type" content="website"/>
+        <meta property="og:type" content="article"/>
     
 
     <!--Page Cover-->
@@ -55,7 +55,7 @@
 
     <!-- Title -->
     
-    <title>Archives: 2023/5 - FreePost</title>
+    <title>SystemVerilog筆記 - FreePost</title>
 
     <!-- Bootstrap Core CSS -->
     <link href="//maxcdn.bootstrapcdn.com/bootstrap/3.3.6/css/bootstrap.min.css" rel="stylesheet"/>
@@ -159,62 +159,80 @@
 </nav>
 
     <!-- Main Content -->
-    
+    <!-- Page Header -->
+<!-- Set your background image for this header in your post front-matter: cover -->
 
-<!-- Page Header -->
-<!-- Set your background image for this header in the theme's configuration: index_cover -->
 <header class="intro-header" style="background-image: url('/img/home-bg.jpg')">
     <div class="container">
         <div class="row">
             <div class="col-lg-8 col-lg-offset-2 col-md-10 col-md-offset-1">
-                <div class="site-heading">
-                    <h1>2023/5</h1>
+                <div class="post-heading">
+                    <h1>SystemVerilog筆記</h1>
+                    
+                    <span class="meta">
+                        <!-- Date and Author -->
+                        
+                        
+                            2023-05-30
+                        
+                    </span>
                 </div>
             </div>
         </div>
     </div>
 </header>
 
-<!-- Main Content -->
-<div class="container">
-    <div class="row">
-        <div class="col-lg-8 col-lg-offset-2 col-md-10 col-md-offset-1">
+<!-- Post Content -->
+<article>
+    <div class="container">
+        <div class="row">
+
+            <!-- Tags and categories -->
+           
+                <div class="col-lg-4 col-lg-offset-2 col-md-5 col-md-offset-1 post-tags">
+                    
+                        
+
+
+<a href="/tags/SystemVerilog/">#SystemVerilog</a>
+
+
+                    
+                </div>
+                <div class="col-lg-4 col-md-5 post-categories">
+                    
+                </div>
             
-                <div class="post-preview">
-    <a href="/2023/05/31/Verilog和SystemVerilog的資料型態/">
-        <h1 class="post-title archive">
-            Verilog和SystemVerilog的資料型態
-        </h1>
-    </a>
-    <p class="post-meta archive">
-        <!-- Date and Author -->
-        
-        2023-05-31
-    </p>
-</div>
+
+            <!-- Gallery -->
             
-                <div class="post-preview">
-    <a href="/2023/05/30/SystemVerilog筆記/">
-        <h1 class="post-title archive">
-            SystemVerilog筆記
-        </h1>
-    </a>
-    <p class="post-meta archive">
-        <!-- Date and Author -->
-        
-        2023-05-30
-    </p>
-</div>
+
+            <!-- Post Main Content -->
+            <div class="col-lg-8 col-lg-offset-2 col-md-10 col-md-offset-1">
+                <p>這些文章純粹是自己做筆記，所以應該有很多地方不會寫得很詳細</p>
+<h1 id="Reference"><a href="#Reference" class="headerlink" title="Reference"></a>Reference</h1><p>這邊關於SystemVerilog的文章，都是看這個教學網站的筆記:<br><a target="_blank" rel="noopener" href="https://www.chipverify.com/systemverilog/systemverilog-tutorial">https://www.chipverify.com/systemverilog/systemverilog-tutorial</a></p>
+<p>練習的範例基本上跟網頁差不多，就都是參考網頁範例自己寫code做練習</p>
+<h1 id="EDA"><a href="#EDA" class="headerlink" title="EDA"></a>EDA</h1><p>EDA是在windows環境，使用ModelSim Starter Edition版本，可以自己去Intel官網下載免費版，好像只要code不要超過10000行就可以了，夠練習用了</p>
+<p>安裝完成後照著User Manual的Basic Steps for Simulation章節Collect Files and Map Libraries</p>
+<p>選定一個資料夾下用command line輸入指令來創造Logical Library<br>$vlib work<br>$vmap work work</p>
+<p>然後用vlog指令compile<br>$vlog tb_top.sv d_ff.sv</p>
+<p>接著用vsim指令跑模擬<br>$vsim -c tb -do “run -all; quit -f”<br>$vsim -c tb -do “run 10000; quit -f”</p>
+
+
+                
+            </div>
+
+            <!-- Comments -->
             
-            <div class="archive-before-pagination"></div>
-            <ul class="pager">
-    
-    
-</ul>
+                <div class="col-lg-8 col-lg-offset-2 col-md-10 col-md-offset-1">
+                    
+
+
+                </div>
+            
         </div>
     </div>
-</div>
-
+</article>
 
     <!-- Footer -->
     <hr />
