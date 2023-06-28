@@ -1,0 +1,323 @@
+<!DOCTYPE html>
+<html lang="zh-tw">
+
+<!-- Head tag -->
+<head>
+
+    <meta charset="utf-8"/>
+    <meta http-equiv="X-UA-Compatible" content="IE=edge"/>
+    <meta name="viewport" content="width=device-width, initial-scale=1"/>
+
+    <!--Description-->
+
+    
+
+    
+        <meta name="description" content="456"/>
+    
+
+    <!--Author-->
+    
+        <meta name="author" content="goodShark"/>
+    
+
+    <!--Open Graph Title-->
+    
+        <meta property="og:title" content="Verilog - Task"/>
+    
+
+    <!--Open Graph Description-->
+    
+        <meta property="og:description" content="456"/>
+    
+
+    <!--Open Graph Site Name-->
+        <meta property="og:site_name" content="FreePost"/>
+
+    <!--Type page-->
+    
+        <meta property="og:type" content="article"/>
+    
+
+    <!--Page Cover-->
+    
+    
+        <meta property="og:image" content="https://logshark.github.io/img/home-bg.jpg"/>
+    
+
+        <meta name="twitter:card" content="summary_large_image"/>
+
+    
+
+    
+        <meta name="twitter:image" content="https://logshark.github.io/img/home-bg.jpg"/>
+    
+
+    <!-- Title -->
+    
+    <title>Verilog - Task - FreePost</title>
+
+    <!-- Bootstrap Core CSS -->
+    <link href="//maxcdn.bootstrapcdn.com/bootstrap/3.3.6/css/bootstrap.min.css" rel="stylesheet"/>
+
+    <!-- Custom CSS -->
+    
+<link rel="stylesheet" href="/css/style.css">
+
+
+    <!-- Custom Fonts -->
+    <link href="//maxcdn.bootstrapcdn.com/font-awesome/4.6.3/css/font-awesome.min.css" rel="stylesheet" type="text/css"/>
+    <link href="//fonts.googleapis.com/css?family=Lora:400,700,400italic,700italic" rel="stylesheet" type="text/css"/>
+    <link href="//fonts.googleapis.com/css?family=Open+Sans:300italic,400italic,600italic,700italic,800italic,400,300,600,700,800" rel="stylesheet" type="text/css"/>
+
+    <!-- HTML5 Shim and Respond.js IE8 support of HTML5 elements and media queries -->
+    <!-- WARNING: Respond.js doesn't work if you view the page via file:// -->
+    <!--[if lt IE 9]>
+    <script src="//oss.maxcdn.com/libs/html5shiv/3.7.0/html5shiv.js"></script>
+    <script src="//oss.maxcdn.com/libs/respond.js/1.4.2/respond.min.js"></script>
+    <![endif]-->
+
+    <!-- Gallery -->
+    <link href="//cdnjs.cloudflare.com/ajax/libs/featherlight/1.3.5/featherlight.min.css" type="text/css" rel="stylesheet"/>
+
+    <!-- Google Analytics -->
+    
+
+
+    <!-- favicon -->
+    
+
+<meta name="generator" content="Hexo 6.3.0"></head>
+
+
+<body>
+
+    <!-- Menu -->
+    <!-- Navigation -->
+<nav class="navbar navbar-default navbar-custom navbar-fixed-top">
+    <div class="container-fluid">
+        <!-- Brand and toggle get grouped for better mobile display -->
+        <div class="navbar-header page-scroll">
+            <button type="button" class="navbar-toggle" data-toggle="collapse" data-target="#bs-example-navbar-collapse-1">
+                <span class="sr-only">Toggle navigation</span>
+                <span class="icon-bar"></span>
+                <span class="icon-bar"></span>
+                <span class="icon-bar"></span>
+            </button>
+            <a class="navbar-brand" href="/">FreePost</a>
+        </div>
+
+        <!-- Collect the nav links, forms, and other content for toggling -->
+        <div class="collapse navbar-collapse" id="bs-example-navbar-collapse-1">
+            <ul class="nav navbar-nav navbar-right">
+                
+                    <li>
+                        <a href="/">
+                            
+                                Home
+                            
+                        </a>
+                    </li>
+                
+                    <li>
+                        <a href="/archives">
+                            
+                                Archives
+                            
+                        </a>
+                    </li>
+                
+                    <li>
+                        <a href="/tags">
+                            
+                                Tags
+                            
+                        </a>
+                    </li>
+                
+                    <li>
+                        <a href="/categories">
+                            
+                                Categories
+                            
+                        </a>
+                    </li>
+                
+                    <li>
+                        <a target="_blank" rel="noopener" href="https://github.com/logshark">
+                            
+                                <i class="fa fa-github fa-stack-2x"></i>
+                            
+                        </a>
+                    </li>
+                
+            </ul>
+        </div>
+        <!-- /.navbar-collapse -->
+    </div>
+    <!-- /.container -->
+</nav>
+
+    <!-- Main Content -->
+    <!-- Page Header -->
+<!-- Set your background image for this header in your post front-matter: cover -->
+
+<header class="intro-header" style="background-image: url('/img/home-bg.jpg')">
+    <div class="container">
+        <div class="row">
+            <div class="col-lg-8 col-lg-offset-2 col-md-10 col-md-offset-1">
+                <div class="post-heading">
+                    <h1>Verilog - Task</h1>
+                    
+                    <span class="meta">
+                        <!-- Date and Author -->
+                        
+                        
+                            2023-06-28
+                        
+                    </span>
+                </div>
+            </div>
+        </div>
+    </div>
+</header>
+
+<!-- Post Content -->
+<article>
+    <div class="container">
+        <div class="row">
+
+            <!-- Tags and categories -->
+           
+                <div class="col-lg-4 col-lg-offset-2 col-md-5 col-md-offset-1 post-tags">
+                    
+                        
+
+
+<a href="/tags/SystemVerilog/">#SystemVerilog</a> <a href="/tags/Verilog/">#Verilog</a>
+
+
+                    
+                </div>
+                <div class="col-lg-4 col-md-5 post-categories">
+                    
+                </div>
+            
+
+            <!-- Gallery -->
+            
+
+            <!-- Post Main Content -->
+            <div class="col-lg-8 col-lg-offset-2 col-md-10 col-md-offset-1">
+                <p><code>task</code> 可以像function一樣有input&#x2F;output，也能放會消耗simulation的時間的statement，例如 <code>@</code>, <code>posedge</code> 等等<br>下面是一些task放在local&#x2F;global的範例，還有一些不同格式的寫法</p>
+<h1 id="Example"><a href="#Example" class="headerlink" title="Example:"></a>Example:</h1><figure class="highlight sv"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br><span class="line">6</span><br><span class="line">7</span><br><span class="line">8</span><br><span class="line">9</span><br><span class="line">10</span><br><span class="line">11</span><br><span class="line">12</span><br><span class="line">13</span><br><span class="line">14</span><br><span class="line">15</span><br><span class="line">16</span><br><span class="line">17</span><br><span class="line">18</span><br><span class="line">19</span><br><span class="line">20</span><br><span class="line">21</span><br><span class="line">22</span><br><span class="line">23</span><br><span class="line">24</span><br><span class="line">25</span><br><span class="line">26</span><br><span class="line">27</span><br><span class="line">28</span><br><span class="line">29</span><br><span class="line">30</span><br><span class="line">31</span><br><span class="line">32</span><br><span class="line">33</span><br><span class="line">34</span><br><span class="line">35</span><br><span class="line">36</span><br><span class="line">37</span><br><span class="line">38</span><br><span class="line">39</span><br><span class="line">40</span><br><span class="line">41</span><br><span class="line">42</span><br><span class="line">43</span><br><span class="line">44</span><br><span class="line">45</span><br><span class="line">46</span><br></pre></td><td class="code"><pre><span class="line"><span class="comment">// global task</span></span><br><span class="line"><span class="keyword">task</span> sum1(<span class="keyword">input</span> [<span class="number">7</span>:<span class="number">0</span>] a, b, <span class="keyword">output</span> [<span class="number">7</span>:<span class="number">0</span>] sum);</span><br><span class="line">    sum = a + b;</span><br><span class="line">    #<span class="number">1</span> <span class="built_in">$display</span>(<span class="string">&quot;time:%0d, a:%0d, b:%0d, sum:%0d&quot;</span>,<span class="built_in">$time</span>(), a, b, sum);</span><br><span class="line"><span class="keyword">endtask</span></span><br><span class="line"></span><br><span class="line"><span class="comment">// global task</span></span><br><span class="line"><span class="keyword">task</span> sum2;</span><br><span class="line">    <span class="keyword">input</span> [<span class="number">7</span>:<span class="number">0</span>] a, b;</span><br><span class="line">    <span class="keyword">output</span> [<span class="number">7</span>:<span class="number">0</span>] sum;</span><br><span class="line">    <span class="keyword">begin</span></span><br><span class="line">        sum = a + b;</span><br><span class="line">    <span class="keyword">end</span></span><br><span class="line">    #<span class="number">1</span> <span class="built_in">$display</span>(<span class="string">&quot;time:%0d, a:%0d, b:%0d, sum:%0d&quot;</span>,<span class="built_in">$time</span>(), a, b, sum);</span><br><span class="line"><span class="keyword">endtask</span></span><br><span class="line"></span><br><span class="line"><span class="keyword">module</span> testModule();</span><br><span class="line">    <span class="comment">// task in a testModule</span></span><br><span class="line">    <span class="keyword">task</span> sum3(<span class="keyword">input</span> [<span class="number">7</span>:<span class="number">0</span>] a, b, <span class="keyword">output</span> [<span class="number">7</span>:<span class="number">0</span>] sum);</span><br><span class="line">        sum = a + b;</span><br><span class="line">        #<span class="number">1</span> <span class="built_in">$display</span>(<span class="string">&quot;time:%0d, a:%0d, b:%0d, sum:%0d&quot;</span>,<span class="built_in">$time</span>(), a, b, sum);</span><br><span class="line">    <span class="keyword">endtask</span></span><br><span class="line"><span class="keyword">endmodule</span></span><br><span class="line"></span><br><span class="line"><span class="keyword">module</span> tb();</span><br><span class="line">    <span class="keyword">int</span> outSum;</span><br><span class="line">    testModule mod();</span><br><span class="line">    <span class="keyword">task</span> sum4(<span class="keyword">input</span> [<span class="number">7</span>:<span class="number">0</span>] a, b, <span class="keyword">output</span> [<span class="number">7</span>:<span class="number">0</span>] sum);</span><br><span class="line">        sum = a + b;</span><br><span class="line">        #<span class="number">1</span> <span class="built_in">$display</span>(<span class="string">&quot;time:%0d, a:%0d, b:%0d, sum:%0d&quot;</span>,<span class="built_in">$time</span>(), a, b, sum);</span><br><span class="line">    <span class="keyword">endtask</span></span><br><span class="line"></span><br><span class="line">    <span class="keyword">initial</span> <span class="keyword">begin</span></span><br><span class="line">        sum1(<span class="number">1</span>, <span class="number">2</span>, outSum);</span><br><span class="line">        <span class="built_in">$display</span>(<span class="string">&quot;time:%0d, sum1 output:%0d&quot;</span>,<span class="built_in">$time</span>(), outSum);</span><br><span class="line"></span><br><span class="line">        sum2(<span class="number">3</span>, <span class="number">4</span>, outSum);</span><br><span class="line">        <span class="built_in">$display</span>(<span class="string">&quot;time:%0d, sum2 output:%0d&quot;</span>,<span class="built_in">$time</span>(), outSum);</span><br><span class="line"></span><br><span class="line">        mod<span class="variable">.sum3</span>(<span class="number">5</span>, <span class="number">6</span>, outSum);</span><br><span class="line">        <span class="built_in">$display</span>(<span class="string">&quot;time:%0d, sum3 output:%0d&quot;</span>,<span class="built_in">$time</span>(), outSum);</span><br><span class="line"></span><br><span class="line">        sum4(<span class="number">7</span>, <span class="number">8</span>, outSum);</span><br><span class="line">        <span class="built_in">$display</span>(<span class="string">&quot;time:%0d, sum4 output:%0d&quot;</span>,<span class="built_in">$time</span>(), outSum);</span><br><span class="line">    <span class="keyword">end</span></span><br><span class="line"><span class="keyword">endmodule</span></span><br></pre></td></tr></table></figure>
+
+<h1 id="Output"><a href="#Output" class="headerlink" title="Output:"></a>Output:</h1><pre><code># run 10000
+# time:1, a:1, b:2, sum:3
+# time:1, sum1 output:3
+# time:2, a:3, b:4, sum:7
+# time:2, sum2 output:7
+# time:3, a:5, b:6, sum:11
+# time:3, sum3 output:11
+# time:4, a:7, b:8, sum:15
+# time:4, sum4 output:15
+#  quit -f
+</code></pre>
+<h1 id="Static-Task-和-Automatic-Task"><a href="#Static-Task-和-Automatic-Task" class="headerlink" title="Static Task 和 Automatic Task"></a>Static Task 和 Automatic Task</h1><p>Task預設就是static task，但如果task裡面有宣告變數的話，那task前面就要加Automatic，這樣在每次使用這個task的時候，simulation就會重新allocate一塊memory來跑這個新的task。<br>或者是要把變數宣告成Automatic，這樣每次initial這個變數的時候simulation就會重新allocate一塊memory給這個變數使用。</p>
+<h1 id="Example-1"><a href="#Example-1" class="headerlink" title="Example:"></a>Example:</h1><figure class="highlight sv"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br><span class="line">6</span><br><span class="line">7</span><br><span class="line">8</span><br><span class="line">9</span><br><span class="line">10</span><br><span class="line">11</span><br><span class="line">12</span><br><span class="line">13</span><br><span class="line">14</span><br><span class="line">15</span><br><span class="line">16</span><br><span class="line">17</span><br><span class="line">18</span><br><span class="line">19</span><br><span class="line">20</span><br><span class="line">21</span><br><span class="line">22</span><br><span class="line">23</span><br></pre></td><td class="code"><pre><span class="line"><span class="keyword">module</span> tb();</span><br><span class="line"></span><br><span class="line">    <span class="keyword">initial</span> counter();</span><br><span class="line">    <span class="keyword">initial</span> counter();</span><br><span class="line">    <span class="keyword">initial</span> counter();</span><br><span class="line">    <span class="keyword">initial</span> counter_auto();</span><br><span class="line">    <span class="keyword">initial</span> counter_auto();</span><br><span class="line">    <span class="keyword">initial</span> counter_auto();</span><br><span class="line"></span><br><span class="line">    <span class="keyword">task</span> counter();</span><br><span class="line">        <span class="comment">// integer i = 0; //  .\task2.sv(11): (vlog-2244) Variable &#x27;i&#x27; is implicitly static. You must either explicitly declare it as static or automatic or remove the initialization in the declaration of variable.</span></span><br><span class="line">        <span class="keyword">automatic</span> <span class="keyword">integer</span> i = <span class="number">0</span>;</span><br><span class="line">        i = i + <span class="number">1</span>;</span><br><span class="line">        <span class="built_in">$display</span>(<span class="string">&quot;time:%0d, i:%0d&quot;</span>,<span class="built_in">$time</span>(), i);</span><br><span class="line">    <span class="keyword">endtask</span></span><br><span class="line"></span><br><span class="line">    <span class="keyword">task</span> <span class="keyword">automatic</span> counter_auto();</span><br><span class="line">        <span class="keyword">integer</span> i = <span class="number">0</span>;</span><br><span class="line">        i = i + <span class="number">1</span>;</span><br><span class="line">        <span class="built_in">$display</span>(<span class="string">&quot;time:%0d, i:%0d&quot;</span>,<span class="built_in">$time</span>(), i);</span><br><span class="line">    <span class="keyword">endtask</span></span><br><span class="line"></span><br><span class="line"><span class="keyword">endmodule</span></span><br></pre></td></tr></table></figure>
+
+<h1 id="Output-1"><a href="#Output-1" class="headerlink" title="Output"></a>Output</h1><pre><code># run 10000
+# time:0, i:1
+# time:0, i:1
+# time:0, i:1
+# time:0, i:1
+# time:0, i:1
+# time:0, i:1
+#  quit -f
+</code></pre>
+<h1 id="Disable-Task-x2F-Disable-Block-in-a-Task"><a href="#Disable-Task-x2F-Disable-Block-in-a-Task" class="headerlink" title="Disable Task&#x2F; Disable Block in a Task"></a>Disable Task&#x2F; Disable Block in a Task</h1><p>Task還可以用 <code>disable</code> 來disable這個task執行，也可以取消掉一個task的某個block</p>
+<h1 id="Example-2"><a href="#Example-2" class="headerlink" title="Example:"></a>Example:</h1><figure class="highlight sv"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br><span class="line">6</span><br><span class="line">7</span><br><span class="line">8</span><br><span class="line">9</span><br><span class="line">10</span><br><span class="line">11</span><br><span class="line">12</span><br><span class="line">13</span><br><span class="line">14</span><br><span class="line">15</span><br><span class="line">16</span><br><span class="line">17</span><br><span class="line">18</span><br><span class="line">19</span><br><span class="line">20</span><br><span class="line">21</span><br><span class="line">22</span><br><span class="line">23</span><br><span class="line">24</span><br><span class="line">25</span><br><span class="line">26</span><br><span class="line">27</span><br><span class="line">28</span><br><span class="line">29</span><br><span class="line">30</span><br><span class="line">31</span><br><span class="line">32</span><br><span class="line">33</span><br><span class="line">34</span><br><span class="line">35</span><br><span class="line">36</span><br></pre></td><td class="code"><pre><span class="line"><span class="keyword">module</span> tb;</span><br><span class="line"></span><br><span class="line">    <span class="keyword">initial</span> <span class="keyword">begin</span></span><br><span class="line">        <span class="built_in">$display</span>(<span class="string">&quot;t:%0t Start disable task block&quot;</span>, <span class="built_in">$time</span>);</span><br><span class="line">        #<span class="number">5</span> <span class="keyword">disable</span> display<span class="variable">.BLOCK_1</span>;</span><br><span class="line">        <span class="built_in">$display</span>(<span class="string">&quot;t:%0t End disable task block&quot;</span>, <span class="built_in">$time</span>);</span><br><span class="line"></span><br><span class="line">        <span class="built_in">$display</span>(<span class="string">&quot;t:%0t Start disable task&quot;</span>, <span class="built_in">$time</span>);</span><br><span class="line">        #<span class="number">15</span> <span class="keyword">disable</span> display;</span><br><span class="line">        <span class="built_in">$display</span>(<span class="string">&quot;t:%0t End disable task&quot;</span>, <span class="built_in">$time</span>);</span><br><span class="line">    <span class="keyword">end</span></span><br><span class="line"></span><br><span class="line">    <span class="keyword">initial</span> display();</span><br><span class="line"></span><br><span class="line">    <span class="keyword">task</span> display();</span><br><span class="line">        <span class="keyword">begin</span>: BLOCK_1</span><br><span class="line">            <span class="built_in">$display</span>(<span class="string">&quot;t:%0t BLOCK_1 start&quot;</span>, <span class="built_in">$time</span>);</span><br><span class="line">            #<span class="number">10</span>;</span><br><span class="line">            <span class="built_in">$display</span>(<span class="string">&quot;t:%0t BLOCK_1 end&quot;</span>, <span class="built_in">$time</span>);</span><br><span class="line">        <span class="keyword">end</span></span><br><span class="line"></span><br><span class="line">        <span class="keyword">begin</span>: BLOCK_2</span><br><span class="line">            #<span class="number">10</span>;</span><br><span class="line">            <span class="built_in">$display</span>(<span class="string">&quot;t:%0t BLOCK_2 start&quot;</span>, <span class="built_in">$time</span>);</span><br><span class="line">            #<span class="number">10</span>;</span><br><span class="line">            <span class="built_in">$display</span>(<span class="string">&quot;t:%0t BLOCK_2 end&quot;</span>, <span class="built_in">$time</span>);</span><br><span class="line">        <span class="keyword">end</span></span><br><span class="line"></span><br><span class="line">        <span class="keyword">begin</span>: BLOCK_3</span><br><span class="line">            #<span class="number">10</span>;</span><br><span class="line">            <span class="built_in">$display</span>(<span class="string">&quot;t:%0t BLOCK_3 start&quot;</span>, <span class="built_in">$time</span>);</span><br><span class="line">            #<span class="number">10</span>;</span><br><span class="line">            <span class="built_in">$display</span>(<span class="string">&quot;t:%0t BLOCK_3 end&quot;</span>, <span class="built_in">$time</span>);</span><br><span class="line">        <span class="keyword">end</span></span><br><span class="line">    <span class="keyword">endtask</span></span><br><span class="line"><span class="keyword">endmodule</span></span><br></pre></td></tr></table></figure>
+
+<h1 id="Output-2"><a href="#Output-2" class="headerlink" title="Output"></a>Output</h1><pre><code># t:0 Start disable task block
+# t:0 BLOCK_1 start
+# t:5 End disable task block
+# t:5 Start disable task
+# t:15 BLOCK_2 start
+# t:20 End disable task
+#  quit -f
+</code></pre>
+<p>#5的時候用<code>disable display.BLOCK_1</code>把這個block的task disable掉<br>#20的時候用<code>disable display</code>把整個task disable掉</p>
+
+
+                
+            </div>
+
+            <!-- Comments -->
+            
+                <div class="col-lg-8 col-lg-offset-2 col-md-10 col-md-offset-1">
+                    
+
+
+                </div>
+            
+        </div>
+    </div>
+</article>
+
+    <!-- Footer -->
+    <hr />
+
+<!-- Footer -->
+<footer>
+    <div class="container">
+        <div class="row">
+            <div class="col-lg-8 col-lg-offset-2 col-md-10 col-md-offset-1">
+                <ul class="list-inline text-center">
+                    
+
+                    
+
+                    
+                        <li>
+                            <a href="https://github.com/logshark/logshark.github.io.git" target="_blank">
+                                <span class="fa-stack fa-lg">
+                                    <i class="fa fa-circle fa-stack-2x"></i>
+                                    <i class="fa fa-github fa-stack-1x fa-inverse"></i>
+                                </span>
+                            </a>
+                        </li>
+                    
+
+                    
+
+                    
+
+                    
+                </ul>
+                <p class="copyright text-muted">&copy; 2023 goodShark<br></p>
+                <p class="copyright text-muted">Original Theme <a target="_blank" href="http://startbootstrap.com/template-overviews/clean-blog/">Clean Blog</a> from <a href="http://startbootstrap.com/" target="_blank">Start Bootstrap</a></p>
+                <p class="copyright text-muted">Adapted for <a target="_blank" href="https://hexo.io/">Hexo</a> by <a href="http://www.codeblocq.com/" target="_blank">Jonathan Klughertz</a></p>
+            </div>
+        </div>
+    </div>
+</footer>
+
+
+    <!-- After footer scripts -->
+    
+<!-- jQuery -->
+<script src="//code.jquery.com/jquery-2.1.4.min.js"></script>
+
+<!-- Bootstrap -->
+<script src="//maxcdn.bootstrapcdn.com/bootstrap/3.3.6/js/bootstrap.min.js"></script>
+
+<!-- Gallery -->
+<script src="//cdnjs.cloudflare.com/ajax/libs/featherlight/1.3.5/featherlight.min.js" type="text/javascript" charset="utf-8"></script>
+
+<!-- Disqus Comments -->
+
+
+
+</body>
+
+</html>
