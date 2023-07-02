@@ -1,0 +1,312 @@
+<!DOCTYPE html>
+<html lang="zh-tw">
+
+<!-- Head tag -->
+<head>
+
+    <meta charset="utf-8"/>
+    <meta http-equiv="X-UA-Compatible" content="IE=edge"/>
+    <meta name="viewport" content="width=device-width, initial-scale=1"/>
+
+    <!--Description-->
+
+    
+
+    
+        <meta name="description" content="456"/>
+    
+
+    <!--Author-->
+    
+        <meta name="author" content="goodShark"/>
+    
+
+    <!--Open Graph Title-->
+    
+        <meta property="og:title" content="SystemVerilog - Thread"/>
+    
+
+    <!--Open Graph Description-->
+    
+        <meta property="og:description" content="456"/>
+    
+
+    <!--Open Graph Site Name-->
+        <meta property="og:site_name" content="FreePost"/>
+
+    <!--Type page-->
+    
+        <meta property="og:type" content="article"/>
+    
+
+    <!--Page Cover-->
+    
+    
+        <meta property="og:image" content="https://logshark.github.io/img/home-bg.jpg"/>
+    
+
+        <meta name="twitter:card" content="summary_large_image"/>
+
+    
+
+    
+        <meta name="twitter:image" content="https://logshark.github.io/img/home-bg.jpg"/>
+    
+
+    <!-- Title -->
+    
+    <title>SystemVerilog - Thread - FreePost</title>
+
+    <!-- Bootstrap Core CSS -->
+    <link href="//maxcdn.bootstrapcdn.com/bootstrap/3.3.6/css/bootstrap.min.css" rel="stylesheet"/>
+
+    <!-- Custom CSS -->
+    
+<link rel="stylesheet" href="/css/style.css">
+
+
+    <!-- Custom Fonts -->
+    <link href="//maxcdn.bootstrapcdn.com/font-awesome/4.6.3/css/font-awesome.min.css" rel="stylesheet" type="text/css"/>
+    <link href="//fonts.googleapis.com/css?family=Lora:400,700,400italic,700italic" rel="stylesheet" type="text/css"/>
+    <link href="//fonts.googleapis.com/css?family=Open+Sans:300italic,400italic,600italic,700italic,800italic,400,300,600,700,800" rel="stylesheet" type="text/css"/>
+
+    <!-- HTML5 Shim and Respond.js IE8 support of HTML5 elements and media queries -->
+    <!-- WARNING: Respond.js doesn't work if you view the page via file:// -->
+    <!--[if lt IE 9]>
+    <script src="//oss.maxcdn.com/libs/html5shiv/3.7.0/html5shiv.js"></script>
+    <script src="//oss.maxcdn.com/libs/respond.js/1.4.2/respond.min.js"></script>
+    <![endif]-->
+
+    <!-- Gallery -->
+    <link href="//cdnjs.cloudflare.com/ajax/libs/featherlight/1.3.5/featherlight.min.css" type="text/css" rel="stylesheet"/>
+
+    <!-- Google Analytics -->
+    
+
+
+    <!-- favicon -->
+    
+
+<meta name="generator" content="Hexo 6.3.0"></head>
+
+
+<body>
+
+    <!-- Menu -->
+    <!-- Navigation -->
+<nav class="navbar navbar-default navbar-custom navbar-fixed-top">
+    <div class="container-fluid">
+        <!-- Brand and toggle get grouped for better mobile display -->
+        <div class="navbar-header page-scroll">
+            <button type="button" class="navbar-toggle" data-toggle="collapse" data-target="#bs-example-navbar-collapse-1">
+                <span class="sr-only">Toggle navigation</span>
+                <span class="icon-bar"></span>
+                <span class="icon-bar"></span>
+                <span class="icon-bar"></span>
+            </button>
+            <a class="navbar-brand" href="/">FreePost</a>
+        </div>
+
+        <!-- Collect the nav links, forms, and other content for toggling -->
+        <div class="collapse navbar-collapse" id="bs-example-navbar-collapse-1">
+            <ul class="nav navbar-nav navbar-right">
+                
+                    <li>
+                        <a href="/">
+                            
+                                Home
+                            
+                        </a>
+                    </li>
+                
+                    <li>
+                        <a href="/archives">
+                            
+                                Archives
+                            
+                        </a>
+                    </li>
+                
+                    <li>
+                        <a href="/tags">
+                            
+                                Tags
+                            
+                        </a>
+                    </li>
+                
+                    <li>
+                        <a href="/categories">
+                            
+                                Categories
+                            
+                        </a>
+                    </li>
+                
+                    <li>
+                        <a target="_blank" rel="noopener" href="https://github.com/logshark">
+                            
+                                <i class="fa fa-github fa-stack-2x"></i>
+                            
+                        </a>
+                    </li>
+                
+            </ul>
+        </div>
+        <!-- /.navbar-collapse -->
+    </div>
+    <!-- /.container -->
+</nav>
+
+    <!-- Main Content -->
+    <!-- Page Header -->
+<!-- Set your background image for this header in your post front-matter: cover -->
+
+<header class="intro-header" style="background-image: url('/img/home-bg.jpg')">
+    <div class="container">
+        <div class="row">
+            <div class="col-lg-8 col-lg-offset-2 col-md-10 col-md-offset-1">
+                <div class="post-heading">
+                    <h1>SystemVerilog - Thread</h1>
+                    
+                    <span class="meta">
+                        <!-- Date and Author -->
+                        
+                        
+                            2023-07-02
+                        
+                    </span>
+                </div>
+            </div>
+        </div>
+    </div>
+</header>
+
+<!-- Post Content -->
+<article>
+    <div class="container">
+        <div class="row">
+
+            <!-- Tags and categories -->
+           
+                <div class="col-lg-4 col-lg-offset-2 col-md-5 col-md-offset-1 post-tags">
+                    
+                        
+
+
+<a href="/tags/SystemVerilog/">#SystemVerilog</a>
+
+
+                    
+                </div>
+                <div class="col-lg-4 col-md-5 post-categories">
+                    
+                </div>
+            
+
+            <!-- Gallery -->
+            
+
+            <!-- Post Main Content -->
+            <div class="col-lg-8 col-lg-offset-2 col-md-10 col-md-offset-1">
+                <p>Verilog如果同時存在多個<code>initial/always</code> block，他們會同時平行的開始執行。<br>SystemVerilog可以用 <code>fork join</code> block來達到平行行的效果，如同C&#x2F;C++的thread。</p>
+<p>有三種join方式<br><code>fork join</code>所有子Thread結束後完成<br><code>fork join_any</code>任何一個Thread結束後完成<br><code>fork join_none</code>所有子Thread生成後完成</p>
+<hr>
+<h1 id="Example-fork-join"><a href="#Example-fork-join" class="headerlink" title="Example - fork join:"></a>Example - fork join:</h1><figure class="highlight sv"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br><span class="line">6</span><br><span class="line">7</span><br><span class="line">8</span><br><span class="line">9</span><br><span class="line">10</span><br><span class="line">11</span><br><span class="line">12</span><br><span class="line">13</span><br><span class="line">14</span><br><span class="line">15</span><br><span class="line">16</span><br><span class="line">17</span><br><span class="line">18</span><br></pre></td><td class="code"><pre><span class="line"><span class="keyword">module</span> tb;</span><br><span class="line">    <span class="keyword">initial</span> <span class="keyword">begin</span></span><br><span class="line">        #<span class="number">5</span> <span class="built_in">$display</span>(<span class="string">&quot;t:%0d started&quot;</span>, <span class="built_in">$time</span>);</span><br><span class="line"></span><br><span class="line">        <span class="keyword">fork</span></span><br><span class="line">            #<span class="number">20</span> <span class="built_in">$display</span>(<span class="string">&quot;t:%0d thread1-step1&quot;</span>, <span class="built_in">$time</span>);</span><br><span class="line"></span><br><span class="line">            <span class="keyword">begin</span></span><br><span class="line">                #<span class="number">5</span> <span class="built_in">$display</span>(<span class="string">&quot;t:%0d thread2-step1&quot;</span>, <span class="built_in">$time</span>);</span><br><span class="line">                #<span class="number">10</span> <span class="built_in">$display</span>(<span class="string">&quot;t:%0d thread2-step2&quot;</span>, <span class="built_in">$time</span>);</span><br><span class="line">            <span class="keyword">end</span></span><br><span class="line">            #<span class="number">5</span> <span class="built_in">$display</span>(<span class="string">&quot;t:%0d thread3-step1&quot;</span>, <span class="built_in">$time</span>);</span><br><span class="line"></span><br><span class="line">        <span class="keyword">join</span></span><br><span class="line"></span><br><span class="line">        <span class="built_in">$display</span>(<span class="string">&quot;t:%0d finished&quot;</span>, <span class="built_in">$time</span>);</span><br><span class="line">    <span class="keyword">end</span></span><br><span class="line"><span class="keyword">endmodule</span></span><br></pre></td></tr></table></figure>
+
+<h1 id="Output"><a href="#Output" class="headerlink" title="Output:"></a>Output:</h1><figure class="highlight plaintext"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br><span class="line">6</span><br><span class="line">7</span><br><span class="line">8</span><br></pre></td><td class="code"><pre><span class="line"># run 10000</span><br><span class="line"># t:5 started</span><br><span class="line"># t:10 thread2-step1</span><br><span class="line"># t:10 thread3-step1</span><br><span class="line"># t:20 thread2-step2</span><br><span class="line"># t:25 thread1-step1</span><br><span class="line"># **t:25 finished**</span><br><span class="line">#  quit -f</span><br></pre></td></tr></table></figure>
+<p><code>fork join</code>要等到三個thread都執行完畢之後才會往下執行</p>
+<hr>
+<h1 id="Example-fork-join-any"><a href="#Example-fork-join-any" class="headerlink" title="Example - fork join_any:"></a>Example - fork join_any:</h1><figure class="highlight sv"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br><span class="line">6</span><br><span class="line">7</span><br><span class="line">8</span><br><span class="line">9</span><br><span class="line">10</span><br><span class="line">11</span><br><span class="line">12</span><br><span class="line">13</span><br><span class="line">14</span><br><span class="line">15</span><br><span class="line">16</span><br><span class="line">17</span><br><span class="line">18</span><br></pre></td><td class="code"><pre><span class="line"><span class="keyword">module</span> tb;</span><br><span class="line">    <span class="keyword">initial</span> <span class="keyword">begin</span></span><br><span class="line">        #<span class="number">5</span> <span class="built_in">$display</span>(<span class="string">&quot;t:%0d started&quot;</span>, <span class="built_in">$time</span>);</span><br><span class="line"></span><br><span class="line">        <span class="keyword">fork</span></span><br><span class="line">            #<span class="number">20</span> <span class="built_in">$display</span>(<span class="string">&quot;t:%0d thread1-step1&quot;</span>, <span class="built_in">$time</span>);</span><br><span class="line"></span><br><span class="line">            <span class="keyword">begin</span></span><br><span class="line">                #<span class="number">5</span> <span class="built_in">$display</span>(<span class="string">&quot;t:%0d thread2-step1&quot;</span>, <span class="built_in">$time</span>);</span><br><span class="line">                #<span class="number">10</span> <span class="built_in">$display</span>(<span class="string">&quot;t:%0d thread2-step2&quot;</span>, <span class="built_in">$time</span>);</span><br><span class="line">            <span class="keyword">end</span></span><br><span class="line">            #<span class="number">5</span> <span class="built_in">$display</span>(<span class="string">&quot;t:%0d thread3-step1&quot;</span>, <span class="built_in">$time</span>);</span><br><span class="line"></span><br><span class="line">        <span class="keyword">join_any</span></span><br><span class="line"></span><br><span class="line">        <span class="built_in">$display</span>(<span class="string">&quot;t:%0d finished&quot;</span>, <span class="built_in">$time</span>);</span><br><span class="line">    <span class="keyword">end</span></span><br><span class="line"><span class="keyword">endmodule</span></span><br></pre></td></tr></table></figure>
+<p><code>fork join_any</code>只要有一個thread執行完畢之後就會往下執行</p>
+<h1 id="Output-1"><a href="#Output-1" class="headerlink" title="Output:"></a>Output:</h1><figure class="highlight plaintext"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br><span class="line">6</span><br><span class="line">7</span><br><span class="line">8</span><br></pre></td><td class="code"><pre><span class="line"># run 10000</span><br><span class="line"># t:5 started</span><br><span class="line"># t:10 thread2-step1</span><br><span class="line"># t:10 thread3-step1</span><br><span class="line"># **t:10 finished**</span><br><span class="line"># t:20 thread2-step2</span><br><span class="line"># t:25 thread1-step1</span><br><span class="line">#  quit -f</span><br></pre></td></tr></table></figure>
+
+<hr>
+<h1 id="Example-fork-join-none"><a href="#Example-fork-join-none" class="headerlink" title="Example - fork join_none:"></a>Example - fork join_none:</h1><figure class="highlight sv"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br><span class="line">6</span><br><span class="line">7</span><br><span class="line">8</span><br><span class="line">9</span><br><span class="line">10</span><br><span class="line">11</span><br><span class="line">12</span><br><span class="line">13</span><br><span class="line">14</span><br><span class="line">15</span><br><span class="line">16</span><br><span class="line">17</span><br><span class="line">18</span><br></pre></td><td class="code"><pre><span class="line"><span class="keyword">module</span> tb;</span><br><span class="line">    <span class="keyword">initial</span> <span class="keyword">begin</span></span><br><span class="line">        <span class="built_in">$display</span>(<span class="string">&quot;t:%0d started&quot;</span>, <span class="built_in">$time</span>);</span><br><span class="line"></span><br><span class="line">        <span class="keyword">fork</span></span><br><span class="line">            #<span class="number">20</span> <span class="built_in">$display</span>(<span class="string">&quot;t:%0d thread1-step1&quot;</span>, <span class="built_in">$time</span>);</span><br><span class="line"></span><br><span class="line">            <span class="keyword">begin</span></span><br><span class="line">                #<span class="number">5</span> <span class="built_in">$display</span>(<span class="string">&quot;t:%0d thread2-step1&quot;</span>, <span class="built_in">$time</span>);</span><br><span class="line">                #<span class="number">10</span> <span class="built_in">$display</span>(<span class="string">&quot;t:%0d thread2-step2&quot;</span>, <span class="built_in">$time</span>);</span><br><span class="line">            <span class="keyword">end</span></span><br><span class="line">            #<span class="number">5</span> <span class="built_in">$display</span>(<span class="string">&quot;t:%0d thread3-step1&quot;</span>, <span class="built_in">$time</span>);</span><br><span class="line"></span><br><span class="line">        <span class="keyword">join_none</span></span><br><span class="line"></span><br><span class="line">        <span class="built_in">$display</span>(<span class="string">&quot;t:%0d finished&quot;</span>, <span class="built_in">$time</span>);</span><br><span class="line">    <span class="keyword">end</span></span><br><span class="line"><span class="keyword">endmodule</span></span><br></pre></td></tr></table></figure>
+
+<h1 id="Output-2"><a href="#Output-2" class="headerlink" title="Output:"></a>Output:</h1><figure class="highlight plaintext"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br><span class="line">6</span><br><span class="line">7</span><br><span class="line">8</span><br></pre></td><td class="code"><pre><span class="line"># run 10000</span><br><span class="line"># t:0 started</span><br><span class="line"># **t:0 finished**</span><br><span class="line"># t:5 thread2-step1</span><br><span class="line"># t:5 thread3-step1</span><br><span class="line"># t:15 thread2-step2</span><br><span class="line"># t:20 thread1-step1</span><br><span class="line">#  quit -f</span><br></pre></td></tr></table></figure>
+<p><code>fork join_none</code>只要thread開好之後就會往下執行</p>
+<hr>
+<h1 id="Example-disable-join"><a href="#Example-disable-join" class="headerlink" title="Example - disable join:"></a>Example - disable join:</h1><figure class="highlight sv"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br><span class="line">6</span><br><span class="line">7</span><br><span class="line">8</span><br><span class="line">9</span><br><span class="line">10</span><br><span class="line">11</span><br><span class="line">12</span><br><span class="line">13</span><br><span class="line">14</span><br><span class="line">15</span><br><span class="line">16</span><br><span class="line">17</span><br><span class="line">18</span><br><span class="line">19</span><br><span class="line">20</span><br></pre></td><td class="code"><pre><span class="line"><span class="keyword">module</span> tb;</span><br><span class="line">    <span class="keyword">initial</span> <span class="keyword">begin</span></span><br><span class="line">        #<span class="number">5</span> <span class="built_in">$display</span>(<span class="string">&quot;t:%0d started&quot;</span>, <span class="built_in">$time</span>);</span><br><span class="line"></span><br><span class="line">        <span class="keyword">fork</span></span><br><span class="line">            #<span class="number">20</span> <span class="built_in">$display</span>(<span class="string">&quot;t:%0d thread1-step1&quot;</span>, <span class="built_in">$time</span>);</span><br><span class="line"></span><br><span class="line">            <span class="keyword">begin</span></span><br><span class="line">                #<span class="number">5</span> <span class="built_in">$display</span>(<span class="string">&quot;t:%0d thread2-step1&quot;</span>, <span class="built_in">$time</span>);</span><br><span class="line">                #<span class="number">10</span> <span class="built_in">$display</span>(<span class="string">&quot;t:%0d thread2-step2&quot;</span>, <span class="built_in">$time</span>);</span><br><span class="line">            <span class="keyword">end</span></span><br><span class="line">            #<span class="number">5</span> <span class="built_in">$display</span>(<span class="string">&quot;t:%0d thread3-step1&quot;</span>, <span class="built_in">$time</span>);</span><br><span class="line"></span><br><span class="line">        <span class="keyword">join_any</span></span><br><span class="line"></span><br><span class="line">        <span class="built_in">$display</span>(<span class="string">&quot;t:%0d finished&quot;</span>, <span class="built_in">$time</span>);</span><br><span class="line"></span><br><span class="line">        <span class="keyword">disable</span> <span class="keyword">fork</span>;</span><br><span class="line">    <span class="keyword">end</span></span><br><span class="line"><span class="keyword">endmodule</span></span><br></pre></td></tr></table></figure>
+
+<h1 id="Output-3"><a href="#Output-3" class="headerlink" title="Output:"></a>Output:</h1><figure class="highlight plaintext"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br></pre></td><td class="code"><pre><span class="line"># run 10000</span><br><span class="line"># t:5 started</span><br><span class="line"># t:10 thread2-step1</span><br><span class="line"># t:10 thread3-step1</span><br><span class="line"># **t:10 finished**</span><br></pre></td></tr></table></figure>
+<p><code>disable fork</code>可以把前面fork出來的thread停掉</p>
+<hr>
+<h1 id="Example-wait-fork"><a href="#Example-wait-fork" class="headerlink" title="Example - wait fork:"></a>Example - wait fork:</h1><figure class="highlight sv"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br><span class="line">6</span><br><span class="line">7</span><br><span class="line">8</span><br><span class="line">9</span><br><span class="line">10</span><br><span class="line">11</span><br><span class="line">12</span><br><span class="line">13</span><br><span class="line">14</span><br><span class="line">15</span><br><span class="line">16</span><br><span class="line">17</span><br><span class="line">18</span><br><span class="line">19</span><br><span class="line">20</span><br><span class="line">21</span><br><span class="line">22</span><br><span class="line">23</span><br><span class="line">24</span><br><span class="line">25</span><br><span class="line">26</span><br></pre></td><td class="code"><pre><span class="line"><span class="keyword">module</span> tb;</span><br><span class="line">    <span class="keyword">initial</span> <span class="keyword">begin</span></span><br><span class="line">        #<span class="number">5</span> <span class="built_in">$display</span>(<span class="string">&quot;t:%0d started&quot;</span>, <span class="built_in">$time</span>);</span><br><span class="line"></span><br><span class="line">        <span class="keyword">fork</span></span><br><span class="line">            #<span class="number">20</span> <span class="built_in">$display</span>(<span class="string">&quot;t:%0d thread1-step1&quot;</span>, <span class="built_in">$time</span>);</span><br><span class="line"></span><br><span class="line">            <span class="keyword">begin</span></span><br><span class="line">                #<span class="number">5</span> <span class="built_in">$display</span>(<span class="string">&quot;t:%0d thread2-step1&quot;</span>, <span class="built_in">$time</span>);</span><br><span class="line">                #<span class="number">10</span> <span class="built_in">$display</span>(<span class="string">&quot;t:%0d thread2-step2&quot;</span>, <span class="built_in">$time</span>);</span><br><span class="line">            <span class="keyword">end</span></span><br><span class="line">            #<span class="number">5</span> <span class="built_in">$display</span>(<span class="string">&quot;t:%0d thread3-step1&quot;</span>, <span class="built_in">$time</span>);</span><br><span class="line"></span><br><span class="line">        <span class="keyword">join_any</span></span><br><span class="line"></span><br><span class="line">        <span class="keyword">fork</span></span><br><span class="line">            #<span class="number">20</span> <span class="built_in">$display</span>(<span class="string">&quot;t:%0d thread4&quot;</span>, <span class="built_in">$time</span>);</span><br><span class="line">            #<span class="number">100</span> <span class="built_in">$display</span>(<span class="string">&quot;t:%0d thread5&quot;</span>, <span class="built_in">$time</span>);</span><br><span class="line">        <span class="keyword">join_any</span></span><br><span class="line"></span><br><span class="line">        <span class="built_in">$display</span>(<span class="string">&quot;t:%0d wait join&quot;</span>, <span class="built_in">$time</span>);</span><br><span class="line">        <span class="keyword">wait</span> <span class="keyword">fork</span>;</span><br><span class="line"></span><br><span class="line">        <span class="built_in">$display</span>(<span class="string">&quot;t:%0d finished&quot;</span>, <span class="built_in">$time</span>);</span><br><span class="line">    <span class="keyword">end</span></span><br><span class="line"><span class="keyword">endmodule</span></span><br></pre></td></tr></table></figure>
+
+<h1 id="Output-4"><a href="#Output-4" class="headerlink" title="Output:"></a>Output:</h1><figure class="highlight plaintext"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br><span class="line">6</span><br><span class="line">7</span><br><span class="line">8</span><br><span class="line">9</span><br><span class="line">10</span><br><span class="line">11</span><br></pre></td><td class="code"><pre><span class="line"># run 10000</span><br><span class="line"># t:5 started</span><br><span class="line"># t:10 thread2-step1</span><br><span class="line"># t:10 thread3-step1</span><br><span class="line"># t:20 thread2-step2</span><br><span class="line"># t:25 thread1-step1</span><br><span class="line"># t:30 thread4</span><br><span class="line"># t:30 wait join</span><br><span class="line"># t:110 thread5</span><br><span class="line"># **t:110 finished**</span><br><span class="line">#  quit -f</span><br></pre></td></tr></table></figure>
+<p><code>wait fork</code>可以用來等待前面的thread都執行完成後，才會往下執行。</p>
+
+
+                
+            </div>
+
+            <!-- Comments -->
+            
+                <div class="col-lg-8 col-lg-offset-2 col-md-10 col-md-offset-1">
+                    
+
+
+                </div>
+            
+        </div>
+    </div>
+</article>
+
+    <!-- Footer -->
+    <hr />
+
+<!-- Footer -->
+<footer>
+    <div class="container">
+        <div class="row">
+            <div class="col-lg-8 col-lg-offset-2 col-md-10 col-md-offset-1">
+                <ul class="list-inline text-center">
+                    
+
+                    
+
+                    
+                        <li>
+                            <a href="https://github.com/logshark/logshark.github.io.git" target="_blank">
+                                <span class="fa-stack fa-lg">
+                                    <i class="fa fa-circle fa-stack-2x"></i>
+                                    <i class="fa fa-github fa-stack-1x fa-inverse"></i>
+                                </span>
+                            </a>
+                        </li>
+                    
+
+                    
+
+                    
+
+                    
+                </ul>
+                <p class="copyright text-muted">&copy; 2023 goodShark<br></p>
+                <p class="copyright text-muted">Original Theme <a target="_blank" href="http://startbootstrap.com/template-overviews/clean-blog/">Clean Blog</a> from <a href="http://startbootstrap.com/" target="_blank">Start Bootstrap</a></p>
+                <p class="copyright text-muted">Adapted for <a target="_blank" href="https://hexo.io/">Hexo</a> by <a href="http://www.codeblocq.com/" target="_blank">Jonathan Klughertz</a></p>
+            </div>
+        </div>
+    </div>
+</footer>
+
+
+    <!-- After footer scripts -->
+    
+<!-- jQuery -->
+<script src="//code.jquery.com/jquery-2.1.4.min.js"></script>
+
+<!-- Bootstrap -->
+<script src="//maxcdn.bootstrapcdn.com/bootstrap/3.3.6/js/bootstrap.min.js"></script>
+
+<!-- Gallery -->
+<script src="//cdnjs.cloudflare.com/ajax/libs/featherlight/1.3.5/featherlight.min.js" type="text/javascript" charset="utf-8"></script>
+
+<!-- Disqus Comments -->
+
+
+
+</body>
+
+</html>
