@@ -23,7 +23,7 @@
 
     <!--Open Graph Title-->
     
-        <meta property="og:title" content="LogPost"/>
+        <meta property="og:title" content="SystemVerilog - Constraint"/>
     
 
     <!--Open Graph Description-->
@@ -36,7 +36,7 @@
 
     <!--Type page-->
     
-        <meta property="og:type" content="website"/>
+        <meta property="og:type" content="article"/>
     
 
     <!--Page Cover-->
@@ -55,7 +55,7 @@
 
     <!-- Title -->
     
-    <title>page - Archives - LogPost</title>
+    <title>SystemVerilog - Constraint - LogPost</title>
 
     <!-- Bootstrap Core CSS -->
     <link href="//maxcdn.bootstrapcdn.com/bootstrap/3.3.6/css/bootstrap.min.css" rel="stylesheet"/>
@@ -159,103 +159,79 @@
 </nav>
 
     <!-- Main Content -->
-    
+    <!-- Page Header -->
+<!-- Set your background image for this header in your post front-matter: cover -->
 
-<!-- Page Header -->
-<!-- Set your background image for this header in the theme's configuration: index_cover -->
 <header class="intro-header" style="background-image: url('/img/home-bg.jpg')">
     <div class="container">
         <div class="row">
             <div class="col-lg-8 col-lg-offset-2 col-md-10 col-md-offset-1">
-                <div class="site-heading">
-                    <h1>Archives</h1>
+                <div class="post-heading">
+                    <h1>SystemVerilog - Constraint</h1>
+                    
+                    <span class="meta">
+                        <!-- Date and Author -->
+                        
+                        
+                            2023-07-24
+                        
+                    </span>
                 </div>
             </div>
         </div>
     </div>
 </header>
 
-<!-- Main Content -->
-<div class="container">
-    <div class="row">
-        <div class="col-lg-8 col-lg-offset-2 col-md-10 col-md-offset-1">
+<!-- Post Content -->
+<article>
+    <div class="container">
+        <div class="row">
+
+            <!-- Tags and categories -->
+           
+                <div class="col-lg-4 col-lg-offset-2 col-md-5 col-md-offset-1 post-tags">
+                    
+                        
+
+
+<a href="/tags/SystemVerilog/">#SystemVerilog</a>
+
+
+                    
+                </div>
+                <div class="col-lg-4 col-md-5 post-categories">
+                    
+                </div>
             
-                <div class="post-preview">
-    <a href="/2023/06/25/SystemVerilog-Event/">
-        <h1 class="post-title archive">
-            SystemVerilog - Event
-        </h1>
-    </a>
-    <p class="post-meta archive">
-        <!-- Date and Author -->
-        
-        2023-06-25
-    </p>
-</div>
+
+            <!-- Gallery -->
             
-                <div class="post-preview">
-    <a href="/2023/06/09/Verilog的Blocking與Non-Blocking/">
-        <h1 class="post-title archive">
-            Verilog的Blocking與Non-Blocking
-        </h1>
-    </a>
-    <p class="post-meta archive">
-        <!-- Date and Author -->
-        
-        2023-06-09
-    </p>
-</div>
+
+            <!-- Post Main Content -->
+            <div class="col-lg-8 col-lg-offset-2 col-md-10 col-md-offset-1">
+                <p>Constraint是用來限制Random產生出來的值，有很多Constraint的用法，以下是constraint的基本語法</p>
+<h1 id="語法"><a href="#語法" class="headerlink" title="語法"></a>語法</h1><pre><code>constraint  [name_of_constraint] &#123;  [expression 1];
+                                    [expression N]; &#125;
+</code></pre>
+<p>這邊用幾個例子簡單練習</p>
+<h1 id="Example"><a href="#Example" class="headerlink" title="Example:"></a>Example:</h1><figure class="highlight sv"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br><span class="line">6</span><br><span class="line">7</span><br><span class="line">8</span><br><span class="line">9</span><br><span class="line">10</span><br><span class="line">11</span><br><span class="line">12</span><br><span class="line">13</span><br><span class="line">14</span><br><span class="line">15</span><br><span class="line">16</span><br><span class="line">17</span><br><span class="line">18</span><br><span class="line">19</span><br><span class="line">20</span><br><span class="line">21</span><br><span class="line">22</span><br><span class="line">23</span><br><span class="line">24</span><br></pre></td><td class="code"><pre><span class="line"><span class="keyword">class</span> rand_cls;</span><br><span class="line">    <span class="keyword">rand</span> <span class="keyword">bit</span>[<span class="number">2</span>:<span class="number">0</span>] rand_val;</span><br><span class="line"></span><br><span class="line">    <span class="keyword">constraint</span> c_rand_val;</span><br><span class="line"></span><br><span class="line">    <span class="keyword">function</span> display_val();</span><br><span class="line">        <span class="built_in">$display</span>(<span class="string">&quot;rand_val:%0d&quot;</span>, rand_val);</span><br><span class="line">        <span class="keyword">return</span> <span class="number">0</span>;</span><br><span class="line">    <span class="keyword">endfunction</span></span><br><span class="line"><span class="keyword">endclass</span></span><br><span class="line"></span><br><span class="line"><span class="keyword">constraint</span> rand_cls::c_rand_val &#123; rand_val &lt;= <span class="number">3</span>; &#125;</span><br><span class="line"></span><br><span class="line"><span class="keyword">module</span> tb;</span><br><span class="line">    rand_cls rand_pkg;</span><br><span class="line"></span><br><span class="line">    <span class="keyword">initial</span> <span class="keyword">begin</span></span><br><span class="line">        rand_pkg = <span class="keyword">new</span>();</span><br><span class="line">        <span class="keyword">for</span> (<span class="keyword">int</span> i = <span class="number">0</span>; i &lt; <span class="number">10</span>; i++) <span class="keyword">begin</span></span><br><span class="line">            rand_pkg<span class="variable">.randomize</span>();</span><br><span class="line">            rand_pkg<span class="variable">.display_val</span>();</span><br><span class="line">        <span class="keyword">end</span></span><br><span class="line">    <span class="keyword">end</span></span><br><span class="line"><span class="keyword">endmodule</span></span><br></pre></td></tr></table></figure>
+<p>這個例子的constraint名字是c_rand_val，用來限制rand_val的random結果小於等於三，然後有刻意使用External Constraint作為例子，所以是在class先宣告Constraint的名字，然後在Class外面描述這個Constraint的條件，所以這個例子random出來的結果都小於等於三，結果如下。</p>
+<h1 id="Output"><a href="#Output" class="headerlink" title="Output"></a>Output</h1><figure class="highlight plaintext"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br><span class="line">6</span><br><span class="line">7</span><br><span class="line">8</span><br><span class="line">9</span><br><span class="line">10</span><br></pre></td><td class="code"><pre><span class="line"># KERNEL: rand_val:3</span><br><span class="line"># KERNEL: rand_val:2</span><br><span class="line"># KERNEL: rand_val:1</span><br><span class="line"># KERNEL: rand_val:2</span><br><span class="line"># KERNEL: rand_val:3</span><br><span class="line"># KERNEL: rand_val:2</span><br><span class="line"># KERNEL: rand_val:1</span><br><span class="line"># KERNEL: rand_val:0</span><br><span class="line"># KERNEL: rand_val:3</span><br><span class="line"># KERNEL: rand_val:0</span><br></pre></td></tr></table></figure>
+
+                
+            </div>
+
+            <!-- Comments -->
             
-                <div class="post-preview">
-    <a href="/2023/06/01/SystemVerilog的logic和bit資料型態/">
-        <h1 class="post-title archive">
-            SystemVerilog的logic和bit資料型態
-        </h1>
-    </a>
-    <p class="post-meta archive">
-        <!-- Date and Author -->
-        
-        2023-06-01
-    </p>
-</div>
+                <div class="col-lg-8 col-lg-offset-2 col-md-10 col-md-offset-1">
+                    
+
+
+                </div>
             
-                <div class="post-preview">
-    <a href="/2023/05/31/Verilog和SystemVerilog的資料型態/">
-        <h1 class="post-title archive">
-            Verilog和SystemVerilog的資料型態
-        </h1>
-    </a>
-    <p class="post-meta archive">
-        <!-- Date and Author -->
-        
-        2023-05-31
-    </p>
-</div>
-            
-                <div class="post-preview">
-    <a href="/2023/05/30/SystemVerilog筆記/">
-        <h1 class="post-title archive">
-            SystemVerilog筆記
-        </h1>
-    </a>
-    <p class="post-meta archive">
-        <!-- Date and Author -->
-        
-        2023-05-30
-    </p>
-</div>
-            
-            <div class="archive-before-pagination"></div>
-            <ul class="pager">
-    
-        <li class="previous"><a href="/archives/">&larr;  Newer Posts</a></li>
-    
-    
-</ul>
         </div>
     </div>
-</div>
-
+</article>
 
     <!-- Footer -->
     <hr />
