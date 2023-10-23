@@ -23,7 +23,7 @@
 
     <!--Open Graph Title-->
     
-        <meta property="og:title" content="All tags"/>
+        <meta property="og:title" content="UVM_Object"/>
     
 
     <!--Open Graph Description-->
@@ -55,7 +55,7 @@
 
     <!-- Title -->
     
-    <title>All tags - LogPost</title>
+    <title>UVM_Object - LogPost</title>
 
     <!-- Bootstrap Core CSS -->
     <link href="//maxcdn.bootstrapcdn.com/bootstrap/3.3.6/css/bootstrap.min.css" rel="stylesheet"/>
@@ -159,67 +159,86 @@
 </nav>
 
     <!-- Main Content -->
-    
+    <!-- Page Header -->
+<!-- Set your background image for this header in your post front-matter: cover -->
 
-
-    <header class="intro-header" style="background-image: url('/img/home-bg.jpg')">
-        <div class="container">
-            <div class="row">
-                <div class="col-lg-8 col-lg-offset-2 col-md-10 col-md-offset-1">
-                    <div class="site-heading">
-                        <h1>All tags</h1>
-                    </div>
-                </div>
-            </div>
-        </div>
-    </header>
-
-    <!-- Main Content -->
+<header class="intro-header" style="background-image: url('/img/home-bg.jpg')">
     <div class="container">
         <div class="row">
             <div class="col-lg-8 col-lg-offset-2 col-md-10 col-md-offset-1">
-                
-                    <div class="post-preview">
-    <a href="/tags/SystemVerilog/">
-        <h1 class="post-title archive">
-            SystemVerilog
-        </h1>
-    </a>
-</div>
-                
-                    <div class="post-preview">
-    <a href="/tags/Verilog/">
-        <h1 class="post-title archive">
-            Verilog
-        </h1>
-    </a>
-</div>
-                
-                    <div class="post-preview">
-    <a href="/tags/UVM/">
-        <h1 class="post-title archive">
-            UVM
-        </h1>
-    </a>
-</div>
-                
-                    <div class="post-preview">
-    <a href="/tags/UVM-Base/">
-        <h1 class="post-title archive">
-            UVM Base
-        </h1>
-    </a>
-</div>
-                
-                <div class="archive-before-pagination"></div>
+                <div class="post-heading">
+                    <h1>UVM_Object</h1>
+                    
+                    <span class="meta">
+                        <!-- Date and Author -->
+                        
+                        
+                            2023-09-06
+                        
+                    </span>
+                </div>
             </div>
         </div>
     </div>
+</header>
+
+<!-- Post Content -->
+<article>
+    <div class="container">
+        <div class="row">
+
+            <!-- Tags and categories -->
+           
+                <div class="col-lg-4 col-lg-offset-2 col-md-5 col-md-offset-1 post-tags">
+                    
+                        
 
 
+<a href="/tags/UVM/">#UVM</a> <a href="/tags/UVM-Base/">#UVM Base</a>
 
 
+                    
+                </div>
+                <div class="col-lg-4 col-md-5 post-categories">
+                    
+                </div>
+            
 
+            <!-- Gallery -->
+            
+
+            <!-- Post Main Content -->
+            <div class="col-lg-8 col-lg-offset-2 col-md-10 col-md-offset-1">
+                <h1 id="什麼是-uvm-object"><a href="#什麼是-uvm-object" class="headerlink" title="什麼是 uvm_object"></a>什麼是 uvm_object</h1><p>UVM 環境中的所有元件和物件類別都衍生自 <code>uvm_object</code>，<code>uvm_object</code>的主要作用是定義常見的實用function，例如print、copy、compare和record，UVM testbench中的任何其他class都可以使用這些function。</p>
+<p>從 <code>uvm_object</code> 衍生的類別必須實作純虛方法，例如 <code>create</code> 和 <code>get_type_name</code>。</p>
+<p><code>create</code>範例如下:</p>
+<figure class="highlight sv"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br><span class="line">6</span><br></pre></td><td class="code"><pre><span class="line"><span class="keyword">class</span> mytype <span class="keyword">extends</span> uvm_object;</span><br><span class="line">  ...</span><br><span class="line">  <span class="keyword">virtual</span> <span class="keyword">function</span> uvm_object create(<span class="keyword">string</span> name=<span class="string">&quot;&quot;</span>);</span><br><span class="line">    mytype t = <span class="keyword">new</span>(name);</span><br><span class="line">    <span class="keyword">return</span> t;</span><br><span class="line">  <span class="keyword">endfunction</span></span><br></pre></td></tr></table></figure>
+
+<p><code>get_type_name</code>範例如下:</p>
+<figure class="highlight sv"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br><span class="line">6</span><br><span class="line">7</span><br></pre></td><td class="code"><pre><span class="line"><span class="keyword">class</span> mytype <span class="keyword">extends</span> uvm_object;</span><br><span class="line">  ...</span><br><span class="line">  <span class="keyword">const</span> <span class="keyword">static</span> <span class="keyword">string</span> type_name = <span class="string">&quot;mytype&quot;</span>;</span><br><span class="line"></span><br><span class="line">  <span class="keyword">virtual</span> <span class="keyword">function</span> <span class="keyword">string</span> get_type_name();</span><br><span class="line">    <span class="keyword">return</span> type_name;</span><br><span class="line">  <span class="keyword">endfunction</span></span><br></pre></td></tr></table></figure>
+
+<h1 id="Factory-Interface"><a href="#Factory-Interface" class="headerlink" title="Factory Interface"></a>Factory Interface</h1><p>UVM用了一個稱為<code>factory</code>的概念，UVM環境中定義的所有class都向<code>factory</code>做註冊，然後<code>factory</code>之後回傳該class type的object。</p>
+<p>繼承uvm_object的類別要包含允許其向<code>factory</code>註冊的Macro。<br>範例如下:</p>
+<figure class="highlight sv"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br><span class="line">6</span><br><span class="line">7</span><br></pre></td><td class="code"><pre><span class="line"><span class="keyword">class</span> packet <span class="keyword">extends</span> uvm_object;</span><br><span class="line">  `uvm_object_utils(packet)</span><br><span class="line"><span class="keyword">endclass</span></span><br><span class="line"></span><br><span class="line"><span class="keyword">class</span> packetD <span class="keyword">extends</span> packet;</span><br><span class="line">  `uvm_object_utils(packetD)</span><br><span class="line"><span class="keyword">endclass</span></span><br></pre></td></tr></table></figure>
+
+<h1 id="Utility-Functions"><a href="#Utility-Functions" class="headerlink" title="Utility Functions"></a>Utility Functions</h1><p>UVM object提供了很多basic的function讓使用者使用，例如printing&#x2F;recording&#x2F;copying&#x2F;comparing&#x2F;packing&#x2F;unpacking&#x2F;configuration。</p>
+<p>這些function如果要客製化的話可以override do_xxx的function。<br>例如UVM object有提供的print function，如果想要改變print的格式的話，就可以override do_print這個function，之後在使用print function的時候，就會呼叫到自己客製化的do_print function。</p>
+
+
+                
+            </div>
+
+            <!-- Comments -->
+            
+                <div class="col-lg-8 col-lg-offset-2 col-md-10 col-md-offset-1">
+                    
+
+
+                </div>
+            
+        </div>
+    </div>
+</article>
 
     <!-- Footer -->
     <hr />
