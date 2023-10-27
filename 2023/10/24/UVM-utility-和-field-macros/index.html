@@ -1,0 +1,381 @@
+<!DOCTYPE html>
+<html lang="zh-tw">
+
+<!-- Head tag -->
+<head>
+
+    <meta charset="utf-8"/>
+    <meta http-equiv="X-UA-Compatible" content="IE=edge"/>
+    <meta name="viewport" content="width=device-width, initial-scale=1"/>
+
+    <!--Description-->
+
+    
+
+    
+        <meta name="description" content="456"/>
+    
+
+    <!--Author-->
+    
+        <meta name="author" content="logshark"/>
+    
+
+    <!--Open Graph Title-->
+    
+        <meta property="og:title" content="UVM utility 和 field macros"/>
+    
+
+    <!--Open Graph Description-->
+    
+        <meta property="og:description" content="456"/>
+    
+
+    <!--Open Graph Site Name-->
+        <meta property="og:site_name" content="LogPost"/>
+
+    <!--Type page-->
+    
+        <meta property="og:type" content="article"/>
+    
+
+    <!--Page Cover-->
+    
+    
+        <meta property="og:image" content="https://logshark.github.io/img/home-bg.jpg"/>
+    
+
+        <meta name="twitter:card" content="summary_large_image"/>
+
+    
+
+    
+        <meta name="twitter:image" content="https://logshark.github.io/img/home-bg.jpg"/>
+    
+
+    <!-- Title -->
+    
+    <title>UVM utility 和 field macros - LogPost</title>
+
+    <!-- Bootstrap Core CSS -->
+    <link href="//maxcdn.bootstrapcdn.com/bootstrap/3.3.6/css/bootstrap.min.css" rel="stylesheet"/>
+
+    <!-- Custom CSS -->
+    
+<link rel="stylesheet" href="/css/style.css">
+
+
+    <!-- Custom Fonts -->
+    <link href="//maxcdn.bootstrapcdn.com/font-awesome/4.6.3/css/font-awesome.min.css" rel="stylesheet" type="text/css"/>
+    <link href="//fonts.googleapis.com/css?family=Lora:400,700,400italic,700italic" rel="stylesheet" type="text/css"/>
+    <link href="//fonts.googleapis.com/css?family=Open+Sans:300italic,400italic,600italic,700italic,800italic,400,300,600,700,800" rel="stylesheet" type="text/css"/>
+
+    <!-- HTML5 Shim and Respond.js IE8 support of HTML5 elements and media queries -->
+    <!-- WARNING: Respond.js doesn't work if you view the page via file:// -->
+    <!--[if lt IE 9]>
+    <script src="//oss.maxcdn.com/libs/html5shiv/3.7.0/html5shiv.js"></script>
+    <script src="//oss.maxcdn.com/libs/respond.js/1.4.2/respond.min.js"></script>
+    <![endif]-->
+
+    <!-- Gallery -->
+    <link href="//cdnjs.cloudflare.com/ajax/libs/featherlight/1.3.5/featherlight.min.css" type="text/css" rel="stylesheet"/>
+
+    <!-- Google Analytics -->
+    
+
+
+    <!-- favicon -->
+    
+
+<meta name="generator" content="Hexo 6.3.0"></head>
+
+
+<body>
+
+    <!-- Menu -->
+    <!-- Navigation -->
+<nav class="navbar navbar-default navbar-custom navbar-fixed-top">
+    <div class="container-fluid">
+        <!-- Brand and toggle get grouped for better mobile display -->
+        <div class="navbar-header page-scroll">
+            <button type="button" class="navbar-toggle" data-toggle="collapse" data-target="#bs-example-navbar-collapse-1">
+                <span class="sr-only">Toggle navigation</span>
+                <span class="icon-bar"></span>
+                <span class="icon-bar"></span>
+                <span class="icon-bar"></span>
+            </button>
+            <a class="navbar-brand" href="/">LogPost</a>
+        </div>
+
+        <!-- Collect the nav links, forms, and other content for toggling -->
+        <div class="collapse navbar-collapse" id="bs-example-navbar-collapse-1">
+            <ul class="nav navbar-nav navbar-right">
+                
+                    <li>
+                        <a href="/">
+                            
+                                Home
+                            
+                        </a>
+                    </li>
+                
+                    <li>
+                        <a href="/archives">
+                            
+                                Archives
+                            
+                        </a>
+                    </li>
+                
+                    <li>
+                        <a href="/tags">
+                            
+                                Tags
+                            
+                        </a>
+                    </li>
+                
+                    <li>
+                        <a href="/categories">
+                            
+                                Categories
+                            
+                        </a>
+                    </li>
+                
+                    <li>
+                        <a target="_blank" rel="noopener" href="https://github.com/logshark">
+                            
+                                <i class="fa fa-github fa-stack-2x"></i>
+                            
+                        </a>
+                    </li>
+                
+            </ul>
+        </div>
+        <!-- /.navbar-collapse -->
+    </div>
+    <!-- /.container -->
+</nav>
+
+    <!-- Main Content -->
+    <!-- Page Header -->
+<!-- Set your background image for this header in your post front-matter: cover -->
+
+<header class="intro-header" style="background-image: url('/img/home-bg.jpg')">
+    <div class="container">
+        <div class="row">
+            <div class="col-lg-8 col-lg-offset-2 col-md-10 col-md-offset-1">
+                <div class="post-heading">
+                    <h1>UVM utility 和 field macros</h1>
+                    
+                    <span class="meta">
+                        <!-- Date and Author -->
+                        
+                        
+                            2023-10-24
+                        
+                    </span>
+                </div>
+            </div>
+        </div>
+    </div>
+</header>
+
+<!-- Post Content -->
+<article>
+    <div class="container">
+        <div class="row">
+
+            <!-- Tags and categories -->
+           
+
+            <!-- Gallery -->
+            
+
+            <!-- Post Main Content -->
+            <div class="col-lg-8 col-lg-offset-2 col-md-10 col-md-offset-1">
+                <p>UVM使用 <code>factory</code> 的概念，所有object都向 <code>factory</code> 註冊(register)，以便在需要時返回所需類型的object。用utility macros方便將每個object註冊到 <code>factory</code> 中。</p>
+<p>UVM還導入了很多自動化機制，用來實現 <code>print</code> 、 <code>copy</code> 和 <code>compare</code> object，並定義在macro裡面。</p>
+<h1 id="Object-Utility"><a href="#Object-Utility" class="headerlink" title="Object Utility"></a>Object Utility</h1><p>所有直接從 <code>uvm_object</code> 或 <code>uvm_transaction</code> 衍生的類別都需要使用 <code>uvm_object_utils</code> macro進行註冊。並且每個class都必須定義 <code>new</code> fucntion，並將class實例(instance)的名稱當參數。</p>
+<figure class="highlight sv"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br><span class="line">6</span><br><span class="line">7</span><br><span class="line">8</span><br><span class="line">9</span><br></pre></td><td class="code"><pre><span class="line"><span class="keyword">class</span> mydata <span class="keyword">extends</span> uvm_object;</span><br><span class="line"></span><br><span class="line">    `uvm_object_utils(mydata)</span><br><span class="line">    </span><br><span class="line">    <span class="comment">// declare data properties</span></span><br><span class="line">    <span class="keyword">function</span> <span class="keyword">new</span>(<span class="keyword">string</span> name=<span class="string">&quot;mydata_inst&quot;</span>);</span><br><span class="line">        <span class="keyword">super</span><span class="variable">.new</span>(name);</span><br><span class="line">    <span class="keyword">endfunction</span></span><br><span class="line"><span class="keyword">endclass</span></span><br></pre></td></tr></table></figure>
+
+<h1 id="Component-Utility"><a href="#Component-Utility" class="headerlink" title="Component Utility"></a>Component Utility</h1><p>所有直接或間接從 <code>uvm_component</code> 衍生的類別都需要使用 <code>uvm_component_utils</code> macro進行註冊。並且每個直接或間接從 <code>uvm_component</code> 衍生的class，都必須定義 <code>new</code> fucntion，並將class實例(instance)的名稱和該object被實例化(instantiated)的parent class的當參數。</p>
+<figure class="highlight sv"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br><span class="line">6</span><br><span class="line">7</span><br><span class="line">8</span><br><span class="line">9</span><br></pre></td><td class="code"><pre><span class="line"><span class="keyword">class</span> my_comp <span class="keyword">extends</span> uvm_component;</span><br><span class="line"></span><br><span class="line">    `uvm_component_utils(my_comp)</span><br><span class="line"></span><br><span class="line">    <span class="comment">// declare data properties</span></span><br><span class="line">    <span class="keyword">function</span> <span class="keyword">new</span>(<span class="keyword">string</span> name, uvm_component parent=<span class="literal">null</span>);</span><br><span class="line">        <span class="keyword">super</span><span class="variable">.new</span>(name,parent);</span><br><span class="line">    <span class="keyword">endfunction</span></span><br><span class="line"><span class="keyword">endclass</span></span><br></pre></td></tr></table></figure>
+
+<h1 id="Macro-Expansion-detail"><a href="#Macro-Expansion-detail" class="headerlink" title="Macro Expansion: detail"></a>Macro Expansion: detail</h1><p>如果詳細去trace UVM code的話，可以看到 uvm_object_utils 會被展開為其 *_begin 和 *_end 形式，開始和結束中間沒有任何內容。 *_begin 實做了 UVM <code>factory</code>所需的其他macro。</p>
+<figure class="highlight sv"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br><span class="line">6</span><br><span class="line">7</span><br><span class="line">8</span><br><span class="line">9</span><br><span class="line">10</span><br><span class="line">11</span><br><span class="line">12</span><br><span class="line">13</span><br><span class="line">14</span><br><span class="line">15</span><br><span class="line">16</span><br><span class="line">17</span><br><span class="line">18</span><br><span class="line">19</span><br><span class="line">20</span><br><span class="line">21</span><br><span class="line">22</span><br><span class="line">23</span><br></pre></td><td class="code"><pre><span class="line"><span class="comment">// copy from uvm-1.2\docs\html\src\macros\uvm_object_defines.svh</span></span><br><span class="line"><span class="meta">`<span class="keyword">define</span> uvm_object_utils(T) \</span></span><br><span class="line">  `uvm_object_utils_begin(T) \</span><br><span class="line">  `uvm_object_utils_end</span><br><span class="line"></span><br><span class="line"><span class="meta">`<span class="keyword">define</span> uvm_object_param_utils(T) \</span></span><br><span class="line">  `uvm_object_param_utils_begin(T) \</span><br><span class="line">  `uvm_object_utils_end</span><br><span class="line"></span><br><span class="line"><span class="meta">`<span class="keyword">define</span> uvm_object_utils_begin(T) \</span></span><br><span class="line">   `m_uvm_object_registry_internal(T,T)  \</span><br><span class="line">   `m_uvm_object_create_func(T) \</span><br><span class="line">   `m_uvm_get_type_name_func(T) \</span><br><span class="line">   `uvm_field_utils_begin(T) </span><br><span class="line"></span><br><span class="line"><span class="meta">`<span class="keyword">define</span> uvm_object_param_utils_begin(T) \</span></span><br><span class="line">   `m_uvm_object_registry_param(T)  \</span><br><span class="line">   `m_uvm_object_create_func(T) \</span><br><span class="line">   `uvm_field_utils_begin(T) </span><br><span class="line">       </span><br><span class="line"><span class="meta">`<span class="keyword">define</span> uvm_object_utils_end \</span></span><br><span class="line">     <span class="keyword">end</span> \</span><br><span class="line">   <span class="keyword">endfunction</span> \</span><br></pre></td></tr></table></figure>
+
+<p>再詳細進去看uvm_object_utils_begin展開的這幾個macro可以看到register&#x2F;create&#x2F;get type name這些function的實作內容</p>
+<figure class="highlight sv"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br><span class="line">6</span><br><span class="line">7</span><br><span class="line">8</span><br><span class="line">9</span><br><span class="line">10</span><br><span class="line">11</span><br><span class="line">12</span><br><span class="line">13</span><br><span class="line">14</span><br><span class="line">15</span><br><span class="line">16</span><br><span class="line">17</span><br><span class="line">18</span><br><span class="line">19</span><br><span class="line">20</span><br><span class="line">21</span><br><span class="line">22</span><br><span class="line">23</span><br><span class="line">24</span><br><span class="line">25</span><br><span class="line">26</span><br><span class="line">27</span><br><span class="line">28</span><br><span class="line">29</span><br><span class="line">30</span><br><span class="line">31</span><br><span class="line">32</span><br><span class="line">33</span><br><span class="line">34</span><br><span class="line">35</span><br><span class="line">36</span><br><span class="line">37</span><br><span class="line">38</span><br><span class="line">39</span><br><span class="line">40</span><br><span class="line">41</span><br><span class="line">42</span><br><span class="line">43</span><br><span class="line">44</span><br></pre></td><td class="code"><pre><span class="line"><span class="comment">// copy from uvm-1.2\docs\html\src\macros\uvm_object_defines.svh</span></span><br><span class="line"></span><br><span class="line"><span class="comment">// m_uvm_object_registry_internal</span></span><br><span class="line"><span class="comment">// ------------------------------</span></span><br><span class="line"></span><br><span class="line"><span class="comment">//This is needed due to an issue in of passing down strings</span></span><br><span class="line"><span class="comment">//created by args to lower level macros.</span></span><br><span class="line"><span class="meta">`<span class="keyword">define</span> m_uvm_object_registry_internal(T,S) \</span></span><br><span class="line">   <span class="keyword">typedef</span> uvm_object_registry<span class="variable">#(T,`&quot;S`&quot;)</span> type_id; \</span><br><span class="line">   <span class="keyword">static</span> <span class="keyword">function</span> type_id get_type(); \</span><br><span class="line">     <span class="keyword">return</span> type_id::get(); \</span><br><span class="line">   <span class="keyword">endfunction</span> \</span><br><span class="line">   <span class="keyword">virtual</span> <span class="keyword">function</span> uvm_object_wrapper get_object_type(); \</span><br><span class="line">     <span class="keyword">return</span> type_id::get(); \</span><br><span class="line">   <span class="keyword">endfunction</span> </span><br><span class="line"></span><br><span class="line"></span><br><span class="line"><span class="comment">// m_uvm_object_create_func</span></span><br><span class="line"><span class="comment">// ------------------------</span></span><br><span class="line"></span><br><span class="line"><span class="meta">`<span class="keyword">define</span> m_uvm_object_create_func(T) \</span></span><br><span class="line">   <span class="keyword">function</span> uvm_object create (<span class="keyword">string</span> name=<span class="string">&quot;&quot;</span>); \</span><br><span class="line">     T tmp; \</span><br><span class="line"><span class="meta">`<span class="keyword">ifdef</span> UVM_OBJECT_DO_NOT_NEED_CONSTRUCTOR \</span></span><br><span class="line">     tmp = <span class="keyword">new</span>(); \</span><br><span class="line">     <span class="keyword">if</span> (name!=<span class="string">&quot;&quot;</span>) \</span><br><span class="line">       tmp<span class="variable">.set_name</span>(name); \</span><br><span class="line"><span class="meta">`<span class="keyword">else</span> \</span></span><br><span class="line">     <span class="keyword">if</span> (name==<span class="string">&quot;&quot;</span>) tmp = <span class="keyword">new</span>(); \</span><br><span class="line">     <span class="keyword">else</span> tmp = <span class="keyword">new</span>(name); \</span><br><span class="line"><span class="meta">`<span class="keyword">endif</span> \</span></span><br><span class="line">     <span class="keyword">return</span> tmp; \</span><br><span class="line">   <span class="keyword">endfunction</span></span><br><span class="line"></span><br><span class="line"></span><br><span class="line"><span class="comment">// m_uvm_get_type_name_func</span></span><br><span class="line"><span class="comment">// ----------------------</span></span><br><span class="line"></span><br><span class="line"><span class="meta">`<span class="keyword">define</span> m_uvm_get_type_name_func(T) \</span></span><br><span class="line">   <span class="keyword">const</span> <span class="keyword">static</span> <span class="keyword">string</span> type_name = `<span class="string">&quot;T`&quot;</span>; \</span><br><span class="line">   <span class="keyword">virtual</span> <span class="keyword">function</span> <span class="keyword">string</span> get_type_name (); \</span><br><span class="line">     <span class="keyword">return</span> type_name; \</span><br><span class="line">   <span class="keyword">endfunction</span> </span><br><span class="line"></span><br></pre></td></tr></table></figure>
+
+<p>uvm_component_utils 也是一樣的道理，就不詳細作筆記了。</p>
+<h1 id="Creation-of-class-object"><a href="#Creation-of-class-object" class="headerlink" title="Creation of class object"></a>Creation of class object</h1><p>建議所有class object都透過呼叫 &#96;&#96;m_uvm_object_create_func <code>定義的 </code>type_id::create()&#96; 方法來建立。這樣可以讓任何child class物件透過factory機制create和return，增加testbench的彈性和重複使用性。</p>
+<p>Example:</p>
+<figure class="highlight sv"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br><span class="line">6</span><br><span class="line">7</span><br><span class="line">8</span><br><span class="line">9</span><br><span class="line">10</span><br><span class="line">11</span><br><span class="line">12</span><br><span class="line">13</span><br><span class="line">14</span><br><span class="line">15</span><br><span class="line">16</span><br><span class="line">17</span><br><span class="line">18</span><br><span class="line">19</span><br></pre></td><td class="code"><pre><span class="line"><span class="keyword">class</span> mydata <span class="keyword">extends</span> uvm_object;</span><br><span class="line">	`uvm_object_utils(mydata)</span><br><span class="line"></span><br><span class="line">	<span class="keyword">function</span> <span class="keyword">new</span>(<span class="keyword">string</span> name = <span class="string">&quot;mydata&quot;</span>);</span><br><span class="line">		<span class="keyword">super</span><span class="variable">.new</span>(name);</span><br><span class="line">	<span class="keyword">endfunction</span></span><br><span class="line"><span class="keyword">endclass</span></span><br><span class="line"></span><br><span class="line"><span class="keyword">class</span> base_test <span class="keyword">extends</span> uvm_test;</span><br><span class="line">    `uvm_component_utils(base_test)</span><br><span class="line"></span><br><span class="line">    <span class="keyword">function</span> <span class="keyword">new</span>(<span class="keyword">string</span> name = <span class="string">&quot;base_test&quot;</span>, uvm_component parent=<span class="literal">null</span>);</span><br><span class="line">        <span class="keyword">super</span><span class="variable">.new</span>(name, parent);</span><br><span class="line">    <span class="keyword">endfunction</span></span><br><span class="line"></span><br><span class="line">    <span class="keyword">virtual</span> <span class="keyword">function</span> <span class="keyword">void</span> build_phase(uvm_phase phase);</span><br><span class="line">        mydata data = mydata::type_id::create(<span class="string">&quot;abc_inst&quot;</span>);</span><br><span class="line">    <span class="keyword">endfunction</span></span><br><span class="line"><span class="keyword">endclass</span></span><br></pre></td></tr></table></figure>
+
+<h1 id="Field-Macros"><a href="#Field-Macros" class="headerlink" title="Field Macros"></a>Field Macros</h1><p>&#96;&#96;uvm_field_*&#96; 是用來操作class屬性並提供自動實作像是（copy、compare和print）method的macro。讓使用者節省實作每個class自定義 do_copy、do_compare 和 do_print function的時間。</p>
+<p>Example:</p>
+<figure class="highlight sv"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br><span class="line">6</span><br><span class="line">7</span><br><span class="line">8</span><br><span class="line">9</span><br><span class="line">10</span><br><span class="line">11</span><br><span class="line">12</span><br><span class="line">13</span><br></pre></td><td class="code"><pre><span class="line"><span class="keyword">class</span> mydata <span class="keyword">extends</span> uvm_object;</span><br><span class="line">    <span class="keyword">rand</span> <span class="keyword">bit</span> [<span class="number">15</span>:<span class="number">0</span>] 	m_addr;</span><br><span class="line">    <span class="keyword">rand</span> <span class="keyword">bit</span> [<span class="number">15</span>:<span class="number">0</span>] 	m_data;</span><br><span class="line"></span><br><span class="line">    `uvm_object_utils_begin(mydata)</span><br><span class="line">        `uvm_field_int(m_addr, UVM_DEFAULT)</span><br><span class="line">        `uvm_field_int(m_data, UVM_DEFAULT)</span><br><span class="line">    `uvm_object_utils_end</span><br><span class="line"></span><br><span class="line">    <span class="keyword">function</span> <span class="keyword">new</span>(<span class="keyword">string</span> name = <span class="string">&quot;mydata&quot;</span>);</span><br><span class="line">        <span class="keyword">super</span><span class="variable">.new</span>(name);</span><br><span class="line">    <span class="keyword">endfunction</span></span><br><span class="line"><span class="keyword">endclass</span></span><br></pre></td></tr></table></figure>
+
+
+<p>不同的變數，要使用與他data type相對應的 &#96;&#96;uvm_field_*<code>macro。例如變量類型為</code>int<code>、</code>bit<code>、</code>byte<code>的變數要用</code>uvm_field_int<code>，如果變數類型為 </code>string<code>的變數則要使用</code>uvm_field_string&#96;。這種macro至少要 ARG 和 FLAG 這兩個參數。<br>ARG要輸入變數名稱<br>FLAG根據不同使用狀況有以下幾種FLAG</p>
+<table>
+<thead>
+<tr>
+<th>Flag</th>
+<th>DescriptionPrice</th>
+</tr>
+</thead>
+<tbody><tr>
+<td>UVM_ALL_ON</td>
+<td>Set all operations on.</td>
+</tr>
+<tr>
+<td>UVM_DEFAULT</td>
+<td>This is the recommended set of flags to pass to the field macros.  Currently, it enables all of the operations, making it functionally identical to UVM_ALL_ON.  In the future however, additional flags could be added with a recommended default value of off.</td>
+</tr>
+<tr>
+<td>UVM_NOCOPY</td>
+<td>Do not copy this field.</td>
+</tr>
+<tr>
+<td>UVM_NOCOMPARE</td>
+<td>Do not compare this field.</td>
+</tr>
+<tr>
+<td>UVM_NOPRINT</td>
+<td>Do not print this field.</td>
+</tr>
+<tr>
+<td>UVM_NOPACK</td>
+<td>Do not pack or unpack this field.</td>
+</tr>
+<tr>
+<td>UVM_REFERENCE</td>
+<td>For object types, operate only on the handle (e.g. no deep copy)</td>
+</tr>
+<tr>
+<td>UVM_PHYSICAL</td>
+<td>Treat as a physical field.  Use physical setting in policy class for this field.</td>
+</tr>
+<tr>
+<td>UVM_ABSTRACT</td>
+<td>Treat as an abstract field.  Use the abstract setting in the policy class for this field.</td>
+</tr>
+<tr>
+<td>UVM_READONLY</td>
+<td>Do not allow setting of this field from the set_*_local methods or during uvm_component::apply_config_settings operation.</td>
+</tr>
+</tbody></table>
+<p>除了對操作的控制，&#96;&#96;uvm_field_*&#96; macro還可以控制變數的基數，其可以取以下值。此值可以與上表中列出的操作標誌進行 OR 運算。如果沒有指定，則 UVM_HEX 是default value。</p>
+<table>
+<thead>
+<tr>
+<th>Radix</th>
+<th>Description</th>
+</tr>
+</thead>
+<tbody><tr>
+<td>UVM_BIN</td>
+<td>Print &#x2F; record the field in binary (base-2).</td>
+</tr>
+<tr>
+<td>UVM_DEC</td>
+<td>Print &#x2F; record the field in decimal (base-10).</td>
+</tr>
+<tr>
+<td>UVM_UNSIGNED</td>
+<td>Print &#x2F; record the field in unsigned decimal (base-10).</td>
+</tr>
+<tr>
+<td>UVM_OCT</td>
+<td>Print &#x2F; record the field in octal (base-8).</td>
+</tr>
+<tr>
+<td>UVM_HEX</td>
+<td>Print &#x2F; record the field in hexadecimal (base-16).</td>
+</tr>
+<tr>
+<td>UVM_STRING</td>
+<td>Print &#x2F; record the field in string format.</td>
+</tr>
+<tr>
+<td>UVM_TIME</td>
+<td>Print &#x2F; record the field in time format.</td>
+</tr>
+</tbody></table>
+
+
+                
+            </div>
+
+            <!-- Comments -->
+            
+                <div class="col-lg-8 col-lg-offset-2 col-md-10 col-md-offset-1">
+                    
+
+
+                </div>
+            
+        </div>
+    </div>
+</article>
+
+    <!-- Footer -->
+    <hr />
+
+<!-- Footer -->
+<footer>
+    <div class="container">
+        <div class="row">
+            <div class="col-lg-8 col-lg-offset-2 col-md-10 col-md-offset-1">
+                <ul class="list-inline text-center">
+                    
+
+                    
+
+                    
+                        <li>
+                            <a href="https://github.com/logshark/logshark.github.io.git" target="_blank">
+                                <span class="fa-stack fa-lg">
+                                    <i class="fa fa-circle fa-stack-2x"></i>
+                                    <i class="fa fa-github fa-stack-1x fa-inverse"></i>
+                                </span>
+                            </a>
+                        </li>
+                    
+
+                    
+
+                    
+
+                    
+                </ul>
+                <p class="copyright text-muted">&copy; 2023 logshark<br></p>
+                <p class="copyright text-muted">Original Theme <a target="_blank" href="http://startbootstrap.com/template-overviews/clean-blog/">Clean Blog</a> from <a href="http://startbootstrap.com/" target="_blank">Start Bootstrap</a></p>
+                <p class="copyright text-muted">Adapted for <a target="_blank" href="https://hexo.io/">Hexo</a> by <a href="http://www.codeblocq.com/" target="_blank">Jonathan Klughertz</a></p>
+            </div>
+        </div>
+    </div>
+</footer>
+
+
+    <!-- After footer scripts -->
+    
+<!-- jQuery -->
+<script src="//code.jquery.com/jquery-2.1.4.min.js"></script>
+
+<!-- Bootstrap -->
+<script src="//maxcdn.bootstrapcdn.com/bootstrap/3.3.6/js/bootstrap.min.js"></script>
+
+<!-- Gallery -->
+<script src="//cdnjs.cloudflare.com/ajax/libs/featherlight/1.3.5/featherlight.min.js" type="text/javascript" charset="utf-8"></script>
+
+<!-- Disqus Comments -->
+
+
+
+</body>
+
+</html>
