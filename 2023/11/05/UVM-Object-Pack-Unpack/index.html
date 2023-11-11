@@ -1,0 +1,296 @@
+<!DOCTYPE html>
+<html lang="zh-tw">
+
+<!-- Head tag -->
+<head>
+
+    <meta charset="utf-8"/>
+    <meta http-equiv="X-UA-Compatible" content="IE=edge"/>
+    <meta name="viewport" content="width=device-width, initial-scale=1"/>
+
+    <!--Description-->
+
+    
+
+    
+        <meta name="description" content="456"/>
+    
+
+    <!--Author-->
+    
+        <meta name="author" content="logshark"/>
+    
+
+    <!--Open Graph Title-->
+    
+        <meta property="og:title" content="UVM Object Pack/Unpack"/>
+    
+
+    <!--Open Graph Description-->
+    
+        <meta property="og:description" content="456"/>
+    
+
+    <!--Open Graph Site Name-->
+        <meta property="og:site_name" content="LogPost"/>
+
+    <!--Type page-->
+    
+        <meta property="og:type" content="article"/>
+    
+
+    <!--Page Cover-->
+    
+    
+        <meta property="og:image" content="https://logshark.github.io/img/home-bg.jpg"/>
+    
+
+        <meta name="twitter:card" content="summary_large_image"/>
+
+    
+
+    
+        <meta name="twitter:image" content="https://logshark.github.io/img/home-bg.jpg"/>
+    
+
+    <!-- Title -->
+    
+    <title>UVM Object Pack/Unpack - LogPost</title>
+
+    <!-- Bootstrap Core CSS -->
+    <link href="//maxcdn.bootstrapcdn.com/bootstrap/3.3.6/css/bootstrap.min.css" rel="stylesheet"/>
+
+    <!-- Custom CSS -->
+    
+<link rel="stylesheet" href="/css/style.css">
+
+
+    <!-- Custom Fonts -->
+    <link href="//maxcdn.bootstrapcdn.com/font-awesome/4.6.3/css/font-awesome.min.css" rel="stylesheet" type="text/css"/>
+    <link href="//fonts.googleapis.com/css?family=Lora:400,700,400italic,700italic" rel="stylesheet" type="text/css"/>
+    <link href="//fonts.googleapis.com/css?family=Open+Sans:300italic,400italic,600italic,700italic,800italic,400,300,600,700,800" rel="stylesheet" type="text/css"/>
+
+    <!-- HTML5 Shim and Respond.js IE8 support of HTML5 elements and media queries -->
+    <!-- WARNING: Respond.js doesn't work if you view the page via file:// -->
+    <!--[if lt IE 9]>
+    <script src="//oss.maxcdn.com/libs/html5shiv/3.7.0/html5shiv.js"></script>
+    <script src="//oss.maxcdn.com/libs/respond.js/1.4.2/respond.min.js"></script>
+    <![endif]-->
+
+    <!-- Gallery -->
+    <link href="//cdnjs.cloudflare.com/ajax/libs/featherlight/1.3.5/featherlight.min.css" type="text/css" rel="stylesheet"/>
+
+    <!-- Google Analytics -->
+    
+
+
+    <!-- favicon -->
+    
+
+<meta name="generator" content="Hexo 6.3.0"></head>
+
+
+<body>
+
+    <!-- Menu -->
+    <!-- Navigation -->
+<nav class="navbar navbar-default navbar-custom navbar-fixed-top">
+    <div class="container-fluid">
+        <!-- Brand and toggle get grouped for better mobile display -->
+        <div class="navbar-header page-scroll">
+            <button type="button" class="navbar-toggle" data-toggle="collapse" data-target="#bs-example-navbar-collapse-1">
+                <span class="sr-only">Toggle navigation</span>
+                <span class="icon-bar"></span>
+                <span class="icon-bar"></span>
+                <span class="icon-bar"></span>
+            </button>
+            <a class="navbar-brand" href="/">LogPost</a>
+        </div>
+
+        <!-- Collect the nav links, forms, and other content for toggling -->
+        <div class="collapse navbar-collapse" id="bs-example-navbar-collapse-1">
+            <ul class="nav navbar-nav navbar-right">
+                
+                    <li>
+                        <a href="/">
+                            
+                                Home
+                            
+                        </a>
+                    </li>
+                
+                    <li>
+                        <a href="/archives">
+                            
+                                Archives
+                            
+                        </a>
+                    </li>
+                
+                    <li>
+                        <a href="/tags">
+                            
+                                Tags
+                            
+                        </a>
+                    </li>
+                
+                    <li>
+                        <a href="/categories">
+                            
+                                Categories
+                            
+                        </a>
+                    </li>
+                
+                    <li>
+                        <a target="_blank" rel="noopener" href="https://github.com/logshark">
+                            
+                                <i class="fa fa-github fa-stack-2x"></i>
+                            
+                        </a>
+                    </li>
+                
+            </ul>
+        </div>
+        <!-- /.navbar-collapse -->
+    </div>
+    <!-- /.container -->
+</nav>
+
+    <!-- Main Content -->
+    <!-- Page Header -->
+<!-- Set your background image for this header in your post front-matter: cover -->
+
+<header class="intro-header" style="background-image: url('/img/home-bg.jpg')">
+    <div class="container">
+        <div class="row">
+            <div class="col-lg-8 col-lg-offset-2 col-md-10 col-md-offset-1">
+                <div class="post-heading">
+                    <h1>UVM Object Pack/Unpack</h1>
+                    
+                    <span class="meta">
+                        <!-- Date and Author -->
+                        
+                        
+                            2023-11-05
+                        
+                    </span>
+                </div>
+            </div>
+        </div>
+    </div>
+</header>
+
+<!-- Post Content -->
+<article>
+    <div class="container">
+        <div class="row">
+
+            <!-- Tags and categories -->
+           
+                <div class="col-lg-4 col-lg-offset-2 col-md-5 col-md-offset-1 post-tags">
+                    
+                        
+
+
+<a href="/tags/UVM/">#UVM</a> <a href="/tags/UVM-Base/">#UVM Base</a> <a href="/tags/UVM-Object/">#UVM Object</a>
+
+
+                    
+                </div>
+                <div class="col-lg-4 col-md-5 post-categories">
+                    
+                </div>
+            
+
+            <!-- Gallery -->
+            
+
+            <!-- Post Main Content -->
+            <div class="col-lg-8 col-lg-offset-2 col-md-10 col-md-offset-1">
+                <p>UVM macro有將class裡面的變數打包(pack)成bit或byte stream、解壓(unpack)bit或byte stream填入class的機制。在處理 SPI、I2C 和 RS-232等串行形式的通訊協定時很有用。 有三個主要得打包(pack)和解壓(unpack)的function。</p>
+<p>Packing主要有三個function：<br><code>pack</code>、<code>pack_bytes</code>、<code>pack_ints</code>，pack將此物件以位元連接(bitwise-concatenate)將變數打包到bits、bytes或ints的array裡面。</p>
+<p>Unpacking主要有三個function：<br><code>unpack</code>、<code>unpack_bytes</code>、<code>unpack_ints</code>，unpack從bits、bytes或ints的array把值取出放入object。unpack function的return值是從array中實際unapck的bit的數量。</p>
+<p>另外也有<code>do_pac</code>k和<code>do_unpack</code>可以客製化自己的pack&#x2F;unpack function。</p>
+<p>下面的例子是將object裡面的變數分別用<code>pack</code>、<code>pack_bytes</code>、<code>pack_ints</code>把資料打包到bits、bytes、ints這三個array中，接下來是用obj2.unpack將bits array的資料填入obj2、用obj2.unpack_bytes將bytes array的資料填入obj2、用obj2.unpack_ints將ints array的資料填入obj2。val1&#x2F;val2&#x2F;val3是實際上unpack的bit數量</p>
+<h1 id="Example"><a href="#Example" class="headerlink" title="Example"></a>Example</h1><figure class="highlight sv"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br><span class="line">6</span><br><span class="line">7</span><br><span class="line">8</span><br><span class="line">9</span><br><span class="line">10</span><br><span class="line">11</span><br><span class="line">12</span><br><span class="line">13</span><br><span class="line">14</span><br><span class="line">15</span><br><span class="line">16</span><br><span class="line">17</span><br><span class="line">18</span><br><span class="line">19</span><br><span class="line">20</span><br><span class="line">21</span><br><span class="line">22</span><br><span class="line">23</span><br><span class="line">24</span><br><span class="line">25</span><br><span class="line">26</span><br><span class="line">27</span><br><span class="line">28</span><br><span class="line">29</span><br><span class="line">30</span><br><span class="line">31</span><br><span class="line">32</span><br><span class="line">33</span><br><span class="line">34</span><br><span class="line">35</span><br><span class="line">36</span><br><span class="line">37</span><br><span class="line">38</span><br><span class="line">39</span><br><span class="line">40</span><br><span class="line">41</span><br><span class="line">42</span><br><span class="line">43</span><br><span class="line">44</span><br><span class="line">45</span><br><span class="line">46</span><br><span class="line">47</span><br><span class="line">48</span><br><span class="line">49</span><br><span class="line">50</span><br><span class="line">51</span><br><span class="line">52</span><br><span class="line">53</span><br><span class="line">54</span><br><span class="line">55</span><br><span class="line">56</span><br><span class="line">57</span><br><span class="line">58</span><br><span class="line">59</span><br><span class="line">60</span><br><span class="line">61</span><br><span class="line">62</span><br><span class="line">63</span><br><span class="line">64</span><br><span class="line">65</span><br><span class="line">66</span><br><span class="line">67</span><br><span class="line">68</span><br><span class="line">69</span><br><span class="line">70</span><br><span class="line">71</span><br></pre></td><td class="code"><pre><span class="line"><span class="keyword">import</span> uvm_pkg::*;</span><br><span class="line"><span class="meta">`<span class="keyword">include</span> &quot;uvm_macros.svh&quot;</span></span><br><span class="line"></span><br><span class="line"><span class="keyword">class</span> Packet <span class="keyword">extends</span> uvm_object;</span><br><span class="line">  <span class="keyword">bit</span> [<span class="number">3</span>:<span class="number">0</span>] addr;</span><br><span class="line">  <span class="keyword">bit</span> [<span class="number">3</span>:<span class="number">0</span>] wdata;</span><br><span class="line">  <span class="keyword">bit</span> [<span class="number">3</span>:<span class="number">0</span>] rdata;</span><br><span class="line">  <span class="keyword">bit</span> 		  wr;</span><br><span class="line"></span><br><span class="line">  `uvm_object_utils_begin(Packet)</span><br><span class="line">  	`uvm_field_int(addr, 	UVM_DEFAULT)</span><br><span class="line">  	`uvm_field_int(wdata, UVM_DEFAULT)</span><br><span class="line">  	`uvm_field_int(rdata, UVM_DEFAULT)</span><br><span class="line">  	`uvm_field_int(wr,		UVM_DEFAULT)</span><br><span class="line">  `uvm_object_utils_end</span><br><span class="line"></span><br><span class="line">  <span class="keyword">function</span> <span class="keyword">new</span>(<span class="keyword">string</span> name = <span class="string">&quot;Packet&quot;</span>);</span><br><span class="line">    <span class="keyword">super</span><span class="variable">.new</span>(name);</span><br><span class="line">  <span class="keyword">endfunction</span></span><br><span class="line"><span class="keyword">endclass</span></span><br><span class="line"></span><br><span class="line"><span class="keyword">class</span> base_test <span class="keyword">extends</span> uvm_test;</span><br><span class="line">  `uvm_component_utils(base_test)</span><br><span class="line">  <span class="keyword">function</span> <span class="keyword">new</span>(<span class="keyword">string</span> name = <span class="string">&quot;base_test&quot;</span>, uvm_component parent = <span class="literal">null</span>);</span><br><span class="line">    <span class="keyword">super</span><span class="variable">.new</span>(name, parent);</span><br><span class="line">  <span class="keyword">endfunction</span></span><br><span class="line"></span><br><span class="line">  <span class="keyword">bit</span> bits[];</span><br><span class="line">  <span class="keyword">byte</span> <span class="keyword">unsigned</span> bytes[];</span><br><span class="line">  <span class="keyword">int</span> <span class="keyword">unsigned</span> ints[];</span><br><span class="line"></span><br><span class="line">  <span class="keyword">int</span> val1, val2, val3;</span><br><span class="line"></span><br><span class="line">  <span class="keyword">function</span> <span class="keyword">void</span> build_phase(uvm_phase phase);</span><br><span class="line">    Packet pkt = Packet::type_id::create(<span class="string">&quot;pkt&quot;</span>);</span><br><span class="line">    Packet pkt2 = Packet::type_id::create(<span class="string">&quot;pkt2&quot;</span>);</span><br><span class="line">    pkt<span class="variable">.addr</span> = <span class="number">4&#x27;hA</span>;</span><br><span class="line">    pkt<span class="variable">.wdata</span> = <span class="number">4&#x27;hB</span>;</span><br><span class="line">    pkt<span class="variable">.rdata</span> = <span class="number">4&#x27;hC</span>;</span><br><span class="line">    pkt<span class="variable">.wr</span> = <span class="number">1&#x27;b1</span>;</span><br><span class="line">    pkt<span class="variable">.print</span>();</span><br><span class="line"></span><br><span class="line">    pkt<span class="variable">.pack</span>(bits);</span><br><span class="line">    pkt<span class="variable">.pack_bytes</span>(bytes);</span><br><span class="line">    pkt<span class="variable">.pack_ints</span>(ints);</span><br><span class="line"></span><br><span class="line">    `uvm_info(get_type_name(), <span class="built_in">$sformatf</span>(<span class="string">&quot;bits=%p&quot;</span>, bits), UVM_LOW)</span><br><span class="line">    `uvm_info(get_type_name(), <span class="built_in">$sformatf</span>(<span class="string">&quot;bytes=%p&quot;</span>, bytes), UVM_LOW)</span><br><span class="line">    `uvm_info(get_type_name(), <span class="built_in">$sformatf</span>(<span class="string">&quot;ints=%p&quot;</span>, ints), UVM_LOW)</span><br><span class="line"></span><br><span class="line">    val1 = pkt2<span class="variable">.unpack</span>(bits);</span><br><span class="line">    `uvm_info(get_type_name(), <span class="built_in">$sformatf</span>(<span class="string">&quot;Actual number of bits unpacked from the given array. unpacked val1=0x%0h&quot;</span>, val1), UVM_LOW)</span><br><span class="line">    pkt2<span class="variable">.print</span>();</span><br><span class="line"></span><br><span class="line">    val2 = pkt2<span class="variable">.unpack_bytes</span>(bytes);</span><br><span class="line">    `uvm_info(get_type_name(), <span class="built_in">$sformatf</span>(<span class="string">&quot;Actual number of bits unpacked from the given array. unpacked val2=0x%0h&quot;</span>, val2), UVM_LOW)</span><br><span class="line">    pkt2<span class="variable">.print</span>();</span><br><span class="line"></span><br><span class="line">    val3 = pkt2<span class="variable">.unpack_ints</span>(ints);</span><br><span class="line">    `uvm_info(get_type_name(), <span class="built_in">$sformatf</span>(<span class="string">&quot;Actual number of bits unpacked from the given array. unpacked val3=0x%0h&quot;</span>, val3), UVM_LOW)</span><br><span class="line">    pkt2<span class="variable">.print</span>();</span><br><span class="line"></span><br><span class="line">  <span class="keyword">endfunction</span></span><br><span class="line"><span class="keyword">endclass</span></span><br><span class="line"></span><br><span class="line"><span class="keyword">module</span> tb;</span><br><span class="line">  <span class="keyword">initial</span> <span class="keyword">begin</span></span><br><span class="line">    <span class="built_in">$display</span>(<span class="string">&quot;start&quot;</span>);</span><br><span class="line">    run_test(<span class="string">&quot;base_test&quot;</span>);</span><br><span class="line">  <span class="keyword">end</span></span><br><span class="line"><span class="keyword">endmodule</span></span><br></pre></td></tr></table></figure>
+
+<h2 id="Output"><a href="#Output" class="headerlink" title="Output"></a>Output</h2><figure class="highlight plaintext"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br><span class="line">6</span><br><span class="line">7</span><br><span class="line">8</span><br><span class="line">9</span><br><span class="line">10</span><br><span class="line">11</span><br><span class="line">12</span><br><span class="line">13</span><br><span class="line">14</span><br><span class="line">15</span><br><span class="line">16</span><br><span class="line">17</span><br><span class="line">18</span><br><span class="line">19</span><br><span class="line">20</span><br><span class="line">21</span><br><span class="line">22</span><br><span class="line">23</span><br><span class="line">24</span><br><span class="line">25</span><br><span class="line">26</span><br><span class="line">27</span><br><span class="line">28</span><br><span class="line">29</span><br><span class="line">30</span><br><span class="line">31</span><br><span class="line">32</span><br><span class="line">33</span><br><span class="line">34</span><br><span class="line">35</span><br><span class="line">36</span><br><span class="line">37</span><br><span class="line">38</span><br><span class="line">39</span><br><span class="line">40</span><br><span class="line">41</span><br><span class="line">42</span><br><span class="line">43</span><br><span class="line">44</span><br><span class="line">45</span><br></pre></td><td class="code"><pre><span class="line"># start</span><br><span class="line"># UVM_INFO @ 0: reporter [RNTST] Running test base_test...</span><br><span class="line"># ------------------------------</span><br><span class="line"># Name     Type      Size  Value</span><br><span class="line"># ------------------------------</span><br><span class="line"># pkt      Packet    -     @473</span><br><span class="line">#   addr   integral  4     &#x27;ha</span><br><span class="line">#   wdata  integral  4     &#x27;hb</span><br><span class="line">#   rdata  integral  4     &#x27;hc</span><br><span class="line">#   wr     integral  1     &#x27;h1</span><br><span class="line"># ------------------------------</span><br><span class="line"># UVM_INFO .\uvm_object_pack_unpack2.sv(47) @ 0: uvm_test_top [base_test] bits=&#x27;&#123;1, 0, 1, 0, 1, 0, 1, 1, 1, 1, 0, 0, 1&#125;</span><br><span class="line"># UVM_INFO .\uvm_object_pack_unpack2.sv(48) @ 0: uvm_test_top [base_test] bytes=&#x27;&#123;171, 200&#125;</span><br><span class="line"># UVM_INFO .\uvm_object_pack_unpack2.sv(49) @ 0: uvm_test_top [base_test] ints=&#x27;&#123;2882011136&#125;</span><br><span class="line"># UVM_INFO .\uvm_object_pack_unpack2.sv(52) @ 0: uvm_test_top [base_test] Actual number of bits unpacked from the given array. unpacked val1=0xd</span><br><span class="line"># ------------------------------</span><br><span class="line"># Name     Type      Size  Value</span><br><span class="line"># ------------------------------</span><br><span class="line"># pkt2     Packet    -     @474</span><br><span class="line">#   addr   integral  4     &#x27;ha</span><br><span class="line">#   wdata  integral  4     &#x27;hb</span><br><span class="line">#   rdata  integral  4     &#x27;hc</span><br><span class="line">#   wr     integral  1     &#x27;h1</span><br><span class="line"># ------------------------------</span><br><span class="line"># UVM_INFO .\uvm_object_pack_unpack2.sv(56) @ 0: uvm_test_top [base_test] Actual number of bits unpacked from the given array. unpacked val2=0xd</span><br><span class="line"># ------------------------------</span><br><span class="line"># Name     Type      Size  Value</span><br><span class="line"># ------------------------------</span><br><span class="line"># pkt2     Packet    -     @474</span><br><span class="line">#   addr   integral  4     &#x27;ha</span><br><span class="line">#   wdata  integral  4     &#x27;hb</span><br><span class="line">#   rdata  integral  4     &#x27;hc</span><br><span class="line">#   wr     integral  1     &#x27;h1</span><br><span class="line"># ------------------------------</span><br><span class="line"># UVM_INFO .\uvm_object_pack_unpack2.sv(60) @ 0: uvm_test_top [base_test] Actual number of bits unpacked from the given array. unpacked val3=0xd</span><br><span class="line"># ------------------------------</span><br><span class="line"># Name     Type      Size  Value</span><br><span class="line"># ------------------------------</span><br><span class="line"># pkt2     Packet    -     @474</span><br><span class="line">#   addr   integral  4     &#x27;ha</span><br><span class="line">#   wdata  integral  4     &#x27;hb</span><br><span class="line">#   rdata  integral  4     &#x27;hc</span><br><span class="line">#   wr     integral  1     &#x27;h1</span><br><span class="line"># ------------------------------</span><br><span class="line">#</span><br></pre></td></tr></table></figure>
+
+<p>因為pkt資料並沒有變，只是用不同的pack方式把資料打包放入不同的array，pkt2也是用相對應的unpack方式把資料解開放入pkt2對應的變數內，所以pkt2的print結果都是相同的，且val1&#x2F;val2&#x2F;val3的值都是0xD(十進位是13)，就是addr(4bits)+wdata(4bits)+rdata(4bits)+wr(1bit)的總和。</p>
+<h1 id="Using-do-pack-x2F-do-unpack"><a href="#Using-do-pack-x2F-do-unpack" class="headerlink" title="Using do_pack&#x2F;do_unpack"></a>Using do_pack&#x2F;do_unpack</h1><p>和print&#x2F;copy一樣，pack&#x2F;unpack一樣可以有do_pack&#x2F;do_unpack客製化自己的pack&#x2F;unpack，目前還沒打算練習這個。</p>
+
+
+                
+            </div>
+
+            <!-- Comments -->
+            
+                <div class="col-lg-8 col-lg-offset-2 col-md-10 col-md-offset-1">
+                    
+
+
+                </div>
+            
+        </div>
+    </div>
+</article>
+
+    <!-- Footer -->
+    <hr />
+
+<!-- Footer -->
+<footer>
+    <div class="container">
+        <div class="row">
+            <div class="col-lg-8 col-lg-offset-2 col-md-10 col-md-offset-1">
+                <ul class="list-inline text-center">
+                    
+
+                    
+
+                    
+                        <li>
+                            <a href="https://github.com/logshark/logshark.github.io.git" target="_blank">
+                                <span class="fa-stack fa-lg">
+                                    <i class="fa fa-circle fa-stack-2x"></i>
+                                    <i class="fa fa-github fa-stack-1x fa-inverse"></i>
+                                </span>
+                            </a>
+                        </li>
+                    
+
+                    
+
+                    
+
+                    
+                </ul>
+                <p class="copyright text-muted">&copy; 2023 logshark<br></p>
+                <p class="copyright text-muted">Original Theme <a target="_blank" href="http://startbootstrap.com/template-overviews/clean-blog/">Clean Blog</a> from <a href="http://startbootstrap.com/" target="_blank">Start Bootstrap</a></p>
+                <p class="copyright text-muted">Adapted for <a target="_blank" href="https://hexo.io/">Hexo</a> by <a href="http://www.codeblocq.com/" target="_blank">Jonathan Klughertz</a></p>
+            </div>
+        </div>
+    </div>
+</footer>
+
+
+    <!-- After footer scripts -->
+    
+<!-- jQuery -->
+<script src="//code.jquery.com/jquery-2.1.4.min.js"></script>
+
+<!-- Bootstrap -->
+<script src="//maxcdn.bootstrapcdn.com/bootstrap/3.3.6/js/bootstrap.min.js"></script>
+
+<!-- Gallery -->
+<script src="//cdnjs.cloudflare.com/ajax/libs/featherlight/1.3.5/featherlight.min.js" type="text/javascript" charset="utf-8"></script>
+
+<!-- Disqus Comments -->
+
+
+
+</body>
+
+</html>
