@@ -1,0 +1,310 @@
+<!DOCTYPE html>
+<html lang="zh-tw">
+
+<!-- Head tag -->
+<head>
+
+    <meta charset="utf-8"/>
+    <meta http-equiv="X-UA-Compatible" content="IE=edge"/>
+    <meta name="viewport" content="width=device-width, initial-scale=1"/>
+
+    <!--Description-->
+
+    
+
+    
+        <meta name="description" content="456"/>
+    
+
+    <!--Author-->
+    
+        <meta name="author" content="logshark"/>
+    
+
+    <!--Open Graph Title-->
+    
+        <meta property="og:title" content="UVM Testbench Top"/>
+    
+
+    <!--Open Graph Description-->
+    
+        <meta property="og:description" content="456"/>
+    
+
+    <!--Open Graph Site Name-->
+        <meta property="og:site_name" content="LogPost"/>
+
+    <!--Type page-->
+    
+        <meta property="og:type" content="article"/>
+    
+
+    <!--Page Cover-->
+    
+    
+        <meta property="og:image" content="https://logshark.github.io/img/home-bg.jpg"/>
+    
+
+        <meta name="twitter:card" content="summary_large_image"/>
+
+    
+
+    
+        <meta name="twitter:image" content="https://logshark.github.io/img/home-bg.jpg"/>
+    
+
+    <!-- Title -->
+    
+    <title>UVM Testbench Top - LogPost</title>
+
+    <!-- Bootstrap Core CSS -->
+    <link href="//maxcdn.bootstrapcdn.com/bootstrap/3.3.6/css/bootstrap.min.css" rel="stylesheet"/>
+
+    <!-- Custom CSS -->
+    
+<link rel="stylesheet" href="/css/style.css">
+
+
+    <!-- Custom Fonts -->
+    <link href="//maxcdn.bootstrapcdn.com/font-awesome/4.6.3/css/font-awesome.min.css" rel="stylesheet" type="text/css"/>
+    <link href="//fonts.googleapis.com/css?family=Lora:400,700,400italic,700italic" rel="stylesheet" type="text/css"/>
+    <link href="//fonts.googleapis.com/css?family=Open+Sans:300italic,400italic,600italic,700italic,800italic,400,300,600,700,800" rel="stylesheet" type="text/css"/>
+
+    <!-- HTML5 Shim and Respond.js IE8 support of HTML5 elements and media queries -->
+    <!-- WARNING: Respond.js doesn't work if you view the page via file:// -->
+    <!--[if lt IE 9]>
+    <script src="//oss.maxcdn.com/libs/html5shiv/3.7.0/html5shiv.js"></script>
+    <script src="//oss.maxcdn.com/libs/respond.js/1.4.2/respond.min.js"></script>
+    <![endif]-->
+
+    <!-- Gallery -->
+    <link href="//cdnjs.cloudflare.com/ajax/libs/featherlight/1.3.5/featherlight.min.css" type="text/css" rel="stylesheet"/>
+
+    <!-- Google Analytics -->
+    
+
+
+    <!-- favicon -->
+    
+
+<meta name="generator" content="Hexo 6.3.0"></head>
+
+
+<body>
+
+    <!-- Menu -->
+    <!-- Navigation -->
+<nav class="navbar navbar-default navbar-custom navbar-fixed-top">
+    <div class="container-fluid">
+        <!-- Brand and toggle get grouped for better mobile display -->
+        <div class="navbar-header page-scroll">
+            <button type="button" class="navbar-toggle" data-toggle="collapse" data-target="#bs-example-navbar-collapse-1">
+                <span class="sr-only">Toggle navigation</span>
+                <span class="icon-bar"></span>
+                <span class="icon-bar"></span>
+                <span class="icon-bar"></span>
+            </button>
+            <a class="navbar-brand" href="/">LogPost</a>
+        </div>
+
+        <!-- Collect the nav links, forms, and other content for toggling -->
+        <div class="collapse navbar-collapse" id="bs-example-navbar-collapse-1">
+            <ul class="nav navbar-nav navbar-right">
+                
+                    <li>
+                        <a href="/">
+                            
+                                Home
+                            
+                        </a>
+                    </li>
+                
+                    <li>
+                        <a href="/archives">
+                            
+                                Archives
+                            
+                        </a>
+                    </li>
+                
+                    <li>
+                        <a href="/tags">
+                            
+                                Tags
+                            
+                        </a>
+                    </li>
+                
+                    <li>
+                        <a href="/categories">
+                            
+                                Categories
+                            
+                        </a>
+                    </li>
+                
+                    <li>
+                        <a target="_blank" rel="noopener" href="https://github.com/logshark">
+                            
+                                <i class="fa fa-github fa-stack-2x"></i>
+                            
+                        </a>
+                    </li>
+                
+            </ul>
+        </div>
+        <!-- /.navbar-collapse -->
+    </div>
+    <!-- /.container -->
+</nav>
+
+    <!-- Main Content -->
+    <!-- Page Header -->
+<!-- Set your background image for this header in your post front-matter: cover -->
+
+<header class="intro-header" style="background-image: url('/img/home-bg.jpg')">
+    <div class="container">
+        <div class="row">
+            <div class="col-lg-8 col-lg-offset-2 col-md-10 col-md-offset-1">
+                <div class="post-heading">
+                    <h1>UVM Testbench Top</h1>
+                    
+                    <span class="meta">
+                        <!-- Date and Author -->
+                        
+                        
+                            2023-11-16
+                        
+                    </span>
+                </div>
+            </div>
+        </div>
+    </div>
+</header>
+
+<!-- Post Content -->
+<article>
+    <div class="container">
+        <div class="row">
+
+            <!-- Tags and categories -->
+           
+                <div class="col-lg-4 col-lg-offset-2 col-md-5 col-md-offset-1 post-tags">
+                    
+                        
+
+
+<a href="/tags/UVM/">#UVM</a> <a href="/tags/Testbench-Structure/">#Testbench Structure</a>
+
+
+                    
+                </div>
+                <div class="col-lg-4 col-md-5 post-categories">
+                    
+                </div>
+            
+
+            <!-- Gallery -->
+            
+
+            <!-- Post Main Content -->
+            <div class="col-lg-8 col-lg-offset-2 col-md-10 col-md-offset-1">
+                <p>其實這一章節看得有點沒感覺，不過我還是先嘗試翻譯跟照著練習一下。</p>
+<h1 id="What-is-testbench-top-module"><a href="#What-is-testbench-top-module" class="headerlink" title="What is testbench top module?"></a>What is testbench top module?</h1><p>所有的驗證元件(component)、介面(interface)和 DUT 都會在 testbench 的Top Level模組中被實例化(instantiate)。它是一個靜態容器(static container)容納模擬所需的所有內容，並且為hierarchy中的root node。通常命名為 <code>tb</code> 或 <code>tb_top</code>。</p>
+<p><img src="/2023/11/16/UVM-Testbench-Top/tb_top.png" alt="Alt text"></p>
+<p>Simulators通常需要知道Top Level模組，才能夠分析在top module底下的component並詳細說明design hierarchy。</p>
+<h1 id="Testbench-Top-Example"><a href="#Testbench-Top-Example" class="headerlink" title="Testbench Top Example"></a>Testbench Top Example</h1><p>下面的例子是一個 tb 內的所有元素。其中會先產生一個<code>dut_if1</code> instance然後pass給Design，另外也會用<code>uvm_config_db</code>的<code>set</code> function把他註冊到<code>uvm_config_db</code> database上，在<code>tb</code>內需要用到的話可以使用<code>uvm_config_db</code>的<code>get</code> function。</p>
+<figure class="highlight sv"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br><span class="line">6</span><br><span class="line">7</span><br><span class="line">8</span><br><span class="line">9</span><br><span class="line">10</span><br><span class="line">11</span><br><span class="line">12</span><br><span class="line">13</span><br><span class="line">14</span><br><span class="line">15</span><br><span class="line">16</span><br><span class="line">17</span><br><span class="line">18</span><br><span class="line">19</span><br><span class="line">20</span><br><span class="line">21</span><br></pre></td><td class="code"><pre><span class="line"><span class="keyword">import</span> uvm_pkg::*;</span><br><span class="line"><span class="meta">`<span class="keyword">include</span> &quot;uvm_macros.svh&quot;</span></span><br><span class="line"></span><br><span class="line"><span class="keyword">module</span> tb;</span><br><span class="line">  <span class="keyword">bit</span> clk;</span><br><span class="line">  <span class="keyword">always</span> #<span class="number">10</span> clk &lt;= ~clk;</span><br><span class="line"></span><br><span class="line">  dut_if dut_if1(clk);</span><br><span class="line">  dut_wrapper dut_wr0(<span class="variable">._if</span> (dut_if1));</span><br><span class="line"></span><br><span class="line">  <span class="keyword">initial</span> <span class="keyword">begin</span></span><br><span class="line">    <span class="built_in">$display</span>(<span class="string">&quot;start&quot;</span>);</span><br><span class="line">    uvm_config_db <span class="variable">#(virtual dut_if)::set (null, &quot;uvm_test_top&quot;, &quot;dut_if&quot;, dut_if1)</span>;</span><br><span class="line">    run_test(<span class="string">&quot;base_test&quot;</span>);</span><br><span class="line">  <span class="keyword">end</span></span><br><span class="line"></span><br><span class="line">  <span class="keyword">initial</span> <span class="keyword">begin</span></span><br><span class="line">    <span class="built_in">$dumpvars</span>;</span><br><span class="line">    <span class="built_in">$dumpfile</span>(<span class="string">&quot;dump.vcd&quot;</span>);</span><br><span class="line">  <span class="keyword">end</span></span><br><span class="line"><span class="keyword">endmodule</span></span><br></pre></td></tr></table></figure>
+
+<ul>
+<li><code>tb_top</code> 是一個module，是一個靜態容器裡面會包含其他所有內容</li>
+<li>要import uvm_pkg 才能使用UVM的東西</li>
+<li>Clock在testbench產生並傳給dut_if1這個interface</li>
+<li><code>dut_if1</code> 透過 <code>set</code> 設定為 <code>uvm_config_db</code> 中的object，在其他testbench class中可使用 <code>get</code> 方法使用這個interface</li>
+<li>這個<code>tb</code>由<code>run_test</code>這個method跑起<code>base_test</code>這個test</li>
+</ul>
+<h1 id="Clock-generation"><a href="#Clock-generation" class="headerlink" title="Clock generation"></a>Clock generation</h1><p>真實的design可能有在不同clock頻率下運行的module，因此testbench需要產生多個clock並作為design的input。所以clock generation不會像上面例子只有用一個always block這麼簡單。為了測試design的不同功能，許多clock參數（如frequency、duty cycle、phase）可能需要動態更新，testbench需要支援這類型的動態操作。</p>
+<figure class="highlight sv"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br><span class="line">6</span><br><span class="line">7</span><br><span class="line">8</span><br><span class="line">9</span><br><span class="line">10</span><br><span class="line">11</span><br><span class="line">12</span><br><span class="line">13</span><br><span class="line">14</span><br><span class="line">15</span><br><span class="line">16</span><br></pre></td><td class="code"><pre><span class="line"></span><br><span class="line"><span class="keyword">module</span> clk_main (...);</span><br><span class="line"></span><br><span class="line">   <span class="comment">// Code for clock generation</span></span><br><span class="line"></span><br><span class="line"><span class="keyword">endmodule</span></span><br><span class="line"></span><br><span class="line"><span class="keyword">module</span> tb_top;</span><br><span class="line">  <span class="keyword">bit</span> clk_main_out;</span><br><span class="line"></span><br><span class="line">  clk_main clk_main_0(<span class="variable">.out</span>(clk_main_out),</span><br><span class="line">                      ...</span><br><span class="line">                     );</span><br><span class="line"></span><br><span class="line">  dut_if dut_if0 ( clk_main_out, ...);</span><br><span class="line"><span class="keyword">endmodule</span></span><br></pre></td></tr></table></figure>
+
+<p>上面的方法可能不容易擴展，因為它們被實例化為module，而且要使用分層訊號路徑從testbench驅動。更好的UVM替代方式是為clock建立一個agent，以便可以使用agent configuration object比較容易的從sequence和test中控制。</p>
+<figure class="highlight sv"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br><span class="line">6</span><br><span class="line">7</span><br><span class="line">8</span><br><span class="line">9</span><br><span class="line">10</span><br><span class="line">11</span><br><span class="line">12</span><br><span class="line">13</span><br><span class="line">14</span><br><span class="line">15</span><br><span class="line">16</span><br><span class="line">17</span><br></pre></td><td class="code"><pre><span class="line"><span class="keyword">class</span> clk_agent <span class="keyword">extends</span> uvm_agent;</span><br><span class="line">  clk_cfg clk_cfg_0;</span><br><span class="line"></span><br><span class="line">  <span class="keyword">virtual</span> <span class="keyword">function</span> <span class="keyword">void</span> build_phase(uvm_phase phase);</span><br><span class="line">    <span class="keyword">super</span><span class="variable">.build_phase</span>(phase);</span><br><span class="line">  <span class="keyword">endfunction</span></span><br><span class="line"><span class="keyword">endclass</span></span><br><span class="line"></span><br><span class="line"><span class="keyword">class</span> base_test <span class="keyword">extends</span> uvm_test;</span><br><span class="line">  clk_cfg clk_cfg_0;</span><br><span class="line"></span><br><span class="line">  <span class="keyword">virtual</span> <span class="keyword">function</span> <span class="keyword">void</span> build_phase(uvm_phase phase);</span><br><span class="line">    <span class="keyword">super</span><span class="variable">.build_phase</span>(phase);</span><br><span class="line"></span><br><span class="line">    clk_cfg_0<span class="variable">.m_freq</span> = <span class="number">500</span>;</span><br><span class="line">  <span class="keyword">endfunction</span></span><br><span class="line"><span class="keyword">end</span> <span class="keyword">class</span></span><br></pre></td></tr></table></figure>
+
+
+<h1 id="Reset-Generation"><a href="#Reset-Generation" class="headerlink" title="Reset Generation"></a>Reset Generation</h1><p>同樣的，也可以寫一個reset agent來處理所有reset request。通常系統都會有hardware reset 和software reset。<br>Software reset通常透register model完成，並且與reset agent分開。<br>Hardware reset包含在持續時間內對system reset pin做assertion，或在應用實際reset之前照著特定的sequence的event就會實際reset。<br>所有此類scenario都可以使用此reset agent單獨處理該agent需要handle的reset interface。</p>
+<figure class="highlight sv"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br><span class="line">6</span><br><span class="line">7</span><br><span class="line">8</span><br><span class="line">9</span><br><span class="line">10</span><br><span class="line">11</span><br><span class="line">12</span><br><span class="line">13</span><br></pre></td><td class="code"><pre><span class="line"><span class="keyword">class</span> reset_agent <span class="keyword">extends</span> uvm_agent;</span><br><span class="line"></span><br><span class="line">  reset_cfg reset_cfg_0;</span><br><span class="line"></span><br><span class="line"><span class="keyword">endclass</span></span><br><span class="line"></span><br><span class="line"><span class="keyword">class</span> my_sequence <span class="keyword">extends</span> uvm_sequence;</span><br><span class="line"></span><br><span class="line">  <span class="keyword">virtual</span> <span class="keyword">task</span> body();</span><br><span class="line">    hw_reset_seq   hw_reset_seq_0;</span><br><span class="line">    hw_reset_seq_0<span class="variable">.start</span>(p_sequencer);</span><br><span class="line">  <span class="keyword">endtask</span></span><br><span class="line"><span class="keyword">endclass</span></span><br></pre></td></tr></table></figure>
+
+<h1 id="Creation-of-internal-tap-points"><a href="#Creation-of-internal-tap-points" class="headerlink" title="Creation of internal tap points"></a>Creation of internal tap points</h1><p>有些testbench components可能需要design中的內部網路(internal nets)來強制或sample值來測試某些功能。這些內部網路可能需要根據input分配不同的值，並且可以在testbench 的top level module中完成。這類signal可以綁定到通用interface並由另一個agent驅動。</p>
+<figure class="highlight sv"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br><span class="line">6</span><br><span class="line">7</span><br><span class="line">8</span><br><span class="line">9</span><br><span class="line">10</span><br></pre></td><td class="code"><pre><span class="line"><span class="keyword">interface</span> gen_if;</span><br><span class="line">  <span class="keyword">logic</span> [<span class="number">255</span>:<span class="number">0</span>] signals;</span><br><span class="line"><span class="keyword">endinterface</span></span><br><span class="line"></span><br><span class="line"><span class="keyword">module</span> tb_top;</span><br><span class="line">	gen_if 	u_if0();</span><br><span class="line">	des u_des( ... );</span><br><span class="line"></span><br><span class="line">	<span class="keyword">assign</span> u_if0<span class="variable">.signals</span>[<span class="number">2</span>] = u_des<span class="variable">.xxx</span><span class="variable">.status</span>;</span><br><span class="line"><span class="keyword">endmodule</span></span><br></pre></td></tr></table></figure>
+
+                
+            </div>
+
+            <!-- Comments -->
+            
+                <div class="col-lg-8 col-lg-offset-2 col-md-10 col-md-offset-1">
+                    
+
+
+                </div>
+            
+        </div>
+    </div>
+</article>
+
+    <!-- Footer -->
+    <hr />
+
+<!-- Footer -->
+<footer>
+    <div class="container">
+        <div class="row">
+            <div class="col-lg-8 col-lg-offset-2 col-md-10 col-md-offset-1">
+                <ul class="list-inline text-center">
+                    
+
+                    
+
+                    
+                        <li>
+                            <a href="https://github.com/logshark/logshark.github.io.git" target="_blank">
+                                <span class="fa-stack fa-lg">
+                                    <i class="fa fa-circle fa-stack-2x"></i>
+                                    <i class="fa fa-github fa-stack-1x fa-inverse"></i>
+                                </span>
+                            </a>
+                        </li>
+                    
+
+                    
+
+                    
+
+                    
+                </ul>
+                <p class="copyright text-muted">&copy; 2023 logshark<br></p>
+                <p class="copyright text-muted">Original Theme <a target="_blank" href="http://startbootstrap.com/template-overviews/clean-blog/">Clean Blog</a> from <a href="http://startbootstrap.com/" target="_blank">Start Bootstrap</a></p>
+                <p class="copyright text-muted">Adapted for <a target="_blank" href="https://hexo.io/">Hexo</a> by <a href="http://www.codeblocq.com/" target="_blank">Jonathan Klughertz</a></p>
+            </div>
+        </div>
+    </div>
+</footer>
+
+
+    <!-- After footer scripts -->
+    
+<!-- jQuery -->
+<script src="//code.jquery.com/jquery-2.1.4.min.js"></script>
+
+<!-- Bootstrap -->
+<script src="//maxcdn.bootstrapcdn.com/bootstrap/3.3.6/js/bootstrap.min.js"></script>
+
+<!-- Gallery -->
+<script src="//cdnjs.cloudflare.com/ajax/libs/featherlight/1.3.5/featherlight.min.js" type="text/javascript" charset="utf-8"></script>
+
+<!-- Disqus Comments -->
+
+
+
+</body>
+
+</html>
