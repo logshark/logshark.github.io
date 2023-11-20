@@ -220,12 +220,17 @@
 <li>如果要改變topology要更新很多測試檔案要花很多時間</li>
 </ul>
 <p>因此，通常會建議從<code>uvm_env</code>開始建立testbench相關的class，然後可以在多個測試中實例化<code>uvm_env</code>。這樣environment的topology有改變的話可以反應在所有測試中。另外environment應該要有可以為了彈性調整enable&#x2F;disable不同驗證模組的設置。</p>
-<h1 id="Steps-to-create-a-UVM-environment"><a href="#Steps-to-create-a-UVM-environment" class="headerlink" title="Steps to create a UVM environment"></a>Steps to create a UVM environment</h1><figure class="highlight sv"><table><tr><td class="gutter"><pre><span class="line">1</span><br></pre></td><td class="code"><pre><span class="line"></span><br></pre></td></tr></table></figure>
-
-<figure class="highlight sv"><table><tr><td class="gutter"><pre><span class="line">1</span><br></pre></td><td class="code"><pre><span class="line"></span><br></pre></td></tr></table></figure>
-
-<figure class="highlight sv"><table><tr><td class="gutter"><pre><span class="line">1</span><br></pre></td><td class="code"><pre><span class="line"></span><br></pre></td></tr></table></figure>
-
+<h1 id="Steps-to-create-a-UVM-environment"><a href="#Steps-to-create-a-UVM-environment" class="headerlink" title="Steps to create a UVM environment"></a>Steps to create a UVM environment</h1><ol>
+<li><p>建立一個繼承<code>uvm_env</code>的class，然後註冊到factory上</p>
+<figure class="highlight sv"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br><span class="line">6</span><br><span class="line">7</span><br><span class="line">8</span><br></pre></td><td class="code"><pre><span class="line"><span class="keyword">class</span> my_env <span class="keyword">extends</span> uvm_env;</span><br><span class="line">  `uvm_component_utils(my_env)</span><br><span class="line"></span><br><span class="line">  <span class="keyword">function</span> <span class="keyword">new</span>(<span class="keyword">string</span> name = <span class="string">&quot;my_env&quot;</span>, uvm_component parent = <span class="literal">null</span>);</span><br><span class="line">    <span class="keyword">super</span><span class="variable">.new</span>(name, parent);</span><br><span class="line">  <span class="keyword">endfunction</span></span><br><span class="line">  ...</span><br><span class="line"><span class="keyword">endclass</span></span><br></pre></td></tr></table></figure>
+</li>
+<li><p>宣告其他verification component然後在<code>build_phase</code>的時候將他們實例化<br>class my_env extends uvm_env;<br>  apb_agnt apb_agent_0;<br>  func_cov func_cov_0;<br>  scbd sb_0;<br>  env_cfg env_cfg_0;</p>
+</li>
+</ol>
+<p>  virtual function void build_phase (uvm_phase phase);<br>    super.build_phase (phase);<br>    apb_agent_0 &#x3D; apb_agnt::type_id::create (“apb_agent_0”, this);<br>    func_cov_0 &#x3D; func_cov::type_id::create (“func_cov_0”, this);<br>    sb_0 &#x3D; scbd::type_id::create (“sb_0”, this);<br>  endfunction<br>  …<br>endclass</p>
+<ol start="3">
+<li>在<code>connect_phase</code>把不同component連接起來<br>class my_env extends uvm_env;<br>  virtual function void connect_phase (uvm_phase phase);<br> &#x2F;&#x2F; Connect in here<br> &#x2F;&#x2F; …<br>  endfunction<br>endclass</li>
+</ol>
 
 
                 
