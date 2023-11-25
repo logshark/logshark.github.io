@@ -1,0 +1,327 @@
+<!DOCTYPE html>
+<html lang="zh-tw">
+
+<!-- Head tag -->
+<head>
+
+    <meta charset="utf-8"/>
+    <meta http-equiv="X-UA-Compatible" content="IE=edge"/>
+    <meta name="viewport" content="width=device-width, initial-scale=1"/>
+
+    <!--Description-->
+
+    
+
+    
+        <meta name="description" content="456"/>
+    
+
+    <!--Author-->
+    
+        <meta name="author" content="logshark"/>
+    
+
+    <!--Open Graph Title-->
+    
+        <meta property="og:title" content="UVM driver"/>
+    
+
+    <!--Open Graph Description-->
+    
+        <meta property="og:description" content="456"/>
+    
+
+    <!--Open Graph Site Name-->
+        <meta property="og:site_name" content="LogPost"/>
+
+    <!--Type page-->
+    
+        <meta property="og:type" content="article"/>
+    
+
+    <!--Page Cover-->
+    
+    
+        <meta property="og:image" content="https://logshark.github.io/img/home-bg.jpg"/>
+    
+
+        <meta name="twitter:card" content="summary_large_image"/>
+
+    
+
+    
+        <meta name="twitter:image" content="https://logshark.github.io/img/home-bg.jpg"/>
+    
+
+    <!-- Title -->
+    
+    <title>UVM driver - LogPost</title>
+
+    <!-- Bootstrap Core CSS -->
+    <link href="//maxcdn.bootstrapcdn.com/bootstrap/3.3.6/css/bootstrap.min.css" rel="stylesheet"/>
+
+    <!-- Custom CSS -->
+    
+<link rel="stylesheet" href="/css/style.css">
+
+
+    <!-- Custom Fonts -->
+    <link href="//maxcdn.bootstrapcdn.com/font-awesome/4.6.3/css/font-awesome.min.css" rel="stylesheet" type="text/css"/>
+    <link href="//fonts.googleapis.com/css?family=Lora:400,700,400italic,700italic" rel="stylesheet" type="text/css"/>
+    <link href="//fonts.googleapis.com/css?family=Open+Sans:300italic,400italic,600italic,700italic,800italic,400,300,600,700,800" rel="stylesheet" type="text/css"/>
+
+    <!-- HTML5 Shim and Respond.js IE8 support of HTML5 elements and media queries -->
+    <!-- WARNING: Respond.js doesn't work if you view the page via file:// -->
+    <!--[if lt IE 9]>
+    <script src="//oss.maxcdn.com/libs/html5shiv/3.7.0/html5shiv.js"></script>
+    <script src="//oss.maxcdn.com/libs/respond.js/1.4.2/respond.min.js"></script>
+    <![endif]-->
+
+    <!-- Gallery -->
+    <link href="//cdnjs.cloudflare.com/ajax/libs/featherlight/1.3.5/featherlight.min.css" type="text/css" rel="stylesheet"/>
+
+    <!-- Google Analytics -->
+    
+
+
+    <!-- favicon -->
+    
+
+<meta name="generator" content="Hexo 6.3.0"></head>
+
+
+<body>
+
+    <!-- Menu -->
+    <!-- Navigation -->
+<nav class="navbar navbar-default navbar-custom navbar-fixed-top">
+    <div class="container-fluid">
+        <!-- Brand and toggle get grouped for better mobile display -->
+        <div class="navbar-header page-scroll">
+            <button type="button" class="navbar-toggle" data-toggle="collapse" data-target="#bs-example-navbar-collapse-1">
+                <span class="sr-only">Toggle navigation</span>
+                <span class="icon-bar"></span>
+                <span class="icon-bar"></span>
+                <span class="icon-bar"></span>
+            </button>
+            <a class="navbar-brand" href="/">LogPost</a>
+        </div>
+
+        <!-- Collect the nav links, forms, and other content for toggling -->
+        <div class="collapse navbar-collapse" id="bs-example-navbar-collapse-1">
+            <ul class="nav navbar-nav navbar-right">
+                
+                    <li>
+                        <a href="/">
+                            
+                                Home
+                            
+                        </a>
+                    </li>
+                
+                    <li>
+                        <a href="/archives">
+                            
+                                Archives
+                            
+                        </a>
+                    </li>
+                
+                    <li>
+                        <a href="/tags">
+                            
+                                Tags
+                            
+                        </a>
+                    </li>
+                
+                    <li>
+                        <a href="/categories">
+                            
+                                Categories
+                            
+                        </a>
+                    </li>
+                
+                    <li>
+                        <a target="_blank" rel="noopener" href="https://github.com/logshark">
+                            
+                                <i class="fa fa-github fa-stack-2x"></i>
+                            
+                        </a>
+                    </li>
+                
+            </ul>
+        </div>
+        <!-- /.navbar-collapse -->
+    </div>
+    <!-- /.container -->
+</nav>
+
+    <!-- Main Content -->
+    <!-- Page Header -->
+<!-- Set your background image for this header in your post front-matter: cover -->
+
+<header class="intro-header" style="background-image: url('/img/home-bg.jpg')">
+    <div class="container">
+        <div class="row">
+            <div class="col-lg-8 col-lg-offset-2 col-md-10 col-md-offset-1">
+                <div class="post-heading">
+                    <h1>UVM driver</h1>
+                    
+                    <span class="meta">
+                        <!-- Date and Author -->
+                        
+                        
+                            2023-11-22
+                        
+                    </span>
+                </div>
+            </div>
+        </div>
+    </div>
+</header>
+
+<!-- Post Content -->
+<article>
+    <div class="container">
+        <div class="row">
+
+            <!-- Tags and categories -->
+           
+                <div class="col-lg-4 col-lg-offset-2 col-md-5 col-md-offset-1 post-tags">
+                    
+                        
+
+
+<a href="/tags/UVM/">#UVM</a> <a href="/tags/Testbench-Structure/">#Testbench Structure</a>
+
+
+                    
+                </div>
+                <div class="col-lg-4 col-md-5 post-categories">
+                    
+                </div>
+            
+
+            <!-- Gallery -->
+            
+
+            <!-- Post Main Content -->
+            <div class="col-lg-8 col-lg-offset-2 col-md-10 col-md-offset-1">
+                <h1 id="What-is-a-driver"><a href="#What-is-a-driver" class="headerlink" title="What is a driver?"></a>What is a driver?</h1><p>UVM driver是一個了解如何將signal驅動(drive)到design的特定interface的實體。例如為了驅動一個APB bus protocol，UVM driver定義了訊號的時序，打出正確的signal以便有效使用這個protocol。所有driver類別都應直接或間接地從<code>uvm_driver</code>擴充。<br>從Sequencer取得transaction level的物件，然後UVM driver透過interface handle將它們驅動到design。</p>
+<h1 id="Steps-to-create-a-UVM-driver"><a href="#Steps-to-create-a-UVM-driver" class="headerlink" title="Steps to create a UVM driver"></a>Steps to create a UVM driver</h1><ol>
+<li><p>建立一個繼承<code>uvm_driver</code>的class，然後註冊到factory上</p>
+<figure class="highlight sv"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br><span class="line">6</span><br><span class="line">7</span><br><span class="line">8</span><br></pre></td><td class="code"><pre><span class="line"><span class="keyword">class</span> my_driver <span class="keyword">extends</span> uvm_driver;</span><br><span class="line">  `uvm_component_utils (my_driver)</span><br><span class="line"></span><br><span class="line">  <span class="keyword">function</span> <span class="keyword">new</span> (<span class="keyword">string</span> name = <span class="string">&quot;my_driver&quot;</span>, uvm_component parent = <span class="literal">null</span>);</span><br><span class="line">    <span class="keyword">super</span><span class="variable">.new</span> (name, parent);</span><br><span class="line">  <span class="keyword">endfunction</span></span><br><span class="line">  ...</span><br><span class="line"><span class="keyword">endclass</span></span><br></pre></td></tr></table></figure>
+
+</li>
+<li><p>宣告virtual interface handle 然後在<code>build_phase</code>的時候用<code>uvm_config_db</code> 的<code>get</code> method得到這個interface的object</p>
+<figure class="highlight sv"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br><span class="line">6</span><br><span class="line">7</span><br><span class="line">8</span><br><span class="line">9</span><br><span class="line">10</span><br><span class="line">11</span><br><span class="line">12</span><br></pre></td><td class="code"><pre><span class="line"><span class="keyword">class</span> my_driver <span class="keyword">extends</span> uvm_driver;</span><br><span class="line">  ...</span><br><span class="line">  <span class="keyword">virtual</span> if_name vif_0;</span><br><span class="line"></span><br><span class="line">  <span class="keyword">virtual</span> <span class="keyword">function</span> <span class="keyword">void</span> build_phase (uvm_phase phase);</span><br><span class="line">    <span class="keyword">super</span><span class="variable">.build_phase</span> (phase);</span><br><span class="line">      <span class="keyword">if</span> (! uvm_config_db <span class="variable">#(virtual if_name) :: get (this, &quot;&quot;, &quot;vif_0&quot;, vif_0))</span> <span class="keyword">begin</span></span><br><span class="line">        `uvm_fatal (get_type_name (), <span class="string">&quot;Cannot get handle to virtual interface if_name&quot;</span>)</span><br><span class="line">      <span class="keyword">end</span></span><br><span class="line">  <span class="keyword">endfunction</span></span><br><span class="line">  ...</span><br><span class="line"><span class="keyword">endclass</span></span><br></pre></td></tr></table></figure>
+</li>
+<li><p>實作<code>run_phase</code></p>
+<figure class="highlight sv"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br><span class="line">6</span><br><span class="line">7</span><br><span class="line">8</span><br><span class="line">9</span><br></pre></td><td class="code"><pre><span class="line"><span class="keyword">class</span> my_driver <span class="keyword">extends</span> uvm_driver;</span><br><span class="line">  <span class="keyword">virtual</span> <span class="keyword">task</span> run_phase (uvm_phase phase);</span><br><span class="line">    <span class="keyword">forever</span> <span class="keyword">begin</span></span><br><span class="line">      <span class="comment">// 1. get_next_item()</span></span><br><span class="line">      <span class="comment">// 2. assign_the_data_into_DUT_interface()</span></span><br><span class="line">      <span class="comment">// 3. finish_driving_transaction()</span></span><br><span class="line">    <span class="keyword">end</span></span><br><span class="line">  <span class="keyword">endtask</span></span><br><span class="line"><span class="keyword">endclass</span></span><br></pre></td></tr></table></figure></li>
+</ol>
+<h1 id="UVM-Driver-Sequencer-handshake"><a href="#UVM-Driver-Sequencer-handshake" class="headerlink" title="UVM Driver-Sequencer handshake"></a>UVM Driver-Sequencer handshake</h1><p>UVM driver is a parameterized class which can drive a specific type of transaction object.<br>UVM driver是一個參數化的class，可以驅動transaction object。<br>Driver有一個 <code>uvm_seq_item_pull_port</code>可以接收從<code>uvm_sequencer</code>發來的request。它也可以把object傳回給<code>uvm_sequencer</code>，通常request和reponse的傳的東西的type是相同的</p>
+<p>如果有明確指定type的話，request和reponse的物件的type也可以不同，UVM driver用以下方法與sequencer互動。</p>
+<table>
+<thead>
+<tr>
+<th align="left">Method</th>
+<th align="left">Description</th>
+</tr>
+</thead>
+<tbody><tr>
+<td align="left">get_next_item</td>
+<td align="left">Block method，會卡著一直等到<code>sequencer</code>中有可用的request為止。之後要使用 <code>item_done</code> 完成handshake。</td>
+</tr>
+<tr>
+<td align="left">try_next_item</td>
+<td align="left">Non-blocking method，如果sequencer中沒有可用的request就會return null。有request的話會回傳object的pointer。</td>
+</tr>
+<tr>
+<td align="left">item_done</td>
+<td align="left">完成driver和sequencer handshake的Non-blocking method。要在 get_next_item 或 try_next_item 成功之後呼叫<code>item_done</code>。</td>
+</tr>
+</tbody></table>
+<h1 id="How-are-driver-x2F-sequencer-API-methods-used"><a href="#How-are-driver-x2F-sequencer-API-methods-used" class="headerlink" title="How are driver&#x2F;sequencer API methods used?"></a>How are driver&#x2F;sequencer API methods used?</h1><p>Driver和Sequencer的handshake機制背後的想法是允許driver從sequence中獲取一連串的transaction object，並在收到後回應response，才能繼續get下一個item。</p>
+<ol>
+<li><p>呼叫 <code>get_next_item</code> 後要接著呼叫 <code>item_done</code></p>
+<figure class="highlight sv"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br><span class="line">6</span><br><span class="line">7</span><br><span class="line">8</span><br><span class="line">9</span><br><span class="line">10</span><br><span class="line">11</span><br><span class="line">12</span><br></pre></td><td class="code"><pre><span class="line"><span class="keyword">virtual</span> <span class="keyword">task</span> run_phase (uvm_phase phase);</span><br><span class="line">  my_data req_item;</span><br><span class="line"></span><br><span class="line">  <span class="keyword">forever</span> <span class="keyword">begin</span></span><br><span class="line">    seq_item_port<span class="variable">.get_next_item</span> (req_item);</span><br><span class="line"></span><br><span class="line">    <span class="comment">// Drive signals to the interface</span></span><br><span class="line">    <span class="comment">// ...</span></span><br><span class="line"></span><br><span class="line">    seq_item_port<span class="variable">.item_done</span>();</span><br><span class="line">  <span class="keyword">end</span></span><br><span class="line"><span class="keyword">endtask</span></span><br></pre></td></tr></table></figure>
+</li>
+<li><p>呼叫 <code>get</code> 後要接著呼叫 <code>put</code></p>
+<figure class="highlight sv"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br><span class="line">6</span><br><span class="line">7</span><br><span class="line">8</span><br><span class="line">9</span><br><span class="line">10</span><br><span class="line">11</span><br><span class="line">12</span><br></pre></td><td class="code"><pre><span class="line"><span class="keyword">virtual</span> <span class="keyword">task</span> run_phase (uvm_phase phase);</span><br><span class="line">  my_data req_item;</span><br><span class="line"></span><br><span class="line">  <span class="keyword">forever</span> <span class="keyword">begin</span></span><br><span class="line">    seq_item_port<span class="variable">.get</span> (req_item);</span><br><span class="line"></span><br><span class="line">    <span class="comment">// Drive signals to the interface</span></span><br><span class="line">    <span class="comment">// ...</span></span><br><span class="line"></span><br><span class="line">    seq_item_port<span class="variable">.put</span> (rsp_item);</span><br><span class="line">  <span class="keyword">end</span></span><br><span class="line"><span class="keyword">endtask</span></span><br></pre></td></tr></table></figure></li>
+</ol>
+
+
+                
+            </div>
+
+            <!-- Comments -->
+            
+                <div class="col-lg-8 col-lg-offset-2 col-md-10 col-md-offset-1">
+                    
+
+
+                </div>
+            
+        </div>
+    </div>
+</article>
+
+    <!-- Footer -->
+    <hr />
+
+<!-- Footer -->
+<footer>
+    <div class="container">
+        <div class="row">
+            <div class="col-lg-8 col-lg-offset-2 col-md-10 col-md-offset-1">
+                <ul class="list-inline text-center">
+                    
+
+                    
+
+                    
+                        <li>
+                            <a href="https://github.com/logshark/logshark.github.io.git" target="_blank">
+                                <span class="fa-stack fa-lg">
+                                    <i class="fa fa-circle fa-stack-2x"></i>
+                                    <i class="fa fa-github fa-stack-1x fa-inverse"></i>
+                                </span>
+                            </a>
+                        </li>
+                    
+
+                    
+
+                    
+
+                    
+                </ul>
+                <p class="copyright text-muted">&copy; 2023 logshark<br></p>
+                <p class="copyright text-muted">Original Theme <a target="_blank" href="http://startbootstrap.com/template-overviews/clean-blog/">Clean Blog</a> from <a href="http://startbootstrap.com/" target="_blank">Start Bootstrap</a></p>
+                <p class="copyright text-muted">Adapted for <a target="_blank" href="https://hexo.io/">Hexo</a> by <a href="http://www.codeblocq.com/" target="_blank">Jonathan Klughertz</a></p>
+            </div>
+        </div>
+    </div>
+</footer>
+
+
+    <!-- After footer scripts -->
+    
+<!-- jQuery -->
+<script src="//code.jquery.com/jquery-2.1.4.min.js"></script>
+
+<!-- Bootstrap -->
+<script src="//maxcdn.bootstrapcdn.com/bootstrap/3.3.6/js/bootstrap.min.js"></script>
+
+<!-- Gallery -->
+<script src="//cdnjs.cloudflare.com/ajax/libs/featherlight/1.3.5/featherlight.min.js" type="text/javascript" charset="utf-8"></script>
+
+<!-- Disqus Comments -->
+
+
+
+</body>
+
+</html>
