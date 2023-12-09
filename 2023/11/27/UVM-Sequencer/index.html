@@ -23,7 +23,7 @@
 
     <!--Open Graph Title-->
     
-        <meta property="og:title" content="LogPost"/>
+        <meta property="og:title" content="UVM Sequencer"/>
     
 
     <!--Open Graph Description-->
@@ -36,7 +36,7 @@
 
     <!--Type page-->
     
-        <meta property="og:type" content="website"/>
+        <meta property="og:type" content="article"/>
     
 
     <!--Page Cover-->
@@ -55,7 +55,7 @@
 
     <!-- Title -->
     
-    <title>page - Archives: 2023 - LogPost</title>
+    <title>UVM Sequencer - LogPost</title>
 
     <!-- Bootstrap Core CSS -->
     <link href="//maxcdn.bootstrapcdn.com/bootstrap/3.3.6/css/bootstrap.min.css" rel="stylesheet"/>
@@ -159,170 +159,81 @@
 </nav>
 
     <!-- Main Content -->
-    
+    <!-- Page Header -->
+<!-- Set your background image for this header in your post front-matter: cover -->
 
-<!-- Page Header -->
-<!-- Set your background image for this header in the theme's configuration: index_cover -->
 <header class="intro-header" style="background-image: url('/img/home-bg.jpg')">
     <div class="container">
         <div class="row">
             <div class="col-lg-8 col-lg-offset-2 col-md-10 col-md-offset-1">
-                <div class="site-heading">
-                    <h1>2023</h1>
+                <div class="post-heading">
+                    <h1>UVM Sequencer</h1>
+                    
+                    <span class="meta">
+                        <!-- Date and Author -->
+                        
+                        
+                            2023-11-27
+                        
+                    </span>
                 </div>
             </div>
         </div>
     </div>
 </header>
 
-<!-- Main Content -->
-<div class="container">
-    <div class="row">
-        <div class="col-lg-8 col-lg-offset-2 col-md-10 col-md-offset-1">
+<!-- Post Content -->
+<article>
+    <div class="container">
+        <div class="row">
+
+            <!-- Tags and categories -->
+           
+                <div class="col-lg-4 col-lg-offset-2 col-md-5 col-md-offset-1 post-tags">
+                    
+                        
+
+
+<a href="/tags/UVM/">#UVM</a> <a href="/tags/Testbench-Structure/">#Testbench Structure</a>
+
+
+                    
+                </div>
+                <div class="col-lg-4 col-md-5 post-categories">
+                    
+                </div>
             
-                <div class="post-preview">
-    <a href="/2023/11/05/UVM-Object-Pack-Unpack/">
-        <h1 class="post-title archive">
-            UVM Object Pack/Unpack
-        </h1>
-    </a>
-    <p class="post-meta archive">
-        <!-- Date and Author -->
-        
-        2023-11-05
-    </p>
-</div>
+
+            <!-- Gallery -->
             
-                <div class="post-preview">
-    <a href="/2023/11/02/UVM-Object-Compare/">
-        <h1 class="post-title archive">
-            UVM Object Compare
-        </h1>
-    </a>
-    <p class="post-meta archive">
-        <!-- Date and Author -->
-        
-        2023-11-02
-    </p>
-</div>
+
+            <!-- Post Main Content -->
+            <div class="col-lg-8 col-lg-offset-2 col-md-10 col-md-offset-1">
+                <p>A sequencer generates data transactions as class objects and sends it to the <code>Driver</code> for execution. It is recommended to extend <code>uvm_sequencer</code> base class since it contains all of the functionality required to allow a sequence to communicate with a driver. The base class is parameterized by the request and response item types that can be handled by the sequencer.</p>
+<p>Sequencer的工作是產生data object 傳送給<code>Driver</code>執行。通常Sequencer會繼承自 <code>uvm_sequencer</code>，就會繼承 <code>uvm_sequencer</code>所有可以與Driver通訊的相關功能。</p>
+<h1 id="Usage"><a href="#Usage" class="headerlink" title="Usage"></a>Usage</h1><p>預設情況下，request type和response type相同，如果request和reponse不同的話可以在產生instance的時候指定第二個參數。除非有其他額外的port要include進來，不然應該直接將其實例化作為<code>uvm_sequencer</code>所需要的參數帶入。</p>
+<figure class="highlight sv"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br></pre></td><td class="code"><pre><span class="line"><span class="comment">// class uvm_sequencer #(type REQ=uvm_sequence_item, RSP=REQ)</span></span><br><span class="line"><span class="comment">//                                   extends uvm_sequencer_param_base #(REQ, RSP);</span></span><br><span class="line"></span><br><span class="line">uvm_sequencer <span class="variable">#(my_data)</span>           seqr0; <span class="comment">// without RSP</span></span><br><span class="line">uvm_sequencer <span class="variable">#(my_data, data_rsp)</span> seqr0; <span class="comment">// with    RSP</span></span><br></pre></td></tr></table></figure>
+
+<p>Sequencer生成的object在靈活性(flexibility)和可重用性(re-usability)方面有很大的限制。因此要使用<code>UVM_sequence</code>來克服這個限制。</p>
+<h1 id="Custom-Sequencer"><a href="#Custom-Sequencer" class="headerlink" title="Custom Sequencer"></a>Custom Sequencer</h1><p>其實並不需要客製化sequencer來執行每個sequence或agent。但是我們一樣可以建立具有額外自己客製化功能的 UVM sequencer，並在整個testbench中建立它的instance。</p>
+<figure class="highlight sv"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br><span class="line">6</span><br></pre></td><td class="code"><pre><span class="line"><span class="keyword">class</span> my_sequencer <span class="keyword">extends</span> uvm_sequencer;</span><br><span class="line">  `uvm_component_utils (my_sequencer)</span><br><span class="line">  <span class="keyword">function</span> <span class="keyword">new</span> (<span class="keyword">string</span> name=<span class="string">&quot;m_sequencer&quot;</span>, uvm_component parent);</span><br><span class="line">    <span class="keyword">super</span><span class="variable">.new</span> (name, parent);</span><br><span class="line">  <span class="keyword">endfunction</span></span><br><span class="line"><span class="keyword">endclass</span></span><br></pre></td></tr></table></figure>
+
+<h1 id="Class-Hierarchy"><a href="#Class-Hierarchy" class="headerlink" title="Class Hierarchy"></a>Class Hierarchy</h1>
+
+                
+            </div>
+
+            <!-- Comments -->
             
-                <div class="post-preview">
-    <a href="/2023/11/01/UVM-Ojbect-Copy-Clone/">
-        <h1 class="post-title archive">
-            UVM Ojbect Copy/Clone
-        </h1>
-    </a>
-    <p class="post-meta archive">
-        <!-- Date and Author -->
-        
-        2023-11-01
-    </p>
-</div>
+                <div class="col-lg-8 col-lg-offset-2 col-md-10 col-md-offset-1">
+                    
+
+
+                </div>
             
-                <div class="post-preview">
-    <a href="/2023/10/31/UVM-Ojbect-Print/">
-        <h1 class="post-title archive">
-            UVM Ojbect Print
-        </h1>
-    </a>
-    <p class="post-meta archive">
-        <!-- Date and Author -->
-        
-        2023-10-31
-    </p>
-</div>
-            
-                <div class="post-preview">
-    <a href="/2023/10/24/UVM-utility-和-field-macros/">
-        <h1 class="post-title archive">
-            UVM utility 和 field macros
-        </h1>
-    </a>
-    <p class="post-meta archive">
-        <!-- Date and Author -->
-        
-        2023-10-24
-    </p>
-</div>
-            
-                <div class="post-preview">
-    <a href="/2023/09/08/group_systemverilog/SystemVerilog-繼承、多型、虛擬方法/">
-        <h1 class="post-title archive">
-            SystemVerilog - 繼承、多型、虛擬方法
-        </h1>
-    </a>
-    <p class="post-meta archive">
-        <!-- Date and Author -->
-        
-        2023-09-08
-    </p>
-</div>
-            
-                <div class="post-preview">
-    <a href="/2023/09/06/UVM-環境設置/">
-        <h1 class="post-title archive">
-            UVM 環境設置
-        </h1>
-    </a>
-    <p class="post-meta archive">
-        <!-- Date and Author -->
-        
-        2023-09-06
-    </p>
-</div>
-            
-                <div class="post-preview">
-    <a href="/2023/09/06/UVM-Object/">
-        <h1 class="post-title archive">
-            UVM_Object
-        </h1>
-    </a>
-    <p class="post-meta archive">
-        <!-- Date and Author -->
-        
-        2023-09-06
-    </p>
-</div>
-            
-                <div class="post-preview">
-    <a href="/2023/08/25/group_systemverilog/SystemVerilog-Testbench-Example2/">
-        <h1 class="post-title archive">
-            SystemVerilog - Testbench Example2
-        </h1>
-    </a>
-    <p class="post-meta archive">
-        <!-- Date and Author -->
-        
-        2023-08-25
-    </p>
-</div>
-            
-                <div class="post-preview">
-    <a href="/2023/07/25/group_systemverilog/SystemVerilog-Constraint-disable-constraint/">
-        <h1 class="post-title archive">
-            SystemVerilog - Constraint: disable constraint
-        </h1>
-    </a>
-    <p class="post-meta archive">
-        <!-- Date and Author -->
-        
-        2023-07-25
-    </p>
-</div>
-            
-            <div class="archive-before-pagination"></div>
-            <ul class="pager">
-    
-        <li class="previous"><a href="/archives/2023/">&larr;  Newer Posts</a></li>
-    
-    
-        <li class="next"><a href="/archives/2023/page/3/">Older Posts  &rarr;</a></li>
-    
-</ul>
         </div>
     </div>
-</div>
-
+</article>
 
     <!-- Footer -->
     <hr />

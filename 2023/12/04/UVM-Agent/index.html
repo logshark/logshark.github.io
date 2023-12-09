@@ -1,0 +1,319 @@
+<!DOCTYPE html>
+<html lang="zh-tw">
+
+<!-- Head tag -->
+<head>
+
+    <meta charset="utf-8"/>
+    <meta http-equiv="X-UA-Compatible" content="IE=edge"/>
+    <meta name="viewport" content="width=device-width, initial-scale=1"/>
+
+    <!--Description-->
+
+    
+
+    
+        <meta name="description" content="456"/>
+    
+
+    <!--Author-->
+    
+        <meta name="author" content="logshark"/>
+    
+
+    <!--Open Graph Title-->
+    
+        <meta property="og:title" content="UVM Agent"/>
+    
+
+    <!--Open Graph Description-->
+    
+        <meta property="og:description" content="456"/>
+    
+
+    <!--Open Graph Site Name-->
+        <meta property="og:site_name" content="LogPost"/>
+
+    <!--Type page-->
+    
+        <meta property="og:type" content="article"/>
+    
+
+    <!--Page Cover-->
+    
+    
+        <meta property="og:image" content="https://logshark.github.io/img/home-bg.jpg"/>
+    
+
+        <meta name="twitter:card" content="summary_large_image"/>
+
+    
+
+    
+        <meta name="twitter:image" content="https://logshark.github.io/img/home-bg.jpg"/>
+    
+
+    <!-- Title -->
+    
+    <title>UVM Agent - LogPost</title>
+
+    <!-- Bootstrap Core CSS -->
+    <link href="//maxcdn.bootstrapcdn.com/bootstrap/3.3.6/css/bootstrap.min.css" rel="stylesheet"/>
+
+    <!-- Custom CSS -->
+    
+<link rel="stylesheet" href="/css/style.css">
+
+
+    <!-- Custom Fonts -->
+    <link href="//maxcdn.bootstrapcdn.com/font-awesome/4.6.3/css/font-awesome.min.css" rel="stylesheet" type="text/css"/>
+    <link href="//fonts.googleapis.com/css?family=Lora:400,700,400italic,700italic" rel="stylesheet" type="text/css"/>
+    <link href="//fonts.googleapis.com/css?family=Open+Sans:300italic,400italic,600italic,700italic,800italic,400,300,600,700,800" rel="stylesheet" type="text/css"/>
+
+    <!-- HTML5 Shim and Respond.js IE8 support of HTML5 elements and media queries -->
+    <!-- WARNING: Respond.js doesn't work if you view the page via file:// -->
+    <!--[if lt IE 9]>
+    <script src="//oss.maxcdn.com/libs/html5shiv/3.7.0/html5shiv.js"></script>
+    <script src="//oss.maxcdn.com/libs/respond.js/1.4.2/respond.min.js"></script>
+    <![endif]-->
+
+    <!-- Gallery -->
+    <link href="//cdnjs.cloudflare.com/ajax/libs/featherlight/1.3.5/featherlight.min.css" type="text/css" rel="stylesheet"/>
+
+    <!-- Google Analytics -->
+    
+
+
+    <!-- favicon -->
+    
+
+<meta name="generator" content="Hexo 6.3.0"></head>
+
+
+<body>
+
+    <!-- Menu -->
+    <!-- Navigation -->
+<nav class="navbar navbar-default navbar-custom navbar-fixed-top">
+    <div class="container-fluid">
+        <!-- Brand and toggle get grouped for better mobile display -->
+        <div class="navbar-header page-scroll">
+            <button type="button" class="navbar-toggle" data-toggle="collapse" data-target="#bs-example-navbar-collapse-1">
+                <span class="sr-only">Toggle navigation</span>
+                <span class="icon-bar"></span>
+                <span class="icon-bar"></span>
+                <span class="icon-bar"></span>
+            </button>
+            <a class="navbar-brand" href="/">LogPost</a>
+        </div>
+
+        <!-- Collect the nav links, forms, and other content for toggling -->
+        <div class="collapse navbar-collapse" id="bs-example-navbar-collapse-1">
+            <ul class="nav navbar-nav navbar-right">
+                
+                    <li>
+                        <a href="/">
+                            
+                                Home
+                            
+                        </a>
+                    </li>
+                
+                    <li>
+                        <a href="/archives">
+                            
+                                Archives
+                            
+                        </a>
+                    </li>
+                
+                    <li>
+                        <a href="/tags">
+                            
+                                Tags
+                            
+                        </a>
+                    </li>
+                
+                    <li>
+                        <a href="/categories">
+                            
+                                Categories
+                            
+                        </a>
+                    </li>
+                
+                    <li>
+                        <a target="_blank" rel="noopener" href="https://github.com/logshark">
+                            
+                                <i class="fa fa-github fa-stack-2x"></i>
+                            
+                        </a>
+                    </li>
+                
+            </ul>
+        </div>
+        <!-- /.navbar-collapse -->
+    </div>
+    <!-- /.container -->
+</nav>
+
+    <!-- Main Content -->
+    <!-- Page Header -->
+<!-- Set your background image for this header in your post front-matter: cover -->
+
+<header class="intro-header" style="background-image: url('/img/home-bg.jpg')">
+    <div class="container">
+        <div class="row">
+            <div class="col-lg-8 col-lg-offset-2 col-md-10 col-md-offset-1">
+                <div class="post-heading">
+                    <h1>UVM Agent</h1>
+                    
+                    <span class="meta">
+                        <!-- Date and Author -->
+                        
+                        
+                            2023-12-04
+                        
+                    </span>
+                </div>
+            </div>
+        </div>
+    </div>
+</header>
+
+<!-- Post Content -->
+<article>
+    <div class="container">
+        <div class="row">
+
+            <!-- Tags and categories -->
+           
+                <div class="col-lg-4 col-lg-offset-2 col-md-5 col-md-offset-1 post-tags">
+                    
+                        
+
+
+<a href="/tags/UVM/">#UVM</a> <a href="/tags/Testbench-Structure/">#Testbench Structure</a>
+
+
+                    
+                </div>
+                <div class="col-lg-4 col-md-5 post-categories">
+                    
+                </div>
+            
+
+            <!-- Gallery -->
+            
+
+            <!-- Post Main Content -->
+            <div class="col-lg-8 col-lg-offset-2 col-md-10 col-md-offset-1">
+                <h1 id="What-is-a-UVM-agent"><a href="#What-is-a-UVM-agent" class="headerlink" title="What is a UVM agent?"></a>What is a UVM agent?</h1><p><code>Agent</code>將<code>Sequencer</code>、<code>Driver</code>和<code>Monitor</code>封裝到單一instance中，並透過TLM interface將這些component連接起來。Agent也有類似將UVM agent設定為主動(active)或被動(passive)的設置，也有類似開關的config可以開啟&#x2F;關閉functional coverage或類似更改parameter的config。</p>
+<h1 id="Types-of-Agents"><a href="#Types-of-Agents" class="headerlink" title="Types of Agents"></a>Types of Agents</h1><ul>
+<li>Active:<ul>
+<li>會產生<code>Sequencer</code>, <code>Driver</code>, <code>Monitor</code>全部的instance</li>
+<li>會將data透過<code>Driver</code>驅動至DUT</li>
+</ul>
+</li>
+<li>Passive:<ul>
+<li>只會產生<code>Monitor</code>的instance</li>
+<li>只有checking和coverage，並不會送任何資料到DUT</li>
+<li>如果沒有任何資料要驅動到DUT的話，可以用Passive mode</li>
+</ul>
+</li>
+</ul>
+<h1 id="How-to-find-out-if-a-UVM-agent-is-active-or-passive"><a href="#How-to-find-out-if-a-UVM-agent-is-active-or-passive" class="headerlink" title="How to find out if a UVM agent is active or passive?"></a>How to find out if a UVM agent is active or passive?</h1><p>繼承uvm_agent的class會有一個<code>get_is_active()</code>的function可以得到UVM agent是Active mode還是Passive mode。</p>
+<figure class="highlight sv"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br><span class="line">6</span><br><span class="line">7</span><br><span class="line">8</span><br><span class="line">9</span><br><span class="line">10</span><br></pre></td><td class="code"><pre><span class="line"><span class="keyword">class</span> my_agent <span class="keyword">extends</span> uvm_agent;</span><br><span class="line">  <span class="keyword">virtual</span> <span class="keyword">function</span> <span class="keyword">void</span> build_phase (uvm_phase phase);</span><br><span class="line"></span><br><span class="line">    <span class="keyword">if</span> (get_is_active()) <span class="keyword">begin</span></span><br><span class="line">	  <span class="comment">// Build driver and sequencer</span></span><br><span class="line">    <span class="keyword">end</span></span><br><span class="line"></span><br><span class="line">    <span class="comment">// Build monitor</span></span><br><span class="line">  <span class="keyword">endfunction</span></span><br><span class="line"><span class="keyword">endclass</span></span><br></pre></td></tr></table></figure>
+
+<h1 id="Class-Hierarchy"><a href="#Class-Hierarchy" class="headerlink" title="Class Hierarchy"></a>Class Hierarchy</h1><p>&#x2F;&#x2F; TODO:</p>
+<h1 id="Steps-to-create-a-UVM-agent"><a href="#Steps-to-create-a-UVM-agent" class="headerlink" title="Steps to create a UVM agent"></a>Steps to create a UVM agent</h1><ol>
+<li><p>建立一個繼承<code>uvm_agent</code>的class，然後註冊到factory上</p>
+<figure class="highlight sv"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br><span class="line">6</span><br><span class="line">7</span><br><span class="line">8</span><br><span class="line">9</span><br><span class="line">10</span><br></pre></td><td class="code"><pre><span class="line"><span class="keyword">class</span> my_agent <span class="keyword">extends</span> uvm_agent;</span><br><span class="line"></span><br><span class="line">  `uvm_component_utils (my_agent)</span><br><span class="line"></span><br><span class="line">  <span class="keyword">function</span> <span class="keyword">new</span> (<span class="keyword">string</span> name = <span class="string">&quot;my_agent&quot;</span>, uvm_component parent = <span class="literal">null</span>);</span><br><span class="line">    <span class="keyword">super</span><span class="variable">.new</span> (name, parent);</span><br><span class="line">  <span class="keyword">endfunction</span></span><br><span class="line"></span><br><span class="line">  ...</span><br><span class="line"><span class="keyword">endclass</span></span><br></pre></td></tr></table></figure>
+</li>
+<li><p>宣告agent內要用的component</p>
+<figure class="highlight sv"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br><span class="line">6</span><br><span class="line">7</span><br><span class="line">8</span><br></pre></td><td class="code"><pre><span class="line"><span class="keyword">class</span> my_agent <span class="keyword">extends</span> uvm_agent;</span><br><span class="line">  ...</span><br><span class="line">  my_driver                  drv_0;</span><br><span class="line">  my_monitor                 mon_0;</span><br><span class="line">  uvm_sequencer <span class="variable">#(my_data)</span>   seqr_0;</span><br><span class="line">  agent_cfg                  agt_cfg_0;</span><br><span class="line">  ...</span><br><span class="line"><span class="keyword">endclass</span></span><br></pre></td></tr></table></figure>
+</li>
+<li><p>在build phase將component實例化</p>
+<figure class="highlight sv"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br><span class="line">6</span><br><span class="line">7</span><br><span class="line">8</span><br><span class="line">9</span><br><span class="line">10</span><br><span class="line">11</span><br><span class="line">12</span><br></pre></td><td class="code"><pre><span class="line"><span class="keyword">class</span> my_agent <span class="keyword">extends</span> uvm_agent;</span><br><span class="line">  ...</span><br><span class="line">  <span class="keyword">virtual</span> <span class="keyword">function</span> <span class="keyword">void</span> build_phase (uvm_phase phase);</span><br><span class="line">    <span class="keyword">if</span> (get_is_active()) <span class="keyword">begin</span></span><br><span class="line">      m_seqr0 = uvm_sequencer<span class="variable">#(my_data)::type_id::create (&quot;m_seqr0&quot;, this)</span>;</span><br><span class="line">      m_drv0 = my_driver::type_id::create (<span class="string">&quot;m_drv0&quot;</span>, <span class="keyword">this</span>);</span><br><span class="line">    <span class="keyword">end</span></span><br><span class="line"></span><br><span class="line">    m_mon0 = my_monitor::type_id::create (<span class="string">&quot;m_mon0&quot;</span>, <span class="keyword">this</span>);</span><br><span class="line">  <span class="keyword">endfunction</span></span><br><span class="line">  ...</span><br><span class="line"><span class="keyword">endclass</span></span><br></pre></td></tr></table></figure>
+</li>
+<li><p>將agent元件連接在一起</p>
+<figure class="highlight sv"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br><span class="line">6</span><br><span class="line">7</span><br></pre></td><td class="code"><pre><span class="line"><span class="keyword">class</span> my_agent <span class="keyword">extends</span> uvm_agent;</span><br><span class="line">  <span class="keyword">virtual</span> <span class="keyword">function</span> <span class="keyword">void</span> connect_phase (uvm_phase phase);</span><br><span class="line"></span><br><span class="line">    <span class="keyword">if</span> (get_is_active())</span><br><span class="line">      m_drv0<span class="variable">.seq_item_port</span><span class="variable">.connect</span> (m_seqr0<span class="variable">.seq_item_export</span>);</span><br><span class="line">  <span class="keyword">endfunction</span></span><br><span class="line"><span class="keyword">endclass</span></span><br></pre></td></tr></table></figure></li>
+</ol>
+<h1 id="What-does-a-UVM-agent-do"><a href="#What-does-a-UVM-agent-do" class="headerlink" title="What does a UVM agent do?"></a>What does a UVM agent do?</h1><p>通常會建立一個agent來提供特定於protocol的task來產生transactions、檢查結果和執行覆蓋。例如，可以為 WishBone protocol建立 UVM agent，其sequencer將產生可傳送至driver的 data item。然後，driver將這些data item的object轉換為實際pin level的signal並將它們驅動到 DUT。monitor可以被動的只接收來自 DUT 的輸出，將它們轉換回另一個data item class object ，並將其分發到testbench中等待該data item的所有components中。</p>
+<h1 id="How-to-configure-a-UVM-agent-as-active-or-passive"><a href="#How-to-configure-a-UVM-agent-as-active-or-passive" class="headerlink" title="How to configure a UVM agent as active or passive?"></a>How to configure a UVM agent as active or passive?</h1><p>A user-defined agent derived from uvm_agent has an internal variable called is_active which is of enum type uvm_active_passive_enum. By default, all agents are active.</p>
+<p>從繼承<code>uvm_agent</code>自己定義的agent有一個 <code>is_active</code> 的變量，enum type為 <code>uvm_active_passive_enum</code>。default值為Active狀態。</p>
+<figure class="highlight sv"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br></pre></td><td class="code"><pre><span class="line"><span class="comment">// set to passive</span></span><br><span class="line">uvm_config_db <span class="variable">#(int) :: set (this, &quot;path_to_agent&quot;, &quot;is_active&quot;, UVM_PASSIVE)</span>;</span><br><span class="line"><span class="comment">// or </span></span><br><span class="line"><span class="comment">// set to active</span></span><br><span class="line">uvm_config_db <span class="variable">#(int) :: set (this, &quot;path_to_agent&quot;, &quot;is_active&quot;, UVM_ACTIVE)</span>;</span><br></pre></td></tr></table></figure>
+
+                
+            </div>
+
+            <!-- Comments -->
+            
+                <div class="col-lg-8 col-lg-offset-2 col-md-10 col-md-offset-1">
+                    
+
+
+                </div>
+            
+        </div>
+    </div>
+</article>
+
+    <!-- Footer -->
+    <hr />
+
+<!-- Footer -->
+<footer>
+    <div class="container">
+        <div class="row">
+            <div class="col-lg-8 col-lg-offset-2 col-md-10 col-md-offset-1">
+                <ul class="list-inline text-center">
+                    
+
+                    
+
+                    
+                        <li>
+                            <a href="https://github.com/logshark/logshark.github.io.git" target="_blank">
+                                <span class="fa-stack fa-lg">
+                                    <i class="fa fa-circle fa-stack-2x"></i>
+                                    <i class="fa fa-github fa-stack-1x fa-inverse"></i>
+                                </span>
+                            </a>
+                        </li>
+                    
+
+                    
+
+                    
+
+                    
+                </ul>
+                <p class="copyright text-muted">&copy; 2023 logshark<br></p>
+                <p class="copyright text-muted">Original Theme <a target="_blank" href="http://startbootstrap.com/template-overviews/clean-blog/">Clean Blog</a> from <a href="http://startbootstrap.com/" target="_blank">Start Bootstrap</a></p>
+                <p class="copyright text-muted">Adapted for <a target="_blank" href="https://hexo.io/">Hexo</a> by <a href="http://www.codeblocq.com/" target="_blank">Jonathan Klughertz</a></p>
+            </div>
+        </div>
+    </div>
+</footer>
+
+
+    <!-- After footer scripts -->
+    
+<!-- jQuery -->
+<script src="//code.jquery.com/jquery-2.1.4.min.js"></script>
+
+<!-- Bootstrap -->
+<script src="//maxcdn.bootstrapcdn.com/bootstrap/3.3.6/js/bootstrap.min.js"></script>
+
+<!-- Gallery -->
+<script src="//cdnjs.cloudflare.com/ajax/libs/featherlight/1.3.5/featherlight.min.js" type="text/javascript" charset="utf-8"></script>
+
+<!-- Disqus Comments -->
+
+
+
+</body>
+
+</html>
