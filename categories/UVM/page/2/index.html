@@ -23,7 +23,7 @@
 
     <!--Open Graph Title-->
     
-        <meta property="og:title" content="UVM Subscriber"/>
+        <meta property="og:title" content="LogPost"/>
     
 
     <!--Open Graph Description-->
@@ -36,7 +36,7 @@
 
     <!--Type page-->
     
-        <meta property="og:type" content="article"/>
+        <meta property="og:type" content="website"/>
     
 
     <!--Page Cover-->
@@ -55,7 +55,7 @@
 
     <!-- Title -->
     
-    <title>UVM Subscriber - LogPost</title>
+    <title>page - UVM - LogPost</title>
 
     <!-- Bootstrap Core CSS -->
     <link href="//maxcdn.bootstrapcdn.com/bootstrap/3.3.6/css/bootstrap.min.css" rel="stylesheet"/>
@@ -159,82 +159,168 @@
 </nav>
 
     <!-- Main Content -->
-    <!-- Page Header -->
-<!-- Set your background image for this header in your post front-matter: cover -->
+    
 
+<!-- Page Header -->
+<!-- Set your background image for this header in the theme's configuration: index_cover -->
 <header class="intro-header" style="background-image: url('/img/home-bg.jpg')">
     <div class="container">
         <div class="row">
             <div class="col-lg-8 col-lg-offset-2 col-md-10 col-md-offset-1">
-                <div class="post-heading">
-                    <h1>UVM Subscriber</h1>
-                    
-                    <span class="meta">
-                        <!-- Date and Author -->
-                        
-                        
-                            2023-12-10
-                        
-                    </span>
+                <div class="site-heading">
+                    <h1>UVM</h1>
                 </div>
             </div>
         </div>
     </div>
 </header>
 
-<!-- Post Content -->
-<article>
-    <div class="container">
-        <div class="row">
-
-            <!-- Tags and categories -->
-           
-                <div class="col-lg-4 col-lg-offset-2 col-md-5 col-md-offset-1 post-tags">
-                    
-                        
-
-
-<a href="/tags/UVM/">#UVM</a> <a href="/tags/Testbench-Structure/">#Testbench Structure</a>
-
-
-                    
-                </div>
-                <div class="col-lg-4 col-md-5 post-categories">
-                    
-                        
-
-<a href="/categories/UVM/">UVM</a>
-
-                    
-                </div>
+<!-- Main Content -->
+<div class="container">
+    <div class="row">
+        <div class="col-lg-8 col-lg-offset-2 col-md-10 col-md-offset-1">
             
-
-            <!-- Gallery -->
+                <div class="post-preview">
+    <a href="/2023/11/16/UVM-Testbench-Top/">
+        <h1 class="post-title archive">
+            UVM Testbench Top
+        </h1>
+    </a>
+    <p class="post-meta archive">
+        <!-- Date and Author -->
+        
+        2023-11-16
+    </p>
+</div>
             
-
-            <!-- Post Main Content -->
-            <div class="col-lg-8 col-lg-offset-2 col-md-10 col-md-offset-1">
-                <p>Subscriber基本上是analysis port的listener。它們訂閱broadcaster並透過連接的analysis port廣播時接收object。 <code>uvm_component</code>沒有內建analysis port，而<code>uvm_subscriber</code>是一個擴展版本，具有名為analysis_export 的analysis port。</p>
-<h1 id="Class-definition"><a href="#Class-definition" class="headerlink" title="Class definition"></a>Class definition</h1><figure class="highlight sv"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br><span class="line">6</span><br><span class="line">7</span><br><span class="line">8</span><br><span class="line">9</span><br><span class="line">10</span><br><span class="line">11</span><br><span class="line">12</span><br></pre></td><td class="code"><pre><span class="line"><span class="keyword">virtual</span> <span class="keyword">class</span> uvm_subscriber <span class="variable">#(type T=int)</span> <span class="keyword">extends</span> uvm_component;</span><br><span class="line">  <span class="keyword">typedef</span> uvm_subscriber <span class="variable">#(T)</span> this_type;</span><br><span class="line"></span><br><span class="line">  uvm_analysis_imp <span class="variable">#(T, this_type)</span> analysis_export;</span><br><span class="line"></span><br><span class="line">  <span class="keyword">function</span> <span class="keyword">new</span> (<span class="keyword">string</span> name, uvm_component parent);</span><br><span class="line">    <span class="keyword">super</span><span class="variable">.new</span> (name, parent);</span><br><span class="line">    analysis_export = <span class="keyword">new</span> (<span class="string">&quot;analysis_imp&quot;</span>, <span class="keyword">this</span>);</span><br><span class="line">  <span class="keyword">endfunction</span></span><br><span class="line"></span><br><span class="line">  <span class="keyword">pure</span> <span class="keyword">virtual</span> <span class="keyword">function</span> <span class="keyword">void</span> write (T, t);</span><br><span class="line"><span class="keyword">endclass</span></span><br></pre></td></tr></table></figure>
-
-<h1 id="Use-Case"><a href="#Use-Case" class="headerlink" title="Use Case"></a>Use Case</h1><p>在通常情況下，agent有一個用於其monitor的 TLM analysis port，以便與其他testbench 的component共享在agent的interface上收集的data object。因此，建立一個繼承自uvm_subscriber的class並使用內建的analysis_export實作來連接到agent的analysis port會比較容易。例如，在subscriber中有 functional coverage groups和coverpoints，並在其從agent接收到object時進行取樣。</p>
-<p>&#x2F;&#x2F; TODO:</p>
-<figure class="highlight sv"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br><span class="line">6</span><br><span class="line">7</span><br><span class="line">8</span><br><span class="line">9</span><br><span class="line">10</span><br><span class="line">11</span><br><span class="line">12</span><br><span class="line">13</span><br><span class="line">14</span><br><span class="line">15</span><br><span class="line">16</span><br><span class="line">17</span><br><span class="line">18</span><br></pre></td><td class="code"><pre><span class="line"><span class="keyword">class</span> my_coverage <span class="keyword">extends</span> uvm_subscriber <span class="variable">#(bus_pkt)</span>;</span><br><span class="line"></span><br><span class="line">  <span class="keyword">covergroup</span> cg_bus;</span><br><span class="line">    ...</span><br><span class="line">  <span class="keyword">endgroup</span></span><br><span class="line"></span><br><span class="line">  <span class="keyword">virtual</span> <span class="keyword">function</span> <span class="keyword">void</span> write (bus_pkt pkt);</span><br><span class="line">    cg_bus<span class="variable">.sample</span> ();</span><br><span class="line">  <span class="keyword">endfunction</span></span><br><span class="line"><span class="keyword">endclass</span></span><br><span class="line"></span><br><span class="line"><span class="keyword">class</span> my_env <span class="keyword">extends</span> uvm_env;</span><br><span class="line">  ...</span><br><span class="line">  <span class="keyword">virtual</span> <span class="keyword">function</span> <span class="keyword">void</span> connect_phase (uvm_phase phase);</span><br><span class="line">    <span class="keyword">super</span><span class="variable">.connect_phase</span> (phase);</span><br><span class="line">    my_agent<span class="variable">.custom_ap</span><span class="variable">.connect</span> (my_cov<span class="variable">.analysis_export</span>);</span><br><span class="line">  <span class="keyword">endfunction</span></span><br><span class="line"><span class="keyword">endclass</span></span><br></pre></td></tr></table></figure>
-
-                
-            </div>
-
-            <!-- Comments -->
+                <div class="post-preview">
+    <a href="/2023/11/11/UVM-Root/">
+        <h1 class="post-title archive">
+            UVM Root
+        </h1>
+    </a>
+    <p class="post-meta archive">
+        <!-- Date and Author -->
+        
+        2023-11-11
+    </p>
+</div>
             
-                <div class="col-lg-8 col-lg-offset-2 col-md-10 col-md-offset-1">
-                    
-
-
-                </div>
+                <div class="post-preview">
+    <a href="/2023/11/06/UVM-Component/">
+        <h1 class="post-title archive">
+            UVM Component
+        </h1>
+    </a>
+    <p class="post-meta archive">
+        <!-- Date and Author -->
+        
+        2023-11-06
+    </p>
+</div>
             
+                <div class="post-preview">
+    <a href="/2023/11/05/UVM-Object-Pack-Unpack/">
+        <h1 class="post-title archive">
+            UVM Object Pack/Unpack
+        </h1>
+    </a>
+    <p class="post-meta archive">
+        <!-- Date and Author -->
+        
+        2023-11-05
+    </p>
+</div>
+            
+                <div class="post-preview">
+    <a href="/2023/11/02/UVM-Object-Compare/">
+        <h1 class="post-title archive">
+            UVM Object Compare
+        </h1>
+    </a>
+    <p class="post-meta archive">
+        <!-- Date and Author -->
+        
+        2023-11-02
+    </p>
+</div>
+            
+                <div class="post-preview">
+    <a href="/2023/11/01/UVM-Ojbect-Copy-Clone/">
+        <h1 class="post-title archive">
+            UVM Ojbect Copy/Clone
+        </h1>
+    </a>
+    <p class="post-meta archive">
+        <!-- Date and Author -->
+        
+        2023-11-01
+    </p>
+</div>
+            
+                <div class="post-preview">
+    <a href="/2023/10/31/UVM-Ojbect-Print/">
+        <h1 class="post-title archive">
+            UVM Ojbect Print
+        </h1>
+    </a>
+    <p class="post-meta archive">
+        <!-- Date and Author -->
+        
+        2023-10-31
+    </p>
+</div>
+            
+                <div class="post-preview">
+    <a href="/2023/10/24/UVM-utility-和-field-macros/">
+        <h1 class="post-title archive">
+            UVM utility 和 field macros
+        </h1>
+    </a>
+    <p class="post-meta archive">
+        <!-- Date and Author -->
+        
+        2023-10-24
+    </p>
+</div>
+            
+                <div class="post-preview">
+    <a href="/2023/09/06/UVM-環境設置/">
+        <h1 class="post-title archive">
+            UVM 環境設置
+        </h1>
+    </a>
+    <p class="post-meta archive">
+        <!-- Date and Author -->
+        
+        2023-09-06
+    </p>
+</div>
+            
+                <div class="post-preview">
+    <a href="/2023/09/06/UVM-Object/">
+        <h1 class="post-title archive">
+            UVM_Object
+        </h1>
+    </a>
+    <p class="post-meta archive">
+        <!-- Date and Author -->
+        
+        2023-09-06
+    </p>
+</div>
+            
+            <div class="archive-before-pagination"></div>
+            <ul class="pager">
+    
+        <li class="previous"><a href="/categories/UVM/">&larr;  Newer Posts</a></li>
+    
+    
+</ul>
         </div>
     </div>
-</article>
+</div>
+
 
     <!-- Footer -->
     <hr />

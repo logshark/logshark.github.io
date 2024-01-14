@@ -201,6 +201,11 @@
                 </div>
                 <div class="col-lg-4 col-md-5 post-categories">
                     
+                        
+
+<a href="/categories/UVM/">UVM</a>
+
+                    
                 </div>
             
 
@@ -243,7 +248,7 @@
 <h1 id="What-does-a-UVM-agent-do"><a href="#What-does-a-UVM-agent-do" class="headerlink" title="What does a UVM agent do?"></a>What does a UVM agent do?</h1><p>通常會建立一個agent來提供特定於protocol的task來產生transactions、檢查結果和執行覆蓋。例如，可以為 WishBone protocol建立 UVM agent，其sequencer將產生可傳送至driver的 data item。然後，driver將這些data item的object轉換為實際pin level的signal並將它們驅動到 DUT。monitor可以被動的只接收來自 DUT 的輸出，將它們轉換回另一個data item class object ，並將其分發到testbench中等待該data item的所有components中。</p>
 <h1 id="How-to-configure-a-UVM-agent-as-active-or-passive"><a href="#How-to-configure-a-UVM-agent-as-active-or-passive" class="headerlink" title="How to configure a UVM agent as active or passive?"></a>How to configure a UVM agent as active or passive?</h1><p>A user-defined agent derived from uvm_agent has an internal variable called is_active which is of enum type uvm_active_passive_enum. By default, all agents are active.</p>
 <p>從繼承<code>uvm_agent</code>自己定義的agent有一個 <code>is_active</code> 的變量，enum type為 <code>uvm_active_passive_enum</code>。default值為Active狀態。</p>
-<figure class="highlight sv"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br></pre></td><td class="code"><pre><span class="line"><span class="comment">// set to passive</span></span><br><span class="line">uvm_config_db <span class="variable">#(int) :: set (this, &quot;path_to_agent&quot;, &quot;is_active&quot;, UVM_PASSIVE)</span>;</span><br><span class="line"><span class="comment">// or </span></span><br><span class="line"><span class="comment">// set to active</span></span><br><span class="line">uvm_config_db <span class="variable">#(int) :: set (this, &quot;path_to_agent&quot;, &quot;is_active&quot;, UVM_ACTIVE)</span>;</span><br></pre></td></tr></table></figure>
+<figure class="highlight sv"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br></pre></td><td class="code"><pre><span class="line"><span class="comment">// set to passive</span></span><br><span class="line">uvm_config_db <span class="variable">#(int) :: set (this, &quot;path_to_agent&quot;, &quot;is_active&quot;, UVM_PASSIVE)</span>;</span><br><span class="line"><span class="comment">// or</span></span><br><span class="line"><span class="comment">// set to active</span></span><br><span class="line">uvm_config_db <span class="variable">#(int) :: set (this, &quot;path_to_agent&quot;, &quot;is_active&quot;, UVM_ACTIVE)</span>;</span><br></pre></td></tr></table></figure>
 
                 
             </div>
