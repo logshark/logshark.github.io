@@ -23,7 +23,7 @@
 
     <!--Open Graph Title-->
     
-        <meta property="og:title" content="UVM Subscriber"/>
+        <meta property="og:title" content="UVM Sequence"/>
     
 
     <!--Open Graph Description-->
@@ -55,7 +55,7 @@
 
     <!-- Title -->
     
-    <title>UVM Subscriber - LogPost</title>
+    <title>UVM Sequence - LogPost</title>
 
     <!-- Bootstrap Core CSS -->
     <link href="//maxcdn.bootstrapcdn.com/bootstrap/3.3.6/css/bootstrap.min.css" rel="stylesheet"/>
@@ -167,13 +167,13 @@
         <div class="row">
             <div class="col-lg-8 col-lg-offset-2 col-md-10 col-md-offset-1">
                 <div class="post-heading">
-                    <h1>UVM Subscriber</h1>
+                    <h1>UVM Sequence</h1>
                     
                     <span class="meta">
                         <!-- Date and Author -->
                         
                         
-                            2023-12-10
+                            2023-11-29
                         
                     </span>
                 </div>
@@ -214,12 +214,33 @@
 
             <!-- Post Main Content -->
             <div class="col-lg-8 col-lg-offset-2 col-md-10 col-md-offset-1">
-                <p>Subscriber基本上是analysis port的listener。它們訂閱broadcaster並透過連接的analysis port廣播時接收object。 <code>uvm_component</code>沒有內建analysis port，而<code>uvm_subscriber</code>是一個擴展版本，具有名為analysis_export 的analysis port。</p>
-<h1 id="Class-definition"><a href="#Class-definition" class="headerlink" title="Class definition"></a>Class definition</h1><figure class="highlight sv"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br><span class="line">6</span><br><span class="line">7</span><br><span class="line">8</span><br><span class="line">9</span><br><span class="line">10</span><br><span class="line">11</span><br><span class="line">12</span><br></pre></td><td class="code"><pre><span class="line"><span class="keyword">virtual</span> <span class="keyword">class</span> uvm_subscriber <span class="variable">#(type T=int)</span> <span class="keyword">extends</span> uvm_component;</span><br><span class="line">  <span class="keyword">typedef</span> uvm_subscriber <span class="variable">#(T)</span> this_type;</span><br><span class="line"></span><br><span class="line">  uvm_analysis_imp <span class="variable">#(T, this_type)</span> analysis_export;</span><br><span class="line"></span><br><span class="line">  <span class="keyword">function</span> <span class="keyword">new</span> (<span class="keyword">string</span> name, uvm_component parent);</span><br><span class="line">    <span class="keyword">super</span><span class="variable">.new</span> (name, parent);</span><br><span class="line">    analysis_export = <span class="keyword">new</span> (<span class="string">&quot;analysis_imp&quot;</span>, <span class="keyword">this</span>);</span><br><span class="line">  <span class="keyword">endfunction</span></span><br><span class="line"></span><br><span class="line">  <span class="keyword">pure</span> <span class="keyword">virtual</span> <span class="keyword">function</span> <span class="keyword">void</span> write (T, t);</span><br><span class="line"><span class="keyword">endclass</span></span><br></pre></td></tr></table></figure>
+                <h1 id="What-is-a-UVM-sequence"><a href="#What-is-a-UVM-sequence" class="headerlink" title="What is a UVM sequence?"></a>What is a UVM sequence?</h1><p>UVM sequence由多個data item組成，這些data item可以以不同的方式組合在一起以創建出各種scenario。sequence會由指定的sequencer執行，然後sequencer將資料項傳送到driver。所以sequence是verification plan中的最主要的刺激(stimuli)。</p>
+<!--
+# Class Hierarchy
+// TODO -->
 
-<h1 id="Use-Case"><a href="#Use-Case" class="headerlink" title="Use Case"></a>Use Case</h1><p>在通常情況下，agent有一個用於其monitor的 TLM analysis port，以便與其他testbench 的component共享在agent的interface上收集的data object。因此，建立一個繼承自uvm_subscriber的class並使用內建的analysis_export實作來連接到agent的analysis port會比較容易。例如，在subscriber中有 functional coverage groups和coverpoints，並在其從agent接收到object時進行取樣。</p>
-<p>&#x2F;&#x2F; TODO:</p>
-<figure class="highlight sv"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br><span class="line">6</span><br><span class="line">7</span><br><span class="line">8</span><br><span class="line">9</span><br><span class="line">10</span><br><span class="line">11</span><br><span class="line">12</span><br><span class="line">13</span><br><span class="line">14</span><br><span class="line">15</span><br><span class="line">16</span><br><span class="line">17</span><br><span class="line">18</span><br></pre></td><td class="code"><pre><span class="line"><span class="keyword">class</span> my_coverage <span class="keyword">extends</span> uvm_subscriber <span class="variable">#(bus_pkt)</span>;</span><br><span class="line"></span><br><span class="line">  <span class="keyword">covergroup</span> cg_bus;</span><br><span class="line">    ...</span><br><span class="line">  <span class="keyword">endgroup</span></span><br><span class="line"></span><br><span class="line">  <span class="keyword">virtual</span> <span class="keyword">function</span> <span class="keyword">void</span> write (bus_pkt pkt);</span><br><span class="line">    cg_bus<span class="variable">.sample</span> ();</span><br><span class="line">  <span class="keyword">endfunction</span></span><br><span class="line"><span class="keyword">endclass</span></span><br><span class="line"></span><br><span class="line"><span class="keyword">class</span> my_env <span class="keyword">extends</span> uvm_env;</span><br><span class="line">  ...</span><br><span class="line">  <span class="keyword">virtual</span> <span class="keyword">function</span> <span class="keyword">void</span> connect_phase (uvm_phase phase);</span><br><span class="line">    <span class="keyword">super</span><span class="variable">.connect_phase</span> (phase);</span><br><span class="line">    my_agent<span class="variable">.custom_ap</span><span class="variable">.connect</span> (my_cov<span class="variable">.analysis_export</span>);</span><br><span class="line">  <span class="keyword">endfunction</span></span><br><span class="line"><span class="keyword">endclass</span></span><br></pre></td></tr></table></figure>
+<h1 id="Steps-to-create-a-UVM-sequence"><a href="#Steps-to-create-a-UVM-sequence" class="headerlink" title="Steps to create a UVM sequence"></a>Steps to create a UVM sequence</h1><ol>
+<li><p>建立一個繼承<code>uvm_sequence</code>的class，然後註冊到factory上，因為<code>uvm_sequence</code>是繼承自<code>uvm_transaction</code> object，他的base其實是uvm_object，所以要使用<code>uvm_object_utils</code>而不是使用<code>uvm_component_utils</code></p>
+<figure class="highlight sv"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br><span class="line">6</span><br><span class="line">7</span><br><span class="line">8</span><br><span class="line">9</span><br><span class="line">10</span><br><span class="line">11</span><br></pre></td><td class="code"><pre><span class="line"><span class="comment">// my_sequence is user-given name for this class that has been derived from &quot;uvm_sequence&quot;</span></span><br><span class="line"><span class="keyword">class</span> my_sequence <span class="keyword">extends</span> uvm_sequence;</span><br><span class="line"></span><br><span class="line">  <span class="comment">// `uvm_object_utils instead of `uvm_component_utils because sequence is a uvm_transaction object</span></span><br><span class="line">  `uvm_object_utils (my_sequence)</span><br><span class="line"></span><br><span class="line">  <span class="keyword">function</span> <span class="keyword">new</span> (<span class="keyword">string</span> name = <span class="string">&quot;my_sequence&quot;</span>);</span><br><span class="line">    <span class="keyword">super</span><span class="variable">.new</span> (name);</span><br><span class="line">  <span class="keyword">endfunction</span></span><br><span class="line">  ...</span><br><span class="line"><span class="keyword">endclass</span></span><br></pre></td></tr></table></figure>
+</li>
+<li><p>宣告預設的sequencer來執行這個sequence</p>
+<figure class="highlight sv"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br></pre></td><td class="code"><pre><span class="line"><span class="keyword">class</span> my_sequence <span class="keyword">extends</span> uvm_sequence;</span><br><span class="line">  ...</span><br><span class="line">  `uvm_declare_p_sequencer (my_sequencer)</span><br><span class="line">  ...</span><br><span class="line"><span class="keyword">endclass</span></span><br></pre></td></tr></table></figure>
+</li>
+<li><p>實作body method<br>class my_sequence extends uvm_sequence;<br>  …<br>  virtual task body ();<br> &#x2F;&#x2F; Stimulus for this sequence<br>  endtask<br>  …<br>endclass</p>
+</li>
+</ol>
+<h1 id="UVM-Sequence-Example"><a href="#UVM-Sequence-Example" class="headerlink" title="UVM Sequence Example"></a>UVM Sequence Example</h1><figure class="highlight sv"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br><span class="line">6</span><br><span class="line">7</span><br><span class="line">8</span><br><span class="line">9</span><br><span class="line">10</span><br><span class="line">11</span><br><span class="line">12</span><br><span class="line">13</span><br><span class="line">14</span><br><span class="line">15</span><br><span class="line">16</span><br><span class="line">17</span><br><span class="line">18</span><br><span class="line">19</span><br><span class="line">20</span><br></pre></td><td class="code"><pre><span class="line"><span class="keyword">class</span> my_sequence <span class="keyword">extends</span> uvm_sequence;</span><br><span class="line">  `uvm_object_utils (my_sequence)</span><br><span class="line"></span><br><span class="line">  <span class="keyword">function</span> <span class="keyword">new</span> (<span class="keyword">string</span> name = <span class="string">&quot;my_sequence&quot;</span>);</span><br><span class="line">    <span class="keyword">super</span><span class="variable">.new</span> (name);</span><br><span class="line">  <span class="keyword">endfunction</span></span><br><span class="line"></span><br><span class="line">  <span class="keyword">task</span> pre_body ();</span><br><span class="line">	<span class="comment">// ...</span></span><br><span class="line">  <span class="keyword">endtask</span></span><br><span class="line"></span><br><span class="line">  <span class="keyword">task</span> body ();</span><br><span class="line">    my_data pkt;</span><br><span class="line">	`uvm_do (pkt);</span><br><span class="line">  <span class="keyword">endtask</span></span><br><span class="line"></span><br><span class="line">  <span class="keyword">task</span> post_body();</span><br><span class="line">    <span class="comment">// ...</span></span><br><span class="line">  <span class="keyword">endtask</span></span><br><span class="line"><span class="keyword">endclass</span></span><br></pre></td></tr></table></figure>
+
+<p>NOTE:</p>
+<ul>
+<li><code>my_sequence</code>繼承了 <code>uvm_sequence</code>。</li>
+<li>它使用&#96;&#96;uvm_object_utils<code>向factory註冊，因為它是一個transaction item，transaction item是繼承</code>uvm_object<code>，而不是繼承</code>uvm_component&#96;。</li>
+<li>主要的stimulus是寫在<code>body()</code> task，而如果有需要在執行sequence之前或之後做什麼事情，可以call <code>pre_body()</code> 和 <code>post_body()</code> callback function</li>
+<li>data packet建立好後由<code>uvm_do</code> macro傳送此data packet並執行</li>
+</ul>
+<p>&#96;&#96;uvm_do<code>macro不會呼叫</code>pre_body<code>和</code>post_body&#96;。</p>
+<p>&#96;&#96;uvm_do&#96; macro會allocate my_data類型的object給pkt，將它randomize然後傳送給此sequence關聯的sequencer然後將其執行。使用這個macro可以減少要寫的code。</p>
+
 
                 
             </div>
